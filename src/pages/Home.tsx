@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAdmin } from "@/context/AdminContext";
-import { MapPin, Calendar, Users, Star, ArrowRight } from "lucide-react";
+import { MapPin, Calendar, Users, Star, ArrowRight, Clock, Shield, CheckCircle2 } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import malaysiaImg from "@/assets/malaysia_new.jpg";
 import thailandImg from "@/assets/thailand.jpg";
@@ -11,6 +11,15 @@ import vietnamImg from "@/assets/vietnam_new.jpg";
 import dubaiImg from "@/assets/dubai.jpg";
 import singaporeImg from "@/assets/singapore.jpg";
 import meghalayaImg from "@/assets/meghalaya_new.jpg";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Helmet } from "react-helmet-async";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useState, useEffect } from "react";
+// newly added imports
+import { useToast } from "@/hooks/use-toast";
+import { Label } from "@/components/ui/label";
 
 const imageMap: Record<string, string> = {
   "malaysia_new.jpg": malaysiaImg,
@@ -23,173 +32,445 @@ const imageMap: Record<string, string> = {
 };
 
 const Home = () => {
-  const { destinations, homeContent } = useAdmin();
+  const { destinations } = useAdmin();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
+  const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [formData, setFormData] = useState({
+      destination: "",
+      travelMonth: "",
+      duration: "",
+      numPersons: "",
+      name: "",
+      email: "",
+      whatsapp: "",
+      language: ""
+  });
+
   const featuredDestinations = destinations.filter((d) => d.featured);
 
+  const getImageSrc = (img: string) => {
+    return imageMap[img] || img;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+      setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleNext = () => {
+      if (!formData.destination || !formData.travelMonth || !formData.duration || !formData.numPersons) {
+          toast({
+              title: "Missing Fields",
+              description: "Please fill in all fields to proceed.",
+              variant: "destructive"
+          });
+          return;
+      }
+      setStep(2);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!formData.name || !formData.email || !formData.whatsapp || !formData.language) {
+          toast({
+              title: "Missing Fields",
+              description: "Please fill in all fields to submit.",
+              variant: "destructive"
+          });
+          return;
+      }
+
+      setIsSubmitting(true);
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      toast({
+          title: "Quote Request Sent!",
+          description: "Our experts will contact you shortly.",
+      });
+      setIsSubmitting(false);
+      setStep(1);
+      setFormData({
+          destination: "",
+          travelMonth: "",
+          duration: "",
+          numPersons: "",
+          name: "",
+          email: "",
+          whatsapp: "",
+          language: ""
+      });
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Planet Life | Customized International Adventures</title>
+        <meta name="description" content="Experience the epitome of luxury and adventure with our customized international journeys. Let our experts plan your perfect trip." />
+        <meta property="og:title" content="Planet Life | Customized International Adventures" />
+        <meta property="og:description" content="Experience the epitome of luxury and adventure with our customized international journeys." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative min-h-screen w-full overflow-hidden flex flex-col">
+        {/* Background Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover contrast-125 saturate-150"
+          poster="/src/assets/hero-bg.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
         >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-tropical-island-with-white-sand-4127-large.mp4" type="video/mp4" />
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 animate-fade-in">
-            {homeContent.heroTitle}
-          </h1>
-          <p className="text-xl md:text-2xl text-white font-bold mb-8 animate-fade-in">
-            {homeContent.heroSubtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button size="lg" variant="secondary" asChild className="text-lg">
-              <Link to="/destinations">
-                Explore Destinations
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="secondary" asChild className="text-lg">
-              <Link to="/contact">Contact Us</Link>
-            </Button>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative container mx-auto px-4 flex-grow flex flex-col md:flex-row items-center justify-between pt-32 pb-20">
+          {/* Left Content */}
+          <div className="text-white max-w-3xl mb-12 md:mb-0 z-10">
+            <ScrollReveal>
+              <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight drop-shadow-lg">
+                Customized International Adventures.
+              </h1>
+              <p className="text-xl md:text-2xl mb-10 text-white/90 font-light max-w-2xl drop-shadow-md">
+                Experience the epitome of luxury and adventure with our customized international journeys. Let our experts plan your perfect trip.
+              </p>
+              <Button size="lg" className="bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full px-10 py-7 text-lg shadow-xl transition-all hover:scale-105">
+                Explore Packages <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Booking Card */}
+          <div className="w-full md:w-[420px] bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:mr-4 relative z-10 border border-white/20">
+            <div className="text-center mb-8">
+              <h3 className="font-serif text-[#022c22] text-xl italic mb-2">Your Perfect Holiday Awaits!</h3>
+              <h2 className="text-2xl font-bold text-gray-900">Get Your Custom Quote</h2>
+            </div>
+
+            {step === 1 ? (
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
+                    <MapPin className="w-4 h-4" /> Destination
+                  </Label>
+                  <Select value={formData.destination} onValueChange={(v) => handleSelectChange("destination", v)}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                      <SelectValue placeholder="Select Destination" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white text-gray-900">
+                      {destinations.map(d => (
+                        <SelectItem key={d.id} value={d.name}>{d.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4" /> Travel Month
+                  </Label>
+                  <Select value={formData.travelMonth} onValueChange={(v) => handleSelectChange("travelMonth", v)}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                      <SelectValue placeholder="Select Month" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white text-gray-900">
+                      {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map(m => (
+                        <SelectItem key={m} value={m}>{m}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
+                      <Clock className="w-4 h-4" /> Duration
+                    </Label>
+                    <Select value={formData.duration} onValueChange={(v) => handleSelectChange("duration", v)}>
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                        <SelectValue placeholder="Duration" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white text-gray-900">
+                        <SelectItem value="3-5">3-5 Days</SelectItem>
+                        <SelectItem value="5-7">5-7 Days</SelectItem>
+                        <SelectItem value="7-10">7-10 Days</SelectItem>
+                        <SelectItem value="10+">10+ Days</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
+                      <Users className="w-4 h-4" /> Persons
+                    </Label>
+                    <Select value={formData.numPersons} onValueChange={(v) => handleSelectChange("numPersons", v)}>
+                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                        <SelectValue placeholder="Persons" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white text-gray-900">
+                        <SelectItem value="solo">Solo</SelectItem>
+                        <SelectItem value="couple">Couple</SelectItem>
+                        <SelectItem value="family-3">Family (3)</SelectItem>
+                        <SelectItem value="family-4">Family (4+)</SelectItem>
+                        <SelectItem value="group">Group</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={handleNext}
+                  className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white font-bold py-6 rounded-xl mt-4"
+                >
+                  Next
+                </Button>
+                
+                <div className="flex justify-center gap-2 mt-4">
+                    <div className="w-8 h-1.5 rounded-full bg-[#d4af37]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold">Name</Label>
+                  <Input
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="bg-gray-50 border-gray-200 text-gray-900"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold">Email</Label>
+                  <Input
+                    name="email"
+                    type="email"
+                    placeholder="youremail@gmail.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="bg-gray-50 border-gray-200 text-gray-900"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold">Whatsapp</Label>
+                  <div className="flex">
+                    <div className="bg-gray-100 border border-r-0 border-gray-200 rounded-l-md px-3 flex items-center text-gray-500 text-sm">
+                      🇮🇳 +91
+                    </div>
+                    <Input
+                      name="whatsapp"
+                      placeholder="9876543210"
+                      value={formData.whatsapp}
+                      onChange={handleInputChange}
+                      className="bg-gray-50 border-gray-200 rounded-l-none text-gray-900"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-[#d4af37] font-semibold">Select Language</Label>
+                  <Select value={formData.language} onValueChange={(v) => handleSelectChange("language", v)}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                      <SelectValue placeholder="Language" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white text-gray-900">
+                      <SelectItem value="english">English</SelectItem>
+                      <SelectItem value="hindi">Hindi</SelectItem>
+                      <SelectItem value="tamil">Tamil</SelectItem>
+                      <SelectItem value="malayalam">Malayalam</SelectItem>
+                      <SelectItem value="kannada">Kannada</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white font-bold py-6 rounded-xl mt-4"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit >"}
+                </Button>
+
+                <div className="flex justify-center gap-2 mt-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                  <div className="w-8 h-1.5 rounded-full bg-[#d4af37]"></div>
+                </div>
+
+                <Button variant="link" onClick={() => setStep(1)} className="w-full text-sm text-gray-400">
+                  Back to previous step
+                </Button>
+              </div>
+            )}
           </div>
         </div>
-      </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
-              {homeContent.whyChooseUsTitle}
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {homeContent.whyChooseUsSubtitle}
-            </p>
-          </div>
+        {/* Stats Bar - Positioned relatively at bottom on mobile, absolute on desktop */}
+        <div className="relative md:absolute bottom-0 left-0 right-0 z-20 bg-[#022c22]/95 backdrop-blur text-white py-6 border-t border-white/10">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center md:justify-between items-center gap-6 md:gap-0 text-center md:text-left">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: MapPin,
-                title: "Curated Destinations",
-                description: "Handpicked locations offering unique cultural and natural experiences"
-              },
-              {
-                icon: Calendar,
-                title: "Flexible Packages",
-                description: "Choose from various durations and customize your perfect trip"
-              },
-              {
-                icon: Users,
-                title: "Expert Guidance",
-                description: "Professional tour guides ensuring smooth and memorable journeys"
-              },
-              {
-                icon: Star,
-                title: "4.9 Rating",
-                description: "Trusted by thousands of happy travelers worldwide"
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow border-border">
-                <CardContent className="pt-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                    <feature.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-card-foreground">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
+                <div className="bg-white/10 p-3 rounded-full">
+                  <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                </div>
+                <div>
+                  <p className="font-bold text-lg">4.9/5 Ratings</p>
+                  <p className="text-xs text-white/70">On Google Reviews</p>
+                </div>
+              </div>
+
+              <div className="hidden md:block h-10 w-px bg-white/20" />
+
+              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
+                <div className="bg-white/10 p-3 rounded-full">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-bold text-lg">24/7 Support</p>
+                  <p className="text-xs text-white/70">Trip Assistance</p>
+                </div>
+              </div>
+
+              <div className="hidden md:block h-10 w-px bg-white/20" />
+
+              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
+                <div className="bg-white/10 p-3 rounded-full">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-bold text-lg">100% Secure</p>
+                  <p className="text-xs text-white/70">Payment Protection</p>
+                </div>
+              </div>
+
+              <div className="hidden md:block h-10 w-px bg-white/20" />
+
+              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
+                <div className="bg-white/10 p-3 rounded-full">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-bold text-lg">Customized</p>
+                  <p className="text-xs text-white/70">Tailor-made Trips</p>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Destinations */}
-      <section className="py-20 bg-muted">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
-              Featured Destinations
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#022c22] mb-6">
+              Trending Destinations
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our most popular travel destinations around the world
+            <p className="text-lg text-gray-600 mb-8">
+              Explore our most popular international destinations, handpicked for your perfect vacation.
             </p>
+            <div className="w-24 h-1.5 bg-[#d4af37] mx-auto rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredDestinations.map((destination) => (
-              <Card
-                key={destination.id}
-                className="group overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 border-border"
-              >
-                <div className="relative aspect-[3/4] h-auto overflow-hidden">
-                  <img
-                    src={imageMap[destination.image]}
-                    alt={destination.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-2xl font-serif font-bold text-primary-foreground mb-1">
-                      {destination.name}
-                    </h3>
-                    <p className="text-primary-foreground/90 text-sm">{destination.country}</p>
+            {isLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="h-[450px] rounded-[2rem] overflow-hidden bg-white p-4 space-y-4">
+                  <Skeleton className="w-full h-2/3 rounded-2xl" />
+                  <Skeleton className="w-3/4 h-8" />
+                  <Skeleton className="w-1/2 h-6" />
+                  <div className="flex justify-between items-center pt-4">
+                    <Skeleton className="w-24 h-10" />
+                    <Skeleton className="w-12 h-12 rounded-full" />
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
-                    {destination.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-semibold text-primary">
-                      From ₹{destination.packages[0].price.toLocaleString()}
-                    </span>
-                    <Button variant="outline" asChild>
-                      <Link to={`/destination/${destination.id}`}>
-                        View Details
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+              ))
+            ) : (
+              featuredDestinations.map((destination, index) => (
+                <ScrollReveal key={destination.id} delay={index * 0.1}>
+                  <Link to={`/destination/${destination.id}`} className="group block h-full">
+                    <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
+                      <img
+                        src={getImageSrc(destination.image)}
+                        alt={destination.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#022c22]/90 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                      {/* Content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-transform duration-300 translate-y-2 group-hover:translate-y-0">
+                        <div className="flex justify-between items-end mb-2">
+                          <h3 className="text-3xl font-serif font-bold mb-1">{destination.name}</h3>
+                          <div className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-sm font-medium mb-2">
+                            {destination.packages.length} Packages
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-white/80 mb-4 text-sm">
+                          <MapPin className="w-4 h-4" />
+                          <span>{destination.country}</span>
+                        </div>
+
+                        <div className="border-t border-white/20 pt-4 mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                          <div>
+                            <p className="text-xs text-white/70 uppercase tracking-wider">Starting From</p>
+                            <p className="text-xl font-bold text-[#d4af37]">₹{destination.packages[0]?.price.toLocaleString()}</p>
+                          </div>
+                          <span className="bg-white text-[#022c22] p-3 rounded-full hover:bg-[#d4af37] hover:text-white transition-colors">
+                            <ArrowRight className="w-5 h-5" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))
+            )}
           </div>
 
-          <div className="text-center mt-12">
-            <Button size="lg" asChild>
+          <div className="text-center mt-16">
+            <Button asChild variant="outline" size="lg" className="border-[#022c22] text-[#022c22] hover:bg-[#022c22] hover:text-white rounded-full px-10 py-6 text-lg font-semibold transition-all">
               <Link to="/destinations">View All Destinations</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* Testimonials Preview */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            {homeContent.ctaTitle}
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#022c22] mb-8">
+            Happy Customers, Happy Stories
           </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {homeContent.ctaText}
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+            Join thousands of satisfied travelers who have explored the world with us.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
-              <Link to="/contact">Get in Touch</Link>
-            </Button>
-            <Button size="lg" variant="secondary" asChild>
-              <Link to="/packages">Browse Packages</Link>
-            </Button>
-          </div>
+          <Button variant="outline" size="lg" className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white rounded-full px-8">
+            View Instagram Stories
+          </Button>
         </div>
       </section>
     </div>

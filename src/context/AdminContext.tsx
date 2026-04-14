@@ -108,37 +108,42 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
     // Load data from localStorage on mount
     useEffect(() => {
-        const storedAuth = localStorage.getItem("isAdminAuthenticated");
-        if (storedAuth === "true") {
-            setIsAuthenticated(true);
-        }
+        try {
+            const storedAuth = localStorage.getItem("isAdminAuthenticated");
+            if (storedAuth === "true") {
+                setIsAuthenticated(true);
+            }
 
-        const storedDestinations = localStorage.getItem("destinations_v2");
-        if (storedDestinations) {
-            setDestinations(JSON.parse(storedDestinations));
-        } else {
+            const storedDestinations = localStorage.getItem("destinations_v3");
+            if (storedDestinations) {
+                setDestinations(JSON.parse(storedDestinations));
+            } else {
+                setDestinations(initialDestinations);
+            }
+
+            // Load Content
+            const storedHome = localStorage.getItem("homeContent");
+            if (storedHome) setHomeContent(JSON.parse(storedHome));
+
+            const storedAbout = localStorage.getItem("aboutContent");
+            if (storedAbout) setAboutContent(JSON.parse(storedAbout));
+
+            const storedContact = localStorage.getItem("contactContent");
+            if (storedContact) setContactContent(JSON.parse(storedContact));
+
+            const storedPackages = localStorage.getItem("packagesContent");
+            if (storedPackages) setPackagesContent(JSON.parse(storedPackages));
+        } catch (error) {
+            console.error("Error loading data from localStorage:", error);
+            // Fallback to defaults if parsing fails
             setDestinations(initialDestinations);
         }
-
-        // Load Content
-        const storedHome = localStorage.getItem("homeContent");
-        if (storedHome) setHomeContent(JSON.parse(storedHome));
-
-        const storedAbout = localStorage.getItem("aboutContent");
-        if (storedAbout) setAboutContent(JSON.parse(storedAbout));
-
-        const storedContact = localStorage.getItem("contactContent");
-        if (storedContact) setContactContent(JSON.parse(storedContact));
-
-        const storedPackages = localStorage.getItem("packagesContent");
-        if (storedPackages) setPackagesContent(JSON.parse(storedPackages));
-
     }, []);
 
     // Save destinations to localStorage whenever they change
     useEffect(() => {
         if (destinations.length > 0) {
-            localStorage.setItem("destinations_v2", JSON.stringify(destinations));
+            localStorage.setItem("destinations_v3", JSON.stringify(destinations));
         }
     }, [destinations]);
 

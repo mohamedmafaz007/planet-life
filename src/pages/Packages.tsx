@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { destinations } from "@/data/destinations";
-import { Calendar, ArrowRight, MapPin } from "lucide-react";
+import { Calendar, ArrowRight, MapPin, Clock } from "lucide-react";
 import malaysiaImg from "@/assets/malaysia_new.jpg";
 import thailandImg from "@/assets/thailand.jpg";
 import baliImg from "@/assets/bali_new.jpg";
@@ -12,6 +11,8 @@ import vietnamImg from "@/assets/vietnam_new.jpg";
 import dubaiImg from "@/assets/dubai.jpg";
 import singaporeImg from "@/assets/singapore.jpg";
 import meghalayaImg from "@/assets/meghalaya_new.jpg";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { useAdmin } from "@/context/AdminContext";
 
 const imageMap: Record<string, string> = {
   "malaysia_new.jpg": malaysiaImg,
@@ -23,13 +24,15 @@ const imageMap: Record<string, string> = {
   "meghalaya_new.jpg": meghalayaImg
 };
 
-import { useAdmin } from "@/context/AdminContext";
-
 const Packages = () => {
   const { destinations, packagesContent } = useAdmin();
   const [selectedDestination, setSelectedDestination] = useState<string>("all");
   const [selectedDuration, setSelectedDuration] = useState<string>("all");
   const [selectedBudget, setSelectedBudget] = useState<string>("all");
+
+  const getImageSrc = (img: string) => {
+    return imageMap[img] || img;
+  };
 
   // Flatten all packages
   const allPackages = destinations.flatMap((dest) =>
@@ -58,165 +61,161 @@ const Packages = () => {
   });
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
-            {packagesContent.heroTitle}
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            {packagesContent.heroSubtitle}
-          </p>
+      <section className="bg-[#022c22] text-white py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')]"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <ScrollReveal>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              {packagesContent.heroTitle}
+            </h1>
+            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto font-light">
+              {packagesContent.heroSubtitle}
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-muted border-b border-border">
+      <section className="py-6 bg-white border-b border-gray-200 sticky top-[72px] z-40 shadow-sm">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">Destination</label>
-              <Select value={selectedDestination} onValueChange={setSelectedDestination}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Destinations" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Destinations</SelectItem>
-                  {destinations.map((dest) => (
-                    <SelectItem key={dest.id} value={dest.id}>
-                      {dest.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+          <ScrollReveal delay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Destination</label>
+                <Select value={selectedDestination} onValueChange={setSelectedDestination}>
+                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
+                    <SelectValue placeholder="All Destinations" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Destinations</SelectItem>
+                    {destinations.map((dest) => (
+                      <SelectItem key={dest.id} value={dest.id}>
+                        {dest.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">Duration</label>
-              <Select value={selectedDuration} onValueChange={setSelectedDuration}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Durations" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Durations</SelectItem>
-                  <SelectItem value="short">Short (3 nights or less)</SelectItem>
-                  <SelectItem value="medium">Medium (4 nights)</SelectItem>
-                  <SelectItem value="long">Long (5+ nights)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Duration</label>
+                <Select value={selectedDuration} onValueChange={setSelectedDuration}>
+                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
+                    <SelectValue placeholder="All Durations" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Durations</SelectItem>
+                    <SelectItem value="short">Short (3 nights or less)</SelectItem>
+                    <SelectItem value="medium">Medium (4 nights)</SelectItem>
+                    <SelectItem value="long">Long (5+ nights)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">Budget</label>
-              <Select value={selectedBudget} onValueChange={setSelectedBudget}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Budgets" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Budgets</SelectItem>
-                  <SelectItem value="budget">Budget (Under ₹18,000)</SelectItem>
-                  <SelectItem value="mid">Mid-Range (₹18,000 - ₹30,000)</SelectItem>
-                  <SelectItem value="luxury">Luxury (₹30,000+)</SelectItem>
-                </SelectContent>
-              </Select>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Budget</label>
+                <Select value={selectedBudget} onValueChange={setSelectedBudget}>
+                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
+                    <SelectValue placeholder="All Budgets" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Budgets</SelectItem>
+                    <SelectItem value="budget">Budget (Under ₹18,000)</SelectItem>
+                    <SelectItem value="mid">Mid-Range (₹18,000 - ₹30,000)</SelectItem>
+                    <SelectItem value="luxury">Luxury (₹30,000+)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Packages Grid */}
-      <section className="py-12 bg-background">
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="mb-6 text-muted-foreground">
+          <div className="mb-6 text-gray-500 text-sm font-medium">
             Showing {filteredPackages.length} package{filteredPackages.length !== 1 ? 's' : ''}
           </div>
 
           {filteredPackages.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-xl text-muted-foreground mb-4">
+            <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-gray-100">
+              <p className="text-xl text-gray-400 mb-4">
                 No packages found matching your criteria
               </p>
               <Button
+                variant="outline"
                 onClick={() => {
                   setSelectedDestination("all");
                   setSelectedDuration("all");
                   setSelectedBudget("all");
                 }}
+                className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white"
               >
                 Clear Filters
               </Button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredPackages.map((pkg) => (
-                <Card key={`${pkg.destination.id}-${pkg.id}`} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 h-48 md:h-auto min-h-[300px] relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {filteredPackages.map((pkg, index) => (
+                <ScrollReveal key={`${pkg.destination.id}-${pkg.id}`} delay={index * 0.05}>
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-none shadow-md bg-white group rounded-2xl h-full flex flex-col md:flex-row">
+                    <div className="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
                       <img
-                        src={imageMap[pkg.destination.image]}
+                        src={getImageSrc(pkg.destination.image)}
                         alt={pkg.destination.name}
-                        className="w-full h-full object-contain bg-muted"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <div className="flex items-center text-primary-foreground text-sm mb-1">
-                          <MapPin className="h-3 w-3 mr-1" />
-                          {pkg.destination.country}
-                        </div>
-                        <h3 className="text-lg font-serif font-bold text-primary-foreground">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-white/90 backdrop-blur-sm text-[#022c22] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
                           {pkg.destination.name}
-                        </h3>
+                        </span>
                       </div>
                     </div>
 
-                    <div className="md:w-2/3 p-6">
-                      <CardHeader className="p-0 mb-4">
-                        <CardTitle className="text-xl mb-2">{pkg.duration}</CardTitle>
-                        <div className="flex items-center text-sm text-muted-foreground">
-                          <Calendar className="h-4 w-4 mr-1" />
+                    <div className="md:w-3/5 p-6 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center text-xs text-gray-500 mb-2 uppercase tracking-wider font-medium">
+                          <Clock className="h-3 w-3 mr-1 text-[#d4af37]" />
                           {pkg.nights} Nights / {pkg.days} Days
                         </div>
-                      </CardHeader>
+                        <h3 className="text-xl font-bold text-[#022c22] mb-3 group-hover:text-[#d4af37] transition-colors">
+                          {pkg.duration}
+                        </h3>
 
-                      <CardContent className="p-0">
                         <div className="mb-4">
-                          <p className="text-sm text-muted-foreground mb-2">Includes:</p>
                           <div className="flex flex-wrap gap-2">
-                            {pkg.inclusions.slice(0, 3).map((inclusion, index) => (
+                            {pkg.inclusions.slice(0, 4).map((inclusion, index) => (
                               <span
                                 key={index}
-                                className="text-xs bg-muted px-2 py-1 rounded-full text-muted-foreground"
+                                className="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-600"
                               >
                                 {inclusion}
                               </span>
                             ))}
-                            {pkg.inclusions.length > 3 && (
-                              <span className="text-xs bg-muted px-2 py-1 rounded-full text-muted-foreground">
-                                +{pkg.inclusions.length - 3} more
-                              </span>
-                            )}
                           </div>
                         </div>
+                      </div>
 
-                        <div className="flex items-end justify-between pt-4 border-t border-border">
-                          <div>
-                            <p className="text-xs text-muted-foreground">Per Person</p>
-                            <p className="text-2xl font-bold text-primary">
-                              ₹{pkg.price.toLocaleString()}
-                            </p>
-                          </div>
-                          <Button asChild>
-                            <Link to={`/destination/${pkg.destination.id}`}>
-                              View Details
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
+                      <div className="flex items-end justify-between pt-4 border-t border-gray-100 mt-2">
+                        <div>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Per Person</p>
+                          <p className="text-2xl font-bold text-[#d4af37]">
+                            ₹{pkg.price.toLocaleString()}
+                          </p>
                         </div>
-                      </CardContent>
+                        <Button asChild className="bg-[#022c22] hover:bg-[#064e3b] text-white rounded-full px-6">
+                          <Link to={`/destination/${pkg.destination.id}`}>
+                            View Details
+                          </Link>
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </ScrollReveal>
               ))}
             </div>
           )}

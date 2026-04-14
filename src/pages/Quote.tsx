@@ -1,32 +1,20 @@
 import { useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useAdmin } from "@/context/AdminContext";
-import { ArrowLeft, CheckCircle2, Clock, MapPin, Star, ShieldCheck, BadgePercent, Users } from "lucide-react";
-
+import { CheckCircle2, Clock, Users, Star, ShieldCheck, BadgePercent, MapPin } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
-import malaysiaVideo from "@/assets/malaysia_video.mp4";
 
-const videoMap: Record<string, string> = {
-    "hero-video.mp4": heroVideo,
-    "malaysia_video.mp4": malaysiaVideo,
-};
-
-const Booking = () => {
-    const { packageId } = useParams();
+const Quote = () => {
     const navigate = useNavigate();
     const { toast } = useToast();
-    const { destinations } = useAdmin();
-
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Form State
     const [formData, setFormData] = useState({
         travelMonth: "",
         duration: "",
@@ -36,22 +24,6 @@ const Booking = () => {
         whatsapp: "",
         language: ""
     });
-
-    // Find package and destination
-    const found = destinations.flatMap(d => d.packages.map(p => ({ ...p, destinationName: d.name, destinationImage: d.image, destinationId: d.id, video: d.video }))).find(p => p.id === packageId);
-
-    if (!found) {
-        return (
-            <div className="min-h-screen pt-20 flex items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Package Not Found</h1>
-                    <Button asChild>
-                        <Link to="/destinations">Back to Destinations</Link>
-                    </Button>
-                </div>
-            </div>
-        );
-    }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -86,7 +58,6 @@ const Booking = () => {
         }
 
         setIsSubmitting(true);
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
 
         toast({
@@ -97,54 +68,30 @@ const Booking = () => {
         navigate("/");
     };
 
-    const getVideoSrc = (vid?: string) => {
-        if (!vid) return null;
-        return videoMap[vid] || vid;
-    };
-
     return (
         <div className="min-h-screen pt-20 relative overflow-hidden">
-            {/* Background Media */}
-            {found.video ? (
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                >
-                    <source src={getVideoSrc(found.video)} type="video/mp4" />
-                </video>
-            ) : (
-                <div
-                    className="absolute inset-0 w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${found.destinationImage})` }}
-                />
-            )}
+            {/* Background Video */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+                <source src={heroVideo} type="video/mp4" />
+            </video>
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
             <div className="container mx-auto px-4 relative z-10 py-12">
-                <Button variant="ghost" asChild className="mb-6 text-white hover:text-white hover:bg-white/20">
-                    <Link to={`/destination/${found.destinationId}`}>
-                        <ArrowLeft className="mr-2 h-4 w-4" />
-                        Back to Package
-                    </Link>
-                </Button>
-
                 <div className="text-center mb-8 text-white">
                     <h1 className="text-3xl md:text-4xl font-serif font-bold mb-2">
-                        {found.destinationName} Tour Packages: Discover Exotic Wonders
+                        Your Dream Holiday Awaits
                     </h1>
                     <p className="max-w-2xl mx-auto opacity-90 text-sm md:text-base">
-                        Explore {found.destinationName}'s wonders at your pace with our custom tour packages. Immerse in cultural delights and picturesque landscapes. Your perfect {found.destinationName} experience starts here.
+                        Explore the world's wonders at your pace with our custom tour packages. Your perfect experience starts here.
                     </p>
-                    <div className="mt-6">
-                        <Button asChild className="bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full px-8">
-                            <Link to="/packages">Explore Packages</Link>
-                        </Button>
-                    </div>
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
@@ -338,4 +285,4 @@ const Booking = () => {
     );
 };
 
-export default Booking;
+export default Quote;

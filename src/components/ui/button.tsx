@@ -32,14 +32,25 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+
+    // If it's a Slot (asChild), we can't easily wrap it with motion without breaking composition in some cases,
+    // but for standard buttons we can use motion.button.
+    // However, for simplicity and compatibility with Slot, we'll use a wrapper or just CSS transitions for now
+    // combined with a simple scale effect on click if it's a regular button.
+
+    // Actually, let's use a motion wrapper if it's not a Slot, or just standard CSS for simplicity 
+    // but enhanced with tailwind classes in buttonVariants.
+    // To strictly follow the prompt "Buttons with hover and click animations (color change, scale, shadow, subtle motion)",
+    // we can add active:scale-95 to the variants.
+
+    return <Comp className={cn(buttonVariants({ variant, size, className }), "active:scale-95 transition-all duration-200 ease-in-out hover:shadow-md")} ref={ref} {...props} />;
   },
 );
 Button.displayName = "Button";

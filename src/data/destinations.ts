@@ -24,6 +24,7 @@ export interface Destination {
   video?: string;
   featured: boolean;
   whyVisit: string[];
+  adventureImages?: string[];
   packages: Package[];
 }
 
@@ -34,12 +35,18 @@ export const destinations: Destination[] = [
     country: "Malaysia",
     description: "Experience the perfect blend of modern cities, ancient rainforests, and pristine beaches. Malaysia offers a unique cultural tapestry with its mix of Malay, Chinese, and Indian influences.",
     image: "malaysia_new.jpg",
+    video: "malaysia_video.mp4",
     featured: true,
     whyVisit: [
       "Explore the iconic Petronas Twin Towers in Kuala Lumpur",
       "Discover the UNESCO World Heritage Sites of Penang and Malacca",
       "Experience diverse cultures, cuisines, and traditions",
       "Relax on beautiful tropical islands and beaches"
+    ],
+    adventureImages: [
+      "malaysia_adventure_1.jpg",
+      "malaysia_adventure_2.jpg",
+      "malaysia_adventure_3.jpg"
     ],
     packages: [
       {
@@ -109,6 +116,7 @@ export const destinations: Destination[] = [
     country: "Thailand",
     description: "The vibrant capital of Thailand blends ancient temples with modern shopping malls, street food with fine dining, and serene canals with bustling streets.",
     image: "thailand.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Visit the magnificent Grand Palace and Wat Phra Kaew",
@@ -184,6 +192,7 @@ export const destinations: Destination[] = [
     country: "Indonesia",
     description: "The Island of Gods offers stunning beaches, ancient temples, lush rice terraces, and a unique Hindu culture that creates an unforgettable tropical paradise experience.",
     image: "bali_new.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Witness breathtaking sunsets at Tanah Lot Temple",
@@ -271,6 +280,7 @@ export const destinations: Destination[] = [
     country: "Vietnam",
     description: "From the bustling streets of Hanoi to the serene waters of Ha Long Bay, Vietnam offers a perfect blend of natural beauty, rich history, and delicious cuisine.",
     image: "vietnam_new.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Cruise through the stunning Ha Long Bay",
@@ -350,6 +360,7 @@ export const destinations: Destination[] = [
     country: "United Arab Emirates",
     description: "A futuristic metropolis where luxury meets innovation, featuring the world's tallest building, spectacular shopping malls, and desert adventures.",
     image: "dubai.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Experience the iconic Burj Khalifa and Dubai Mall",
@@ -426,6 +437,7 @@ export const destinations: Destination[] = [
     country: "Singapore",
     description: "The Garden City combines modern architecture, lush greenery, diverse cultures, and world-class attractions in a compact island nation.",
     image: "singapore.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Experience Gardens by the Bay and Marina Bay Sands",
@@ -503,6 +515,7 @@ export const destinations: Destination[] = [
     country: "India",
     description: "The 'Abode of Clouds' features breathtaking waterfalls, living root bridges, pristine lakes, and some of the wettest places on Earth with stunning natural beauty.",
     image: "meghalaya_new.jpg",
+    video: "hero-video.mp4",
     featured: true,
     whyVisit: [
       "Trek to the famous Double Decker Living Root Bridge",

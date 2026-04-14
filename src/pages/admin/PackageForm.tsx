@@ -33,8 +33,9 @@ const PackageForm = ({ packages, onChange }: PackageFormProps) => {
         onChange(newPackages);
     };
 
-    const updatePackage = (index: number, field: keyof Package, value: any) => {
+    const updatePackage = (index: number, field: keyof Package, value: string | number) => {
         const newPackages = [...packages];
+        // @ts-expect-error - dynamic assignment
         newPackages[index] = { ...newPackages[index], [field]: value };
         onChange(newPackages);
     };
@@ -72,7 +73,7 @@ const PackageForm = ({ packages, onChange }: PackageFormProps) => {
         onChange(newPackages);
     };
 
-    const updateItineraryDay = (pkgIndex: number, dayIndex: number, field: keyof DayItinerary, value: any) => {
+    const updateItineraryDay = (pkgIndex: number, dayIndex: number, field: keyof DayItinerary, value: string) => {
         const newPackages = [...packages];
         if (newPackages[pkgIndex].itinerary) {
             newPackages[pkgIndex].itinerary![dayIndex] = {

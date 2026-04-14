@@ -4,7 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAdmin } from "@/context/AdminContext";
 import { ArrowLeft, Calendar, Check, MapPin, Users } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { Helmet } from "react-helmet-async";
 import malaysiaImg from "@/assets/malaysia_new.jpg";
+import malaysiaVideo from "@/assets/malaysia_video.mp4";
+import malaysiaAdv1 from "@/assets/malaysia_adventure_1.jpg";
+import malaysiaAdv2 from "@/assets/malaysia_adventure_2.jpg";
+import malaysiaAdv3 from "@/assets/malaysia_adventure_3.jpg";
 import thailandImg from "@/assets/thailand.jpg";
 import baliImg from "@/assets/bali_new.jpg";
 import vietnamImg from "@/assets/vietnam_new.jpg";
@@ -14,6 +27,10 @@ import meghalayaImg from "@/assets/meghalaya_new.jpg";
 
 const imageMap: Record<string, string> = {
   "malaysia_new.jpg": malaysiaImg,
+  "malaysia_video.mp4": malaysiaVideo,
+  "malaysia_adventure_1.jpg": malaysiaAdv1,
+  "malaysia_adventure_2.jpg": malaysiaAdv2,
+  "malaysia_adventure_3.jpg": malaysiaAdv3,
   "thailand.jpg": thailandImg,
   "bali_new.jpg": baliImg,
   "vietnam_new.jpg": vietnamImg,
@@ -46,17 +63,25 @@ const DestinationDetail = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>{destination.name} Tour Packages | Planet Life</title>
+        <meta name="description" content={destination.description.substring(0, 160)} />
+        <meta property="og:title" content={`${destination.name} Tour Packages | Planet Life`} />
+        <meta property="og:description" content={destination.description.substring(0, 160)} />
+        <meta property="og:image" content={getImageSrc(destination.image)} />
+      </Helmet>
       {/* Hero Banner */}
-      <section className="relative h-[60vh] bg-cover bg-center">
+      {/* Hero Banner */}
+      <section className="relative w-full bg-black flex justify-center items-center overflow-hidden">
         {destination.video ? (
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-auto max-h-[85vh] object-contain"
             autoPlay
             muted
             loop
             playsInline
           >
-            <source src={destination.video} type="video/mp4" />
+            <source src={getImageSrc(destination.video)} type="video/mp4" />
             <img
               src={getImageSrc(destination.image)}
               alt={destination.name}
@@ -65,27 +90,68 @@ const DestinationDetail = () => {
           </video>
         ) : (
           <div
-            className="w-full h-full bg-cover bg-center"
+            className="w-full h-[60vh] bg-cover bg-center"
             style={{ backgroundImage: `url(${getImageSrc(destination.image)})` }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/50 to-transparent" />
-        <div className="absolute inset-0 flex items-end">
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex items-end z-10">
           <div className="container mx-auto px-4 pb-12">
-            <Link to="/destinations" className="inline-flex items-center text-primary-foreground mb-4 hover:underline">
+            <Link to="/destinations" className="inline-flex items-center text-white/90 mb-4 hover:text-white hover:underline transition-colors">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Destinations
             </Link>
-            <div className="flex items-center text-primary-foreground/90 mb-2">
+            <div className="flex items-center text-white/90 mb-2">
               <MapPin className="h-5 w-5 mr-2" />
               <span>{destination.country}</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary-foreground">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-lg">
               {destination.name}
             </h1>
           </div>
         </div>
       </section>
+
+      {/* Adventure Picz Carousel */}
+      {destination.adventureImages && destination.adventureImages.length > 0 && (
+        <section className="py-12 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-serif font-bold mb-8 text-center text-foreground">Adventure Picz</h2>
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 3000,
+                }),
+              ]}
+              className="w-full max-w-4xl mx-auto"
+            >
+              <CarouselContent>
+                {destination.adventureImages.map((img, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="flex aspect-square items-center justify-center p-0 overflow-hidden rounded-lg">
+                          <img
+                            src={getImageSrc(img)}
+                            alt={`Adventure ${index + 1}`}
+                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </section>
+      )}
 
       {/* Content */}
       <section className="py-12 bg-background">
@@ -185,8 +251,8 @@ const DestinationDetail = () => {
                     </Tabs>
 
                     <div className="mt-6 pt-6 border-t border-border flex justify-end">
-                      <Button size="lg" asChild>
-                        <Link to={`/booking/${pkg.id}`}>Book This Package</Link>
+                      <Button size="lg" asChild className="bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full px-8">
+                        <Link to={`/booking/${pkg.id}`}>Get Quote</Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -194,8 +260,32 @@ const DestinationDetail = () => {
               ))}
             </div>
           </div>
+          {/* FAQ Section */}
+          <div className="mt-16 pt-12 border-t border-border">
+            <h2 className="text-3xl font-serif font-bold mb-8 text-center text-foreground">Frequently Asked Questions</h2>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {[
+                { q: "How do I book a customized tour?", a: "Simply click on 'Get Quote' and fill in your details. Our travel experts will contact you to design a personalized itinerary based on your preferences." },
+                { q: "What is included in the package price?", a: "Standard inclusions typically cover accommodation, breakfast, sightseeing transfers, and expert guide services. Specific inclusions vary by package and are listed in the 'Inclusions' tab." },
+                { q: "Can I change the itinerary after booking?", a: "Yes, we pride ourselves on flexibility. You can discuss modifications with your dedicated travel consultant even after the initial booking." },
+                { q: "Is travel insurance included?", a: "While not included by default, we highly recommend travel insurance and can assist you in obtaining the best coverage for your trip." }
+              ].map((faq, i) => (
+                <div key={i} className="bg-muted/30 rounded-2xl p-6">
+                  <h4 className="font-bold text-lg mb-2 text-[#022c22]">{faq.q}</h4>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Sticky Mobile Button */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-lg border-t border-gray-200 z-40">
+        <Button size="lg" asChild className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full py-6 text-lg font-bold shadow-xl">
+          <Link to={`/booking/${destination.packages[0]?.id}`}>Get Free Quote Now</Link>
+        </Button>
+      </div>
     </div>
   );
 };
