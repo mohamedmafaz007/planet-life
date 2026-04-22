@@ -88,36 +88,21 @@ export default {
 			},
 			fontFamily: {
 				sans: [
-					'Montserrat',
+					'Inter',
 					'ui-sans-serif',
 					'system-ui',
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'Segoe UI',
-					'Roboto',
-					'Helvetica Neue',
-					'Arial',
-					'Noto Sans',
 					'sans-serif'
 				],
-				serif: [
-					'Cormorant Garamond',
-					'ui-serif',
-					'Georgia',
-					'Cambria',
-					'Times New Roman',
-					'Times',
-					'serif'
+				heading: [
+					'Outfit',
+					'ui-sans-serif',
+					'system-ui',
+					'sans-serif'
 				],
 				mono: [
 					'IBM Plex Mono',
 					'ui-monospace',
 					'SFMono-Regular',
-					'Menlo',
-					'Monaco',
-					'Consolas',
-					'Liberation Mono',
-					'Courier New',
 					'monospace'
 				]
 			}

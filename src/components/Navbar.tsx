@@ -42,7 +42,7 @@ const Navbar = () => {
                         alt="Planet Life Logo"
                         className="h-10 w-auto rounded-md shadow-sm"
                     />
-                    <span className="text-2xl font-extrabold tracking-tight text-black font-sans uppercase">
+                    <span className="text-xl font-heading font-bold tracking-tight text-foreground uppercase">
                         PLANET LIFE
                     </span>
                 </Link>
@@ -117,9 +117,9 @@ const Navbar = () => {
                     {/* Get Quote Button (Visible on all screens) */}
                     <Link to="/quote">
                         <Button
-                            className="bg-black hover:bg-black/80 text-white font-extrabold rounded-full px-6 font-sans border-2 border-black/10 uppercase text-xs"
+                            className="bg-foreground hover:bg-foreground/80 text-background font-bold rounded-full px-8 font-heading border border-foreground/10 uppercase text-[10px] tracking-widest shadow-lg transition-transform hover:scale-105"
                         >
-                            <Phone className="w-4 h-4 mr-2" />
+                            <Phone className="w-3 h-3 mr-2" />
                             Get Quote
                         </Button>
                     </Link>

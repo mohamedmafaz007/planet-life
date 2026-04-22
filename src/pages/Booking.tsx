@@ -150,11 +150,11 @@ const Booking = () => {
                     </Link>
                 </Button>
 
-                <div className="text-center mb-12 text-white">
-                    <h1 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-tight">
+                <div className="text-center mb-16 text-white max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading">
                         {found.title}
                     </h1>
-                    <p className="max-w-2xl mx-auto opacity-90 text-sm md:text-xl font-bold">
+                    <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-medium leading-relaxed">
                         Secure your spot for an unforgettable experience in {found.destinationName}. Custom planning at your fingertips.
                     </p>
                 </div>
@@ -163,9 +163,9 @@ const Booking = () => {
                     {/* Form Card */}
                     <Card className="w-full max-w-md bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-none p-2">
                         <CardContent className="p-8">
-                            <div className="text-center mb-8">
-                                <h3 className="font-extrabold text-red-600 uppercase text-xs tracking-[0.2em] mb-2 font-sans">Secure Your Adventure</h3>
-                                <h2 className="text-2xl font-extrabold text-black font-sans uppercase">Confirm Booking</h2>
+                            <div className="text-center mb-10">
+                                <h3 className="font-bold text-primary uppercase text-[10px] tracking-[0.4em] mb-3 font-heading">Secure Your Adventure</h3>
+                                <h2 className="text-2xl font-bold text-foreground font-heading uppercase tracking-tight">Confirm Booking</h2>
                             </div>
 
                             {step === 1 ? (
@@ -293,14 +293,14 @@ const Booking = () => {
                                     <Button
                                         onClick={handleSubmit}
                                         disabled={isSubmitting}
-                                        className="w-full bg-red-600 hover:bg-black text-white font-extrabold py-7 rounded-xl mt-4 uppercase tracking-widest transition-all shadow-lg"
+                                        className="w-full bg-primary hover:bg-foreground text-white font-bold py-7 rounded-xl mt-6 uppercase tracking-widest transition-all shadow-xl hover:scale-[1.02] text-[10px]"
                                     >
                                         {isSubmitting ? "Processing..." : "Confirm via WhatsApp"}
                                     </Button>
 
-                                    <div className="flex justify-center gap-2 mt-4">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
-                                        <div className="w-8 h-1.5 rounded-full bg-red-600"></div>
+                                    <div className="flex justify-center gap-2 mt-6">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-muted"></div>
+                                        <div className="w-8 h-1.5 rounded-full bg-primary/40"></div>
                                     </div>
 
                                     <Button variant="link" onClick={() => setStep(1)} className="w-full text-xs text-gray-400 font-bold uppercase tracking-wider">

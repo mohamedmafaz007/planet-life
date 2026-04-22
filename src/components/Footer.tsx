@@ -3,132 +3,115 @@ import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, ShieldCheck
 
 const Footer = () => {
     return (
-        <footer className="bg-red-600 text-black pt-16 pb-8 shadow-[0_-10px_20px_rgba(0,0,0,0.1)]">
+        <footer className="bg-[#0f1115] text-white pt-24 pb-12">
             <div className="container mx-auto px-4">
                 {/* Partners Section */}
-                <div className="text-center mb-16 border-b border-black/10 pb-12">
-                    <p className="text-sm uppercase tracking-widest mb-8 text-black/60 font-sans font-bold">Partnered With the Best in Travel</p>
-                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
-                        <span className="text-2xl font-sans font-extrabold text-black">Penang</span>
-                        <span className="text-2xl font-sans font-extrabold text-black">abu dhabi</span>
-                        <span className="text-2xl font-sans font-extrabold text-black">Japan.</span>
-                        <span className="text-2xl font-sans font-extrabold text-black">Thailand</span>
+                <div className="text-center mb-24 pb-16 border-b border-white/5">
+                    <span className="text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 block font-bold">Partnered With Global Tourism Boards</span>
+                    <div className="flex flex-wrap justify-center items-center gap-10 md:gap-24 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">PENANG</span>
+                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">ABU DHABI</span>
+                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">JAPAN.</span>
+                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">THAILAND</span>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
                     {/* Company Info */}
-                    <div>
-                        <Link to="/" className="inline-block mb-6">
-                            <span className="text-3xl font-extrabold tracking-tight text-black font-sans uppercase">PLANET LIFE</span>
+                    <div className="space-y-8">
+                        <Link to="/" className="inline-block group">
+                            <span className="text-2xl font-bold tracking-tighter text-white font-heading uppercase group-hover:text-primary transition-colors">PLANET LIFE</span>
                         </Link>
-                        <p className="text-black/80 mb-6 leading-relaxed font-sans font-medium">
-                            Customized international adventures tailored to your desires. Experience the world with our expert guidance.
+                        <p className="text-white/60 leading-relaxed font-medium text-sm">
+                            Curating bespoke international adventures that define luxury and discovery. Experience the world through our expert eyes.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="bg-black/10 p-2 rounded-full hover:bg-black hover:text-red-500 transition-colors">
-                                <Facebook className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="bg-black/10 p-2 rounded-full hover:bg-black hover:text-red-500 transition-colors">
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="bg-black/10 p-2 rounded-full hover:bg-black hover:text-red-500 transition-colors">
-                                <Twitter className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="bg-black/10 p-2 rounded-full hover:bg-black hover:text-red-500 transition-colors">
-                                <Youtube className="w-5 h-5" />
-                            </a>
+                            {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
+                                <a key={i} href="#" className="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full hover:bg-primary hover:border-primary transition-all duration-300">
+                                    <Icon className="w-4 h-4" />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-xl font-extrabold mb-6 font-sans uppercase">Quick Links</h3>
+                        <h3 className="text-sm font-bold mb-8 font-heading uppercase tracking-widest text-primary">Explore</h3>
                         <ul className="space-y-4">
-                            <li><Link to="/" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Home</Link></li>
-                            <li><Link to="/about" className="text-black/80 hover:text-white transition-colors font-sans font-bold">About Us</Link></li>
-                            <li><Link to="/destinations" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Destinations</Link></li>
-                            <li><Link to="/packages" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Packages</Link></li>
-                            <li><Link to="/contact" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Contact Us</Link></li>
+                            <li><Link to="/" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Home</Link></li>
+                            <li><Link to="/about" className="text-white/50 hover:text-white transition-colors text-sm font-medium">About Us</Link></li>
+                            <li><Link to="/destinations" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Destinations</Link></li>
+                            <li><Link to="/packages" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Packages</Link></li>
+                            <li><Link to="/contact" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Contact</Link></li>
                         </ul>
                     </div>
 
                     {/* Destinations */}
                     <div>
-                        <h3 className="text-xl font-extrabold mb-6 font-sans uppercase">Popular Destinations</h3>
+                        <h3 className="text-sm font-bold mb-8 font-heading uppercase tracking-widest text-primary">Destinations</h3>
                         <ul className="space-y-4">
-                            <li><Link to="/destination/thailand" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Thailand</Link></li>
-                            <li><Link to="/destination/bali" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Bali</Link></li>
-                            <li><Link to="/destination/maldives" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Maldives</Link></li>
-                            <li><Link to="/destination/dubai" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Dubai</Link></li>
-                            <li><Link to="/destination/singapore" className="text-black/80 hover:text-white transition-colors font-sans font-bold">Singapore</Link></li>
+                            <li><Link to="/destination/thailand" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Thailand</Link></li>
+                            <li><Link to="/destination/bali" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Bali</Link></li>
+                            <li><Link to="/destination/maldives" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Maldives</Link></li>
+                            <li><Link to="/destination/dubai" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Dubai</Link></li>
+                            <li><Link to="/destination/singapore" className="text-white/50 hover:text-white transition-colors text-sm font-medium">Singapore</Link></li>
                         </ul>
                     </div>
 
                     {/* Contact Info */}
-                    <div>
-                        <h3 className="text-xl font-extrabold mb-6 font-sans uppercase">Contact Us</h3>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 text-black mt-1" />
-                                <span className="text-black/80 font-sans font-bold">123 Travel Street, Adventure City, AC 56789</span>
+                    <div className="space-y-8">
+                        <h3 className="text-sm font-bold mb-8 font-heading uppercase tracking-widest text-primary">Office</h3>
+                        <ul className="space-y-6">
+                            <li className="flex items-start gap-4">
+                                <div className="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full shrink-0">
+                                    <MapPin className="w-4 h-4 text-white/40" />
+                                </div>
+                                <span className="text-white/60 text-sm font-medium leading-relaxed italic">123 Travel Street, Adventure City, AC 56789</span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 text-black" />
-                                <span className="text-black/80 font-sans font-bold">+91 98765 43210</span>
+                            <li className="flex items-center gap-4">
+                                <div className="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full shrink-0">
+                                    <Phone className="w-4 h-4 text-white/40" />
+                                </div>
+                                <span className="text-white/60 text-sm font-medium tracking-wider">+91 98765 43210</span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Mail className="w-5 h-5 text-black" />
-                                <span className="text-black/80 font-sans font-bold">hello@planetlife.com</span>
+                            <li className="flex items-center gap-4">
+                                <div className="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full shrink-0">
+                                    <Mail className="w-4 h-4 text-white/40" />
+                                </div>
+                                <span className="text-white/60 text-sm font-medium">hello@planetlife.com</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Trust Badges */}
-                <div className="border-t border-black/10 py-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div className="flex flex-col items-center text-center gap-3">
-                            <div className="bg-black/10 p-4 rounded-2xl border border-black/10">
-                                <ShieldCheck className="w-8 h-8 text-black" />
+                <div className="border-t border-white/5 py-20">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+                        {[
+                            { icon: ShieldCheck, label: "100% Secure", sub: "Payment Protection" },
+                            { icon: Clock, label: "24/7 Support", sub: "Trip Assistance" },
+                            { icon: Star, label: "Top Rated", sub: "4.9/5 Google Reviews" },
+                            { icon: CheckCircle2, label: "Verified", sub: "Certified Agency" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col items-center text-center gap-4 group">
+                                <item.icon className="w-8 h-8 text-white/20 group-hover:text-primary transition-colors duration-500" />
+                                <div>
+                                    <h4 className="font-bold font-heading text-white text-xs uppercase tracking-widest mb-1">{item.label}</h4>
+                                    <p className="text-[10px] text-white/40 uppercase tracking-tighter font-bold">{item.sub}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 className="font-extrabold font-sans text-black">100% Secure</h4>
-                                <p className="text-xs text-black/60 font-sans">Payment Protection</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center text-center gap-3">
-                            <div className="bg-black/10 p-4 rounded-2xl border border-black/10">
-                                <Clock className="w-8 h-8 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="font-extrabold font-sans text-black">24/7 Support</h4>
-                                <p className="text-xs text-black/60 font-sans">Trip Assistance</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center text-center gap-3">
-                            <div className="bg-black/10 p-4 rounded-2xl border border-black/10">
-                                <Star className="w-8 h-8 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="font-extrabold font-sans text-black">Top Rated</h4>
-                                <p className="text-xs text-black/60 font-sans">4.9/5 Google Reviews</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center text-center gap-3">
-                            <div className="bg-black/10 p-4 rounded-2xl border border-black/10">
-                                <CheckCircle2 className="w-8 h-8 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="font-extrabold font-sans text-black">Verified</h4>
-                                <p className="text-xs text-black/60 font-sans">IATA Certified Agency</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
-                <div className="border-t border-black/10 py-8 text-center text-black/60 text-sm font-sans font-bold">
-                    <p>&copy; {new Date().getFullYear()} PLANET LIFE. All rights reserved.</p>
+                <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-white/30 text-[11px] font-bold tracking-widest uppercase">
+                        &copy; {new Date().getFullYear()} PLANET LIFE. All rights reserved.
+                    </p>
+                    <div className="flex gap-8">
+                        <Link to="/privacy" className="text-white/30 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Privacy Policy</Link>
+                        <Link to="/terms" className="text-white/30 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Terms of Service</Link>
+                    </div>
                 </div>
             </div>
         </footer>

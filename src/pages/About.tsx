@@ -71,11 +71,11 @@ const About = () => {
 
         <div className="container mx-auto px-4 relative z-10 text-center pt-20">
           <ScrollReveal>
-            <span className="text-black font-extrabold tracking-[0.2em] uppercase mb-4 block">Our Story</span>
-            <h1 className="text-5xl md:text-7xl font-sans font-extrabold mb-6 text-black drop-shadow-2xl uppercase">
+            <span className="text-white font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Story</span>
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-white drop-shadow-2xl uppercase tracking-tight">
               {aboutContent.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-black/80 max-w-3xl mx-auto font-bold leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-medium leading-relaxed">
               {aboutContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -102,14 +102,14 @@ const About = () => {
 
             <div className="lg:w-1/2">
               <ScrollReveal direction="right">
-                <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black leading-tight uppercase">
+                <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-foreground leading-tight uppercase tracking-tight">
                   {aboutContent.ourStoryTitle}
                 </h2>
-                <div className="w-20 h-1 bg-red-600 rounded-full mb-8" />
+                <div className="w-20 h-1 bg-primary rounded-full mb-8" />
 
                 <div className="relative mb-8">
-                  <Quote className="absolute -left-10 -top-4 w-12 h-12 text-red-600/20 rotate-180" />
-                  <p className="text-lg text-black font-bold leading-relaxed text-justify">
+                  <Quote className="absolute -left-10 -top-4 w-12 h-12 text-primary/10 rotate-180" />
+                  <p className="text-lg text-foreground/90 font-medium leading-relaxed text-justify">
                     {aboutContent.ourStoryText}
                   </p>
                 </div>
@@ -124,8 +124,8 @@ const About = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-red-600 font-extrabold tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
-              <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
+              <span className="text-primary font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Philosophy</span>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground uppercase tracking-tight">
                 Why Travelers Choose Us
               </h2>
             </div>

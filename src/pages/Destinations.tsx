@@ -29,17 +29,20 @@ const Destinations = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50">
+    <div className="min-h-screen pt-20 bg-background/50">
       {/* Hero */}
-      <section className="bg-red-600 text-black py-16 relative overflow-hidden shadow-xl">
-        <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')]"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-sans font-extrabold mb-4 uppercase">
-            Explore Our Destinations
-          </h1>
-          <p className="text-lg md:text-xl text-black/80 max-w-2xl mx-auto font-medium">
-            From tropical paradises to cultural wonders, discover your next adventure with us.
-          </p>
+      <section className="bg-[#121212] text-white py-24 relative overflow-hidden shadow-2xl">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+        <div className="container mx-auto px-4 text-center relative z-10 font-heading">
+          <ScrollReveal>
+            <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">World Exploration</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 uppercase tracking-tighter">
+              Explore Our Destinations
+            </h1>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
+              From tropical paradises to cultural wonders, discover your next adventure with us.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -60,36 +63,36 @@ const Destinations = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
 
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-[#d4af37] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  <div className="absolute top-4 right-4 z-20">
+                    <span className="bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl font-heading">
                       {destination.packages.length} Packages
                     </span>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <div className="flex items-center text-white/90 mb-1">
-                      <MapPin className="h-3 w-3 mr-1" />
-                      <span className="text-xs font-medium uppercase tracking-wider">{destination.country}</span>
+                  <div className="absolute bottom-6 left-6 text-white z-20">
+                    <div className="flex items-center text-white/80 mb-2 font-heading">
+                       <MapPin className="h-4 w-4 mr-2 text-primary" />
+                      <span className="text-xs font-bold uppercase tracking-widest">{destination.country}</span>
                     </div>
-                    <h3 className="text-2xl font-sans font-extrabold text-black uppercase">
+                    <h3 className="text-3xl font-heading font-bold text-white uppercase tracking-tight">
                       {destination.name}
                     </h3>
                   </div>
                 </div>
 
-                <CardContent className="p-6">
-                  <p className="text-gray-600 mb-6 line-clamp-2 text-sm leading-relaxed">
+                <CardContent className="p-8">
+                  <p className="text-muted-foreground mb-8 line-clamp-2 text-sm leading-relaxed font-sans font-medium">
                     {destination.description}
                   </p>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center justify-between pt-6 border-t border-border">
                     <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Starting from</p>
-                      <p className="text-xl font-extrabold text-black">
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold mb-1 font-heading">Starting from</p>
+                      <p className="text-3xl font-bold text-foreground font-heading">
                         ₹{Math.min(...destination.packages.map(p => p.price)).toLocaleString()}
                       </p>
                     </div>
-                    <Button asChild className="bg-red-600 hover:bg-red-700 text-white rounded-full px-6 font-bold">
+                    <Button asChild className="bg-foreground hover:bg-primary text-background hover:text-white rounded-full px-8 py-6 font-bold uppercase tracking-widest text-[10px] transition-all shadow-lg hover:scale-105 font-heading">
                       <Link to={`/destination/${destination.id}`}>
                         View Details
                       </Link>

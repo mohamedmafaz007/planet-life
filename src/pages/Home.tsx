@@ -38,6 +38,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [reviewsPaused, setReviewsPaused] = useState(false);
 
   const [formData, setFormData] = useState({
       destination: "",
@@ -165,11 +166,11 @@ const Home = () => {
           {/* Left Content */}
           <div className="text-white max-w-3xl mb-12 md:mb-0 z-10">
             <ScrollReveal>
-            <h1 className="text-4xl md:text-6xl font-sans font-extrabold mb-4 leading-tight drop-shadow-2xl text-white uppercase">
-                Customized International Adventures
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
+                Customized <br className="hidden lg:block" /> International Adventures
               </h1>
-              <p className="text-lg md:text-xl mb-8 text-white/90 font-bold max-w-xl drop-shadow-md">
-                Experience the epitome of luxury and adventure with our customized international journeys.
+              <p className="text-xl md:text-2xl mb-10 text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
+                Experience the epitome of luxury and adventure with our carefully curated international journeys.
               </p>
               <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-8 py-6 text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-8 md:mb-0">
                 Explore Packages <ArrowRight className="ml-2 h-5 w-5" />
@@ -179,9 +180,9 @@ const Home = () => {
 
           {/* Right Booking Card */}
           <div className="w-full md:w-[400px] bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-6 relative border border-white/20">
-            <div className="text-center mb-6">
-              <h3 className="font-sans font-bold text-black text-lg mb-1">Your Perfect Holiday Awaits!</h3>
-              <h2 className="text-xl font-extrabold text-black font-sans uppercase">Get Your Custom Quote</h2>
+            <div className="text-center mb-8">
+              <h3 className="font-heading font-semibold text-muted-foreground text-sm uppercase tracking-[0.2em] mb-2">Your Perfect Holiday Awaits!</h3>
+              <h2 className="text-2xl font-bold text-foreground font-heading uppercase">Get Your Custom Quote</h2>
             </div>
 
             {step === 1 ? (
@@ -327,17 +328,17 @@ const Home = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-full bg-red-600 hover:bg-black text-white font-extrabold py-6 rounded-xl mt-6 uppercase transition-all duration-300 shadow-lg"
+                  className="w-full bg-primary hover:bg-black text-white font-bold py-6 rounded-xl mt-6 uppercase transition-all duration-300 shadow-lg tracking-widest"
                 >
                   {isSubmitting ? "Processing..." : "Submit Quote Request"}
                 </Button>
-
+ 
                 <div className="flex justify-center gap-2 mt-4">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
-                  <div className="w-8 h-1.5 rounded-full bg-[#d4af37]"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-muted"></div>
+                  <div className="w-8 h-1.5 rounded-full bg-primary/40"></div>
                 </div>
-
-                <Button variant="link" onClick={() => setStep(1)} className="w-full text-sm text-gray-400">
+ 
+                <Button variant="link" onClick={() => setStep(1)} className="w-full text-sm text-muted-foreground hover:text-foreground">
                   Back to previous step
                 </Button>
               </div>
@@ -403,14 +404,15 @@ const Home = () => {
       {/* Featured Destinations */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black mb-6 uppercase">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">World-Class Experiences</span>
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
               Trending Destinations
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               Explore our most popular international destinations, handpicked for your perfect vacation.
             </p>
-            <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full" />
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -484,32 +486,35 @@ const Home = () => {
           <ScrollReveal width="100%">
              <div className="w-full flex flex-col items-center text-center">
               {/* Rating Badge */}
-              <div className="flex items-center gap-3 bg-white px-8 py-4 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-black/5 mb-10 transform hover:scale-105 transition-all duration-500 mx-auto">
+              <div className="flex items-center gap-4 bg-white px-10 py-5 rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-black/5 mb-14 transition-all duration-500 mx-auto group">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
-                <div className="h-6 w-px bg-gray-200 mx-2" />
-                <span className="text-black font-black text-xl tracking-tight">4.9/5 Rating</span>
+                <div className="h-6 w-px bg-gray-100 mx-2" />
+                <span className="text-foreground font-bold text-xl tracking-tight">4.9/5 Rating</span>
               </div>
               
-              <h2 className="text-4xl md:text-7xl font-sans font-extrabold text-black mb-8 uppercase tracking-tighter leading-[0.9] md:leading-[0.85] max-w-4xl mx-auto">
+              <h2 className="text-5xl md:text-8xl font-heading font-bold text-foreground mb-10 uppercase tracking-tighter leading-[0.85] max-w-5xl mx-auto">
                 What Our Travelers <br className="hidden md:block" /> Say on Google
               </h2>
               
-              <div className="flex items-center justify-center gap-6 w-full max-w-sm mx-auto">
-                <div className="h-px flex-grow bg-red-600/30" />
-                <p className="text-red-600 font-extrabold uppercase tracking-[0.4em] text-[10px] whitespace-nowrap">
+              <div className="flex items-center justify-center gap-8 w-full max-w-md mx-auto">
+                <div className="h-px flex-grow bg-primary/20" />
+                <p className="text-primary font-bold uppercase tracking-[0.4em] text-[11px] whitespace-nowrap">
                   Trusted Excellence
                 </p>
-                <div className="h-px flex-grow bg-red-600/30" />
+                <div className="h-px flex-grow bg-primary/20" />
               </div>
             </div>
           </ScrollReveal>
         </div>
 
-        <div className="relative pause-marquee space-y-6">
+        <div 
+          className={`relative space-y-6 cursor-pointer ${reviewsPaused ? 'marquee-paused' : ''}`}
+          onClick={() => setReviewsPaused(!reviewsPaused)}
+        >
           {/* First Row - Moving Left */}
           <div className="flex animate-marquee whitespace-nowrap gap-6">
             {[
@@ -606,11 +611,12 @@ const Home = () => {
         <div className="container mx-auto px-4 mb-16">
           <ScrollReveal width="100%">
              <div className="flex flex-col items-center text-center">
-               <h2 className="text-4xl md:text-6xl font-sans font-extrabold text-black mb-6 uppercase tracking-tighter">
-                Happy Customers, <span className="text-red-600">Happy Stories</span>
+               <span className="text-muted-foreground font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Traveler Community</span>
+               <h2 className="text-4xl md:text-7xl font-heading font-bold text-foreground mb-8 uppercase tracking-tighter">
+                Happy Customers, <span className="text-primary italic">Happy Stories</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12 font-medium">
-                Join thousands of satisfied travelers who have explored the world with us. Every picture tells a story of adventure and joy.
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
+                Join thousands of satisfied travelers who have explored the world with us. <br className="hidden md:block" /> Every picture tells a story of adventure and joy.
               </p>
              </div>
           </ScrollReveal>

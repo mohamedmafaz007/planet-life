@@ -101,11 +101,11 @@ const Quote = () => {
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
             <div className="container mx-auto px-4 relative z-10 py-12">
-                <div className="text-center mb-12 text-white">
-                    <h1 className="text-4xl md:text-6xl font-extrabold mb-6 uppercase tracking-tight">
+                <div className="text-center mb-16 text-white max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading">
                         Your Dream Holiday Awaits
                     </h1>
-                    <p className="max-w-2xl mx-auto opacity-90 text-sm md:text-xl font-bold">
+                    <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-medium leading-relaxed font-sans">
                         Experience precision travel planning. Customized international journeys tailored to your soul.
                     </p>
                 </div>
@@ -114,9 +114,9 @@ const Quote = () => {
                     {/* Form Card */}
                     <Card className="w-full max-w-md bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-none p-2">
                         <CardContent className="p-8">
-                            <div className="text-center mb-8">
-                                <h3 className="font-extrabold text-red-600 uppercase text-xs tracking-[0.2em] mb-2 font-sans">Get Your Customized Itinerary</h3>
-                                <h2 className="text-2xl font-extrabold text-black font-sans uppercase">Request A Quote</h2>
+                            <div className="text-center mb-10">
+                                <h3 className="font-bold text-primary uppercase text-[10px] tracking-[0.4em] mb-3 font-heading">Get Your Customized Itinerary</h3>
+                                <h2 className="text-2xl font-bold text-foreground font-heading uppercase tracking-tight">Request A Quote</h2>
                             </div>
 
                             {step === 1 ? (
@@ -294,13 +294,13 @@ const Quote = () => {
                             </div>
                         </div>
                         <div className="hidden md:block h-8 w-px bg-gray-100" />
-                        <div className="flex items-center gap-3">
-                            <div className="bg-red-50 p-2 rounded-full">
-                                <CheckCircle2 className="w-5 h-5 text-red-600" />
+                        <div className="flex items-center gap-4">
+                            <div className="bg-primary/10 p-3 rounded-full">
+                                <CheckCircle2 className="w-5 h-5 text-primary" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-sm font-extrabold uppercase">Customized</span>
-                                <span className="text-[10px] text-black/50 font-bold">Tailor-made Trips</span>
+                                <span className="text-xs font-bold uppercase tracking-wider font-heading">Customized</span>
+                                <span className="text-[10px] text-muted-foreground font-bold font-heading">Tailor-made Trips</span>
                             </div>
                         </div>
                     </div>

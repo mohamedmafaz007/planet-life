@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "./ui/ScrollReveal";
+import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 
 const storyImages = [
   "WhatsApp Image 2026-04-22 at 1.52.03 AM.jpeg",
@@ -53,13 +55,16 @@ const storyImages = [
 ];
 
 const StoryMarquee = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   // Split images into 3 rows
   const row1 = storyImages.slice(0, 16);
   const row2 = storyImages.slice(16, 32);
   const row3 = storyImages.slice(32, 48);
 
-  const MarqueeRow = ({ images, reverse = false, speed = "60s" }: { images: string[], reverse?: boolean, speed?: string }) => (
-    <div className="flex overflow-hidden select-none gap-6 py-3">
+  const MarqueeRow = ({ images, reverse = false, speed = "30s" }: { images: string[], reverse?: boolean, speed?: string }) => (
+    <div className={`flex overflow-x-auto overflow-y-hidden select-none gap-6 py-3 cursor-pointer scrollbar-hide ${isPaused ? 'cursor-grab active:cursor-grabbing' : ''}`}>
       <div 
         className={`flex min-w-full shrink-0 gap-6 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}
         style={{ animationDuration: speed }}
@@ -67,12 +72,17 @@ const StoryMarquee = () => {
         {images.map((img, i) => (
           <div 
             key={i} 
-            className="w-64 h-80 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10 group relative"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(img);
+              setIsPaused(true);
+            }}
+            className="w-64 h-80 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10 group relative transition-transform hover:scale-105 active:scale-95"
           >
             <img 
               src={`/img/stories/${img}`} 
               alt="Travel Story" 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
@@ -82,12 +92,17 @@ const StoryMarquee = () => {
         {images.map((img, i) => (
           <div 
             key={`dup-${i}`} 
-            className="w-64 h-80 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10 group relative"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(img);
+              setIsPaused(true);
+            }}
+            className="w-64 h-80 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10 group relative transition-transform hover:scale-105 active:scale-95"
           >
             <img 
               src={`/img/stories/${img}`} 
               alt="Travel Story" 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
@@ -99,14 +114,41 @@ const StoryMarquee = () => {
 
   return (
     <div className="relative py-12 bg-white overflow-hidden">
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
-      
-      <div className="pause-marquee space-y-4">
-        <MarqueeRow images={row1} speed="80s" />
-        <MarqueeRow images={row2} reverse speed="70s" />
-        <MarqueeRow images={row3} speed="90s" />
+      <div 
+        className={`space-y-4 ${isPaused ? 'marquee-paused' : ''}`}
+        onClick={() => setIsPaused(!isPaused)}
+      >
+        <MarqueeRow images={row1} speed="35s" />
+        <MarqueeRow images={row2} reverse speed="30s" />
+        <MarqueeRow images={row3} speed="40s" />
       </div>
+
+      <Dialog 
+        open={!!selectedImage} 
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedImage(null);
+            setIsPaused(false);
+          }
+        }}
+      >
+        <DialogContent className="max-w-4xl border-none bg-transparent shadow-none p-0 flex items-center justify-center">
+            <DialogTitle className="sr-only">Travel Story Image</DialogTitle>
+            {selectedImage && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="relative max-h-[90vh] w-auto overflow-hidden rounded-2xl shadow-2xl"
+              >
+                <img 
+                  src={`/img/stories/${selectedImage}`} 
+                  alt="Full view" 
+                  className="max-h-[90vh] w-auto object-contain"
+                />
+              </motion.div>
+            )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
