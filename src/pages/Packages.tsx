@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -26,9 +26,16 @@ const imageMap: Record<string, string> = {
 
 const Packages = () => {
   const { destinations, packagesContent } = useAdmin();
+  const [searchParams] = useSearchParams();
+  const destParam = searchParams.get("destination");
+
   const [selectedDestination, setSelectedDestination] = useState<string>("all");
-  const [selectedDuration, setSelectedDuration] = useState<string>("all");
-  const [selectedBudget, setSelectedBudget] = useState<string>("all");
+
+  useEffect(() => {
+    if (destParam) {
+      setSelectedDestination(destParam);
+    }
+  }, [destParam]);
 
   const getImageSrc = (img: string) => {
     return imageMap[img] || img;
@@ -46,92 +53,28 @@ const Packages = () => {
   const filteredPackages = allPackages.filter((pkg) => {
     const destinationMatch =
       selectedDestination === "all" || pkg.destination.id === selectedDestination;
-    const durationMatch =
-      selectedDuration === "all" ||
-      (selectedDuration === "short" && pkg.nights <= 3) ||
-      (selectedDuration === "medium" && pkg.nights === 4) ||
-      (selectedDuration === "long" && pkg.nights >= 5);
-    const budgetMatch =
-      selectedBudget === "all" ||
-      (selectedBudget === "budget" && pkg.price < 18000) ||
-      (selectedBudget === "mid" && pkg.price >= 18000 && pkg.price < 30000) ||
-      (selectedBudget === "luxury" && pkg.price >= 30000);
 
-    return destinationMatch && durationMatch && budgetMatch;
+    return destinationMatch;
   });
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       {/* Hero */}
-      <section className="bg-[#022c22] text-white py-16 relative overflow-hidden">
+      <section className="bg-red-600 text-black py-16 relative overflow-hidden shadow-xl">
         <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')]"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-sans font-extrabold mb-4 uppercase">
               {packagesContent.heroTitle}
             </h1>
-            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto font-light">
+            <p className="text-lg md:text-xl text-black/80 max-w-2xl mx-auto font-medium">
               {packagesContent.heroSubtitle}
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-6 bg-white border-b border-gray-200 sticky top-[72px] z-40 shadow-sm">
-        <div className="container mx-auto px-4">
-          <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Destination</label>
-                <Select value={selectedDestination} onValueChange={setSelectedDestination}>
-                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
-                    <SelectValue placeholder="All Destinations" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Destinations</SelectItem>
-                    {destinations.map((dest) => (
-                      <SelectItem key={dest.id} value={dest.id}>
-                        {dest.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
 
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Duration</label>
-                <Select value={selectedDuration} onValueChange={setSelectedDuration}>
-                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
-                    <SelectValue placeholder="All Durations" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Durations</SelectItem>
-                    <SelectItem value="short">Short (3 nights or less)</SelectItem>
-                    <SelectItem value="medium">Medium (4 nights)</SelectItem>
-                    <SelectItem value="long">Long (5+ nights)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Budget</label>
-                <Select value={selectedBudget} onValueChange={setSelectedBudget}>
-                  <SelectTrigger className="bg-gray-50 border-gray-200 focus:ring-[#d4af37]">
-                    <SelectValue placeholder="All Budgets" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Budgets</SelectItem>
-                    <SelectItem value="budget">Budget (Under ₹18,000)</SelectItem>
-                    <SelectItem value="mid">Mid-Range (₹18,000 - ₹30,000)</SelectItem>
-                    <SelectItem value="luxury">Luxury (₹30,000+)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Packages Grid */}
       <section className="py-12">
@@ -182,7 +125,7 @@ const Packages = () => {
                           <Clock className="h-3 w-3 mr-1 text-[#d4af37]" />
                           {pkg.nights} Nights / {pkg.days} Days
                         </div>
-                        <h3 className="text-xl font-bold text-[#022c22] mb-3 group-hover:text-[#d4af37] transition-colors">
+                        <h3 className="text-xl font-extrabold text-black mb-3 group-hover:text-red-600 transition-colors uppercase">
                           {pkg.duration}
                         </h3>
 
@@ -191,7 +134,7 @@ const Packages = () => {
                             {pkg.inclusions.slice(0, 4).map((inclusion, index) => (
                               <span
                                 key={index}
-                                className="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-600"
+                                className="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-900 font-sans font-bold"
                               >
                                 {inclusion}
                               </span>
@@ -203,11 +146,11 @@ const Packages = () => {
                       <div className="flex items-end justify-between pt-4 border-t border-gray-100 mt-2">
                         <div>
                           <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Per Person</p>
-                          <p className="text-2xl font-bold text-[#d4af37]">
+                          <p className="text-2xl font-extrabold text-black">
                             ₹{pkg.price.toLocaleString()}
                           </p>
                         </div>
-                        <Button asChild className="bg-[#022c22] hover:bg-[#064e3b] text-white rounded-full px-6">
+                        <Button asChild className="bg-red-600 hover:bg-red-700 text-white rounded-full px-6 font-bold">
                           <Link to={`/destination/${pkg.destination.id}`}>
                             View Details
                           </Link>

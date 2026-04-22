@@ -67,22 +67,15 @@ const About = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={baliImg}
-            alt="Hero Background"
-            className="w-full h-full object-cover brightness-[0.4] scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/60 to-[#022c22]" />
-        </div>
+        <div className="absolute inset-0 z-0 bg-red-600" />
 
         <div className="container mx-auto px-4 relative z-10 text-center pt-20">
           <ScrollReveal>
-            <span className="text-[#d4af37] font-medium tracking-[0.2em] uppercase mb-4 block">Our Story</span>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-white drop-shadow-2xl">
+            <span className="text-black font-extrabold tracking-[0.2em] uppercase mb-4 block">Our Story</span>
+            <h1 className="text-5xl md:text-7xl font-sans font-extrabold mb-6 text-black drop-shadow-2xl uppercase">
               {aboutContent.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/80 max-w-3xl mx-auto font-bold leading-relaxed">
               {aboutContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -96,8 +89,8 @@ const About = () => {
             <div className="lg:w-1/2">
               <ScrollReveal direction="left">
                 <div className="relative">
-                  <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#d4af37]" />
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[#d4af37]" />
+                  <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-red-600" />
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-red-600" />
                   <img
                     src={logoImg}
                     alt="Planet Life Logo"
@@ -109,14 +102,14 @@ const About = () => {
 
             <div className="lg:w-1/2">
               <ScrollReveal direction="right">
-                <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-[#022c22] leading-tight text-balance">
+                <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black leading-tight uppercase">
                   {aboutContent.ourStoryTitle}
                 </h2>
-                <div className="w-20 h-1 bg-[#d4af37] rounded-full mb-8" />
+                <div className="w-20 h-1 bg-red-600 rounded-full mb-8" />
 
                 <div className="relative mb-8">
-                  <Quote className="absolute -left-10 -top-4 w-12 h-12 text-[#d4af37]/20 rotate-180" />
-                  <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                  <Quote className="absolute -left-10 -top-4 w-12 h-12 text-red-600/20 rotate-180" />
+                  <p className="text-lg text-black font-bold leading-relaxed text-justify">
                     {aboutContent.ourStoryText}
                   </p>
                 </div>
@@ -131,8 +124,8 @@ const About = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-[#d4af37] font-medium tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#022c22]">
+              <span className="text-red-600 font-extrabold tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
+              <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
                 Why Travelers Choose Us
               </h2>
             </div>
@@ -142,10 +135,10 @@ const About = () => {
             {values.map((value, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <div className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 h-full flex flex-col">
-                  <div className="w-16 h-16 rounded-2xl bg-gray-50 flex items-center justify-center mb-6 group-hover:bg-[#022c22] transition-colors duration-500">
-                    <value.icon className="w-8 h-8 text-[#d4af37]" />
+                  <div className="w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors duration-500">
+                    <value.icon className="w-8 h-8 text-red-600 group-hover:text-black" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-[#022c22] group-hover:text-[#d4af37] transition-colors duration-500">
+                  <h3 className="text-xl font-extrabold mb-4 text-black group-hover:text-red-600 transition-colors duration-500 uppercase">
                     {value.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-balance">
@@ -171,9 +164,9 @@ const About = () => {
                     alt="Founder"
                     className="rounded-3xl shadow-2xl w-full h-[600px] object-cover"
                   />
-                  <div className="absolute bottom-6 right-6 left-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-[#d4af37]/20">
-                    <p className="text-sm text-[#022c22]/60 uppercase tracking-widest font-semibold mb-1">Founder & CEO</p>
-                    <p className="text-[#022c22] font-serif text-xl font-bold">Inspiration Behind Planet Life</p>
+                  <div className="absolute bottom-6 right-6 left-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-red-600/20">
+                    <p className="text-sm text-red-600 uppercase tracking-widest font-extrabold mb-1">Founder & CEO</p>
+                    <p className="text-black font-sans text-xl font-extrabold uppercase">Inspiration Behind Planet Life</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -181,19 +174,19 @@ const About = () => {
 
             <div className="lg:w-1/2">
               <ScrollReveal direction="left">
-                <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-[#022c22] leading-tight">
+                <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black leading-tight uppercase">
                   {aboutContent.founderTitle}
                 </h2>
-                <div className="prose prose-lg text-gray-600 max-w-none">
+                <div className="prose prose-lg text-black font-medium max-w-none">
                   <p className="text-lg leading-relaxed mb-6 text-justify">
                     {aboutContent.founderText}
                   </p>
                 </div>
                 <div className="flex items-center gap-6 mt-10">
-                  <div className="w-12 h-12 rounded-full bg-[#d4af37] flex items-center justify-center text-white">
+                  <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-black">
                     <Award className="w-6 h-6" />
                   </div>
-                  <p className="text-[#022c22] font-semibold italic">"Redefining global travel with a personal touch."</p>
+                  <p className="text-black font-extrabold italic font-sans">"Redefining global travel with a personal touch."</p>
                 </div>
               </ScrollReveal>
             </div>
@@ -202,10 +195,10 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-[#022c22] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#d4af37] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#d4af37] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+      <section className="py-20 bg-red-600 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-black rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -213,10 +206,10 @@ const About = () => {
             {stats.map((stat, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <div className="space-y-2">
-                  <div className="text-4xl md:text-5xl font-serif font-bold text-[#d4af37]">
+                  <div className="text-4xl md:text-5xl font-sans font-extrabold text-black">
                     {stat.number}
                   </div>
-                  <div className="text-white/70 uppercase tracking-widest text-xs font-semibold">
+                  <div className="text-black/80 uppercase tracking-widest text-xs font-extrabold">
                     {stat.label}
                   </div>
                 </div>
@@ -231,8 +224,8 @@ const About = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-[#d4af37] font-medium tracking-[0.2em] uppercase mb-4 block">Visual Journey</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#022c22]">
+              <span className="text-red-600 font-extrabold tracking-[0.2em] uppercase mb-4 block">Visual Journey</span>
+              <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
                 Our World Through Your Eyes
               </h2>
             </div>
@@ -274,8 +267,8 @@ const About = () => {
                   ))}
                 </CarouselContent>
                 <div className="flex justify-center mt-8 gap-4">
-                  <CarouselPrevious className="relative translate-x-0 translate-y-0 h-12 w-12 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white" />
-                  <CarouselNext className="relative translate-x-0 translate-y-0 h-12 w-12 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white" />
+                  <CarouselPrevious className="relative translate-x-0 translate-y-0 h-12 w-12 border-red-600 text-red-600 hover:bg-red-600 hover:text-black" />
+                  <CarouselNext className="relative translate-x-0 translate-y-0 h-12 w-12 border-red-600 text-red-600 hover:bg-red-600 hover:text-black" />
                 </div>
               </Carousel>
             </ScrollReveal>
@@ -288,17 +281,17 @@ const About = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block p-4 rounded-full bg-[#d4af37]/10 mb-8">
-                <Globe className="w-8 h-8 text-[#d4af37]" />
+              <div className="inline-block p-4 rounded-full bg-red-600/10 mb-8">
+                <Globe className="w-8 h-8 text-black" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-[#022c22]">
+              <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black uppercase">
                 {aboutContent.missionTitle}
               </h2>
-              <p className="text-2xl text-gray-600 font-light leading-relaxed italic">
+              <p className="text-2xl text-black font-extrabold leading-relaxed italic font-sans">
                 "{aboutContent.missionText}"
               </p>
               <div className="mt-12 flex justify-center">
-                <div className="w-24 h-1 bg-[#d4af37] rounded-full" />
+                <div className="w-24 h-1 bg-red-600 rounded-full" />
               </div>
             </div>
           </ScrollReveal>

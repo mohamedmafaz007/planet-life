@@ -109,7 +109,7 @@ const DestinationDetail = () => {
               <MapPin className="h-5 w-5 mr-2" />
               <span>{destination.country}</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-lg">
+            <h1 className="text-5xl md:text-6xl font-sans font-extrabold text-white drop-shadow-lg uppercase">
               {destination.name}
             </h1>
           </div>
@@ -118,9 +118,9 @@ const DestinationDetail = () => {
 
       {/* Adventure Picz Carousel */}
       {destination.adventureImages && destination.adventureImages.length > 0 && (
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-serif font-bold mb-8 text-center text-foreground">Adventure Picz</h2>
+            <h2 className="text-3xl font-sans font-extrabold mb-8 text-center text-black uppercase">Adventure Picz</h2>
             <Carousel
               plugins={[
                 Autoplay({
@@ -158,7 +158,7 @@ const DestinationDetail = () => {
         <div className="container mx-auto px-4">
           {/* Overview */}
           <div className="mb-12">
-            <h2 className="text-3xl font-serif font-bold mb-4 text-foreground">Overview</h2>
+            <h2 className="text-3xl font-sans font-extrabold mb-4 text-black uppercase">Overview</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               {destination.description}
             </p>
@@ -166,12 +166,12 @@ const DestinationDetail = () => {
 
           {/* Why Visit */}
           <div className="mb-12">
-            <h2 className="text-3xl font-serif font-bold mb-6 text-foreground">Why Visit {destination.name}?</h2>
+            <h2 className="text-3xl font-sans font-extrabold mb-6 text-black uppercase">Why Visit {destination.name}?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {destination.whyVisit.map((reason, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                    <Check className="h-4 w-4 text-primary" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mt-1">
+                    <Check className="h-4 w-4 text-red-600" />
                   </div>
                   <p className="text-muted-foreground">{reason}</p>
                 </div>
@@ -181,14 +181,14 @@ const DestinationDetail = () => {
 
           {/* Packages */}
           <div>
-            <h2 className="text-3xl font-serif font-bold mb-6 text-foreground">Available Packages</h2>
+            <h2 className="text-3xl font-sans font-extrabold mb-6 text-black uppercase">Available Packages</h2>
             <div className="space-y-6">
               {destination.packages.map((pkg) => (
                 <Card key={pkg.id} className="overflow-hidden">
                   <CardHeader className="bg-muted">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
-                        <CardTitle className="text-2xl mb-2">{pkg.duration}</CardTitle>
+                        <CardTitle className="text-2xl mb-2 font-extrabold font-sans uppercase">{pkg.duration}</CardTitle>
                         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                           <span className="flex items-center">
                             <Calendar className="h-4 w-4 mr-1" />
@@ -197,8 +197,8 @@ const DestinationDetail = () => {
                         </div>
                       </div>
                       <div className="text-left md:text-right">
-                        <p className="text-sm text-muted-foreground mb-1">Starting from</p>
-                        <p className="text-4xl font-bold text-primary">
+                        <p className="text-sm text-black/60 mb-1 font-bold">Starting from</p>
+                        <p className="text-4xl font-extrabold text-red-600">
                           ₹{pkg.price.toLocaleString()}
                         </p>
                         <p className="text-sm text-muted-foreground">Per Person</p>
@@ -228,7 +228,7 @@ const DestinationDetail = () => {
                           <div className="space-y-6">
                             {pkg.itinerary.map((day) => (
                               <div key={day.day} className="border-l-2 border-primary pl-6 pb-6 relative">
-                                <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                                <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-red-600 text-black flex items-center justify-center text-sm font-extrabold">
                                   {day.day}
                                 </div>
                                 <h4 className="text-lg font-semibold mb-1 text-foreground">{day.title}</h4>
@@ -251,7 +251,7 @@ const DestinationDetail = () => {
                     </Tabs>
 
                     <div className="mt-6 pt-6 border-t border-border flex justify-end">
-                      <Button size="lg" asChild className="bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full px-8">
+                      <Button size="lg" asChild className="bg-red-600 hover:bg-black hover:text-white text-white rounded-full px-8 font-bold uppercase transition-all duration-300">
                         <Link to={`/booking/${pkg.id}`}>Get Quote</Link>
                       </Button>
                     </div>
@@ -262,7 +262,7 @@ const DestinationDetail = () => {
           </div>
           {/* FAQ Section */}
           <div className="mt-16 pt-12 border-t border-border">
-            <h2 className="text-3xl font-serif font-bold mb-8 text-center text-foreground">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-sans font-extrabold mb-8 text-center text-black uppercase">Frequently Asked Questions</h2>
             <div className="max-w-3xl mx-auto space-y-4">
               {[
                 { q: "How do I book a customized tour?", a: "Simply click on 'Get Quote' and fill in your details. Our travel experts will contact you to design a personalized itinerary based on your preferences." },
@@ -270,8 +270,8 @@ const DestinationDetail = () => {
                 { q: "Can I change the itinerary after booking?", a: "Yes, we pride ourselves on flexibility. You can discuss modifications with your dedicated travel consultant even after the initial booking." },
                 { q: "Is travel insurance included?", a: "While not included by default, we highly recommend travel insurance and can assist you in obtaining the best coverage for your trip." }
               ].map((faq, i) => (
-                <div key={i} className="bg-muted/30 rounded-2xl p-6">
-                  <h4 className="font-bold text-lg mb-2 text-[#022c22]">{faq.q}</h4>
+                <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                  <h4 className="font-extrabold text-lg mb-2 text-black uppercase">{faq.q}</h4>
                   <p className="text-muted-foreground">{faq.a}</p>
                 </div>
               ))}
@@ -281,8 +281,8 @@ const DestinationDetail = () => {
       </section>
 
       {/* Sticky Mobile Button */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-lg border-t border-gray-200 z-40">
-        <Button size="lg" asChild className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full py-6 text-lg font-bold shadow-xl">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-red-600/95 backdrop-blur-lg border-t border-black/10 z-40">
+        <Button size="lg" asChild className="w-full bg-black hover:bg-white hover:text-black text-white rounded-full py-6 text-lg font-extrabold shadow-xl uppercase transition-all">
           <Link to={`/booking/${destination.packages[0]?.id}`}>Get Free Quote Now</Link>
         </Button>
       </div>

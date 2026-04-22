@@ -20,6 +20,7 @@ import { useState, useEffect } from "react";
 // newly added imports
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
+import StoryMarquee from "@/components/StoryMarquee";
 
 const imageMap: Record<string, string> = {
   "malaysia_new.jpg": malaysiaImg,
@@ -88,12 +89,31 @@ const Home = () => {
       }
 
       setIsSubmitting(true);
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Construct WhatsApp Message
+      const message = `*New Quote Request - Planet Life*%0A%0A` +
+                      `*Name:* ${formData.name}%0A` +
+                      `*WhatsApp:* ${formData.whatsapp}%0A` +
+                      `*Email:* ${formData.email}%0A` +
+                      `*Destination:* ${formData.destination}%0A` +
+                      `*Month:* ${formData.travelMonth}%0A` +
+                      `*Duration:* ${formData.duration}%0A` +
+                      `*Persons:* ${formData.numPersons}%0A` +
+                      `*Preferred Language:* ${formData.language}`;
+      
+      const whatsappUrl = `https://wa.me/919994553297?text=${message}`;
+      
+      // Minor delay for feedback
+      await new Promise(resolve => setTimeout(resolve, 800));
 
       toast({
-          title: "Quote Request Sent!",
-          description: "Our experts will contact you shortly.",
+          title: "Redirecting to WhatsApp...",
+          description: "Sending your request to our travel experts.",
       });
+
+      // Redirect to WhatsApp
+      window.open(whatsappUrl, '_blank');
+      
       setIsSubmitting(false);
       setStep(1);
       setFormData({
@@ -139,36 +159,36 @@ const Home = () => {
         </video>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative container mx-auto px-4 flex-grow flex flex-col md:flex-row items-center justify-between pt-32 pb-20">
+        <div className="relative container mx-auto px-4 flex-grow flex flex-col md:flex-row items-center justify-between pt-24 pb-12 z-10">
           {/* Left Content */}
           <div className="text-white max-w-3xl mb-12 md:mb-0 z-10">
             <ScrollReveal>
-              <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight drop-shadow-lg">
-                Customized International Adventures.
+            <h1 className="text-4xl md:text-6xl font-sans font-extrabold mb-4 leading-tight drop-shadow-2xl text-white uppercase">
+                Customized International Adventures
               </h1>
-              <p className="text-xl md:text-2xl mb-10 text-white/90 font-light max-w-2xl drop-shadow-md">
-                Experience the epitome of luxury and adventure with our customized international journeys. Let our experts plan your perfect trip.
+              <p className="text-lg md:text-xl mb-8 text-white/90 font-bold max-w-xl drop-shadow-md">
+                Experience the epitome of luxury and adventure with our customized international journeys.
               </p>
-              <Button size="lg" className="bg-[#d4af37] hover:bg-[#b8962e] text-white rounded-full px-10 py-7 text-lg shadow-xl transition-all hover:scale-105">
+              <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-8 py-6 text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-8 md:mb-0">
                 Explore Packages <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </ScrollReveal>
           </div>
 
           {/* Right Booking Card */}
-          <div className="w-full md:w-[420px] bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:mr-4 relative z-10 border border-white/20">
-            <div className="text-center mb-8">
-              <h3 className="font-serif text-[#022c22] text-xl italic mb-2">Your Perfect Holiday Awaits!</h3>
-              <h2 className="text-2xl font-bold text-gray-900">Get Your Custom Quote</h2>
+          <div className="w-full md:w-[400px] bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-6 relative border border-white/20">
+            <div className="text-center mb-6">
+              <h3 className="font-sans font-bold text-black text-lg mb-1">Your Perfect Holiday Awaits!</h3>
+              <h2 className="text-xl font-extrabold text-black font-sans uppercase">Get Your Custom Quote</h2>
             </div>
 
             {step === 1 ? (
               <div className="space-y-4">
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
-                    <MapPin className="w-4 h-4" /> Destination
+                <div className="space-y-3">
+                  <Label className="text-red-600 font-extrabold uppercase text-[10px] flex items-center gap-2">
+                    <MapPin className="w-3 h-3" /> Destination
                   </Label>
                   <Select value={formData.destination} onValueChange={(v) => handleSelectChange("destination", v)}>
                     <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
@@ -182,9 +202,9 @@ const Home = () => {
                   </Select>
                 </div>
 
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4" /> Travel Month
+                <div className="space-y-3">
+                  <Label className="text-red-600 font-extrabold uppercase text-[10px] flex items-center gap-2">
+                    <CheckCircle2 className="w-3 h-3" /> Travel Month
                   </Label>
                   <Select value={formData.travelMonth} onValueChange={(v) => handleSelectChange("travelMonth", v)}>
                     <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
@@ -199,9 +219,9 @@ const Home = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
-                      <Clock className="w-4 h-4" /> Duration
+                  <div className="space-y-3">
+                    <Label className="text-red-600 font-extrabold uppercase text-[10px] flex items-center gap-2">
+                      <Clock className="w-3 h-3" /> Duration
                     </Label>
                     <Select value={formData.duration} onValueChange={(v) => handleSelectChange("duration", v)}>
                       <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
@@ -216,9 +236,9 @@ const Home = () => {
                     </Select>
                   </div>
 
-                  <div className="space-y-1">
-                    <Label className="text-[#d4af37] font-semibold flex items-center gap-2">
-                      <Users className="w-4 h-4" /> Persons
+                  <div className="space-y-3">
+                    <Label className="text-red-600 font-extrabold uppercase text-[10px] flex items-center gap-2">
+                      <Users className="w-3 h-3" /> Persons
                     </Label>
                     <Select value={formData.numPersons} onValueChange={(v) => handleSelectChange("numPersons", v)}>
                       <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
@@ -237,20 +257,20 @@ const Home = () => {
 
                 <Button
                   onClick={handleNext}
-                  className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white font-bold py-6 rounded-xl mt-4"
+                  className="w-full bg-red-600 hover:bg-black text-white font-extrabold py-6 rounded-xl mt-6 uppercase transition-all duration-300 shadow-lg"
                 >
-                  Next
+                  Continue Request
                 </Button>
                 
                 <div className="flex justify-center gap-2 mt-4">
-                    <div className="w-8 h-1.5 rounded-full bg-[#d4af37]"></div>
+                    <div className="w-8 h-1.5 rounded-full bg-red-600"></div>
                     <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
                 </div>
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold">Name</Label>
+                <div className="space-y-2">
+                  <Label className="text-red-600 font-extrabold uppercase text-xs">Name</Label>
                   <Input
                     name="name"
                     placeholder="Your Name"
@@ -260,8 +280,8 @@ const Home = () => {
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold">Email</Label>
+                <div className="space-y-2">
+                  <Label className="text-red-600 font-extrabold uppercase text-xs">Email Address</Label>
                   <Input
                     name="email"
                     type="email"
@@ -272,8 +292,8 @@ const Home = () => {
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold">Whatsapp</Label>
+                <div className="space-y-2">
+                  <Label className="text-red-600 font-extrabold uppercase text-xs">WhatsApp Number</Label>
                   <div className="flex">
                     <div className="bg-gray-100 border border-r-0 border-gray-200 rounded-l-md px-3 flex items-center text-gray-500 text-sm">
                       🇮🇳 +91
@@ -288,8 +308,8 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="space-y-1">
-                  <Label className="text-[#d4af37] font-semibold">Select Language</Label>
+                <div className="space-y-2">
+                  <Label className="text-red-600 font-extrabold uppercase text-xs">Select Language</Label>
                   <Select value={formData.language} onValueChange={(v) => handleSelectChange("language", v)}>
                     <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
                       <SelectValue placeholder="Language" />
@@ -307,9 +327,9 @@ const Home = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-full bg-[#d4af37] hover:bg-[#b8962e] text-white font-bold py-6 rounded-xl mt-4"
+                  className="w-full bg-red-600 hover:bg-black text-white font-extrabold py-6 rounded-xl mt-6 uppercase transition-all duration-300 shadow-lg"
                 >
-                  {isSubmitting ? "Submitting..." : "Submit >"}
+                  {isSubmitting ? "Processing..." : "Submit Quote Request"}
                 </Button>
 
                 <div className="flex justify-center gap-2 mt-4">
@@ -325,54 +345,53 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Stats Bar - Positioned relatively at bottom on mobile, absolute on desktop */}
-        <div className="relative md:absolute bottom-0 left-0 right-0 z-20 bg-[#022c22]/95 backdrop-blur text-white py-6 border-t border-white/10">
+        <div className="relative bg-white border-t border-gray-100 shadow-2xl py-8 z-20">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center md:justify-between items-center gap-6 md:gap-0 text-center md:text-left">
+            <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-6 md:gap-4">
 
-              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
-                <div className="bg-white/10 p-3 rounded-full">
-                  <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+              <div className="flex items-center gap-2">
+                <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
+                  <Star className="w-4 h-4 text-red-600 fill-red-600" />
                 </div>
-                <div>
-                  <p className="font-bold text-lg">4.9/5 Ratings</p>
-                  <p className="text-xs text-white/70">On Google Reviews</p>
-                </div>
-              </div>
-
-              <div className="hidden md:block h-10 w-px bg-white/20" />
-
-              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
-                <div className="bg-white/10 p-3 rounded-full">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="font-bold text-lg">24/7 Support</p>
-                  <p className="text-xs text-white/70">Trip Assistance</p>
+                <div className="flex items-baseline gap-2">
+                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">4.9/5 Ratings</p>
+                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">On Google Reviews</p>
                 </div>
               </div>
 
-              <div className="hidden md:block h-10 w-px bg-white/20" />
+              <div className="hidden md:block h-6 w-px bg-gray-200" />
 
-              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
-                <div className="bg-white/10 p-3 rounded-full">
-                  <Shield className="w-6 h-6" />
+              <div className="flex items-center gap-2">
+                <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
+                  <Clock className="w-4 h-4 text-red-600" />
                 </div>
-                <div>
-                  <p className="font-bold text-lg">100% Secure</p>
-                  <p className="text-xs text-white/70">Payment Protection</p>
+                <div className="flex items-baseline gap-2">
+                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">24/7 Support</p>
+                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Trip Assistance</p>
                 </div>
               </div>
 
-              <div className="hidden md:block h-10 w-px bg-white/20" />
+              <div className="hidden md:block h-6 w-px bg-gray-200" />
 
-              <div className="flex items-center gap-3 min-w-[200px] justify-center md:justify-start">
-                <div className="bg-white/10 p-3 rounded-full">
-                  <CheckCircle2 className="w-6 h-6" />
+              <div className="flex items-center gap-2">
+                <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
+                  <Shield className="w-4 h-4 text-red-600" />
                 </div>
-                <div>
-                  <p className="font-bold text-lg">Customized</p>
-                  <p className="text-xs text-white/70">Tailor-made Trips</p>
+                <div className="flex items-baseline gap-2">
+                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">100% Secure</p>
+                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Payment Protection</p>
+                </div>
+              </div>
+
+              <div className="hidden md:block h-6 w-px bg-gray-200" />
+
+              <div className="flex items-center gap-2">
+                <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
+                  <CheckCircle2 className="w-4 h-4 text-red-600" />
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">Customized</p>
+                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Tailor-made Trips</p>
                 </div>
               </div>
 
@@ -385,13 +404,13 @@ const Home = () => {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#022c22] mb-6">
+            <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black mb-6 uppercase">
               Trending Destinations
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               Explore our most popular international destinations, handpicked for your perfect vacation.
             </p>
-            <div className="w-24 h-1.5 bg-[#d4af37] mx-auto rounded-full" />
+            <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -418,28 +437,28 @@ const Home = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#022c22]/90 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent duration-500 group-hover:from-red-600/90" />
 
                       {/* Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-transform duration-300 translate-y-2 group-hover:translate-y-0">
+                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                         <div className="flex justify-between items-end mb-2">
-                          <h3 className="text-3xl font-serif font-bold mb-1">{destination.name}</h3>
-                          <div className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-sm font-medium mb-2">
+                          <h3 className="text-3xl font-sans font-extrabold mb-1 text-white uppercase">{destination.name}</h3>
+                          <div className="bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter mb-2 shadow-lg">
                             {destination.packages.length} Packages
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-white/80 mb-4 text-sm">
-                          <MapPin className="w-4 h-4" />
+                        <div className="flex items-center gap-2 text-white/90 mb-6 font-bold uppercase text-xs tracking-widest">
+                          <MapPin className="w-4 h-4 text-red-600" />
                           <span>{destination.country}</span>
                         </div>
 
-                        <div className="border-t border-white/20 pt-4 mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                        <div className="border-t border-white/20 pt-6 mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">
                           <div>
-                            <p className="text-xs text-white/70 uppercase tracking-wider">Starting From</p>
-                            <p className="text-xl font-bold text-[#d4af37]">₹{destination.packages[0]?.price.toLocaleString()}</p>
+                            <p className="text-[10px] text-white/70 uppercase tracking-[0.2em] font-black mb-1">Starting From</p>
+                             <p className="text-2xl font-extrabold text-white">₹{destination.packages[0]?.price.toLocaleString()}</p>
                           </div>
-                          <span className="bg-white text-[#022c22] p-3 rounded-full hover:bg-[#d4af37] hover:text-white transition-colors">
+                          <span className="bg-white text-black p-4 rounded-full hover:bg-black hover:text-white transition-all shadow-xl">
                             <ArrowRight className="w-5 h-5" />
                           </span>
                         </div>
@@ -451,24 +470,156 @@ const Home = () => {
             )}
           </div>
 
-          <div className="text-center mt-16">
-            <Button asChild variant="outline" size="lg" className="border-[#022c22] text-[#022c22] hover:bg-[#022c22] hover:text-white rounded-full px-10 py-6 text-lg font-semibold transition-all">
+          <div className="text-center mt-20">
+            <Button asChild size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 text-lg font-extrabold uppercase transition-all duration-300 shadow-2xl tracking-widest">
               <Link to="/destinations">View All Destinations</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Preview */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#022c22] mb-8">
-            Happy Customers, Happy Stories
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-            Join thousands of satisfied travelers who have explored the world with us.
-          </p>
-          <Button variant="outline" size="lg" className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white rounded-full px-8">
+      {/* Google Reviews Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4 mb-16">
+          <ScrollReveal width="100%">
+             <div className="w-full flex flex-col items-center text-center">
+              {/* Rating Badge */}
+              <div className="flex items-center gap-3 bg-white px-8 py-4 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-black/5 mb-10 transform hover:scale-105 transition-all duration-500 mx-auto">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                </div>
+                <div className="h-6 w-px bg-gray-200 mx-2" />
+                <span className="text-black font-black text-xl tracking-tight">4.9/5 Rating</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-7xl font-sans font-extrabold text-black mb-8 uppercase tracking-tighter leading-[0.9] md:leading-[0.85] max-w-4xl mx-auto">
+                What Our Travelers <br className="hidden md:block" /> Say on Google
+              </h2>
+              
+              <div className="flex items-center justify-center gap-6 w-full max-w-sm mx-auto">
+                <div className="h-px flex-grow bg-red-600/30" />
+                <p className="text-red-600 font-extrabold uppercase tracking-[0.4em] text-[10px] whitespace-nowrap">
+                  Trusted Excellence
+                </p>
+                <div className="h-px flex-grow bg-red-600/30" />
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <div className="relative pause-marquee space-y-6">
+          {/* First Row - Moving Left */}
+          <div className="flex animate-marquee whitespace-nowrap gap-6">
+            {[
+              { name: "Vignesh Kumar", text: "Had an amazing trip to Thailand planned by Planet Life Madurai. Everything was seamless!" },
+              { name: "Priyadharshini", text: "Excellent service and professional approach. They customized our Dubai package perfectly." },
+              { name: "Mohamed Ibrahim", text: "Superb experience! Our Bali trip was unforgettable. Thank you team!" },
+              { name: "Ananya R", text: "Very transparent pricing and great selection of packages. Loved the Vietnam tour." },
+              { name: "Sathish Kumar", text: "Best decision for our family trip. Hassle-free experience and top-notch hospitality." },
+              { name: "Karthik Raja", text: "Best customized international trips. Their attention to detail is impressive." }
+            ].concat([
+              { name: "Vignesh Kumar", text: "Had an amazing trip to Thailand planned by Planet Life Madurai. Everything was seamless!" },
+              { name: "Priyadharshini", text: "Excellent service and professional approach. They customized our Dubai package perfectly." },
+              { name: "Mohamed Ibrahim", text: "Superb experience! Our Bali trip was unforgettable. Thank you team!" },
+              { name: "Ananya R", text: "Very transparent pricing and great selection of packages. Loved the Vietnam tour." },
+              { name: "Sathish Kumar", text: "Best decision for our family trip. Hassle-free experience and top-notch hospitality." },
+              { name: "Karthik Raja", text: "Best customized international trips. Their attention to detail is impressive." }
+            ]).map((review, i) => (
+              <div key={i} className="inline-block w-[350px] bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
+                <div className="flex items-center gap-1 text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 font-medium mb-6 whitespace-normal line-clamp-3">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-extrabold uppercase">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-extrabold text-black uppercase text-sm">{review.name}</p>
+                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Google Local Guide</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Second Row - Moving Right */}
+          <div className="flex animate-marquee-reverse whitespace-nowrap gap-6">
+            {[
+              { name: "Arun Prasath", text: "Thailand trip was just amazing. The guidance provided was very professional." },
+              { name: "Deepika M", text: "Everything from visa to stay was well managed. Planet Life is the best in Madurai." },
+              { name: "Rahul Singh", text: "Had a great time in Singapore. Transparent pricing and no hidden costs." },
+              { name: "Meera Krishnan", text: "Highly recommends for international tours. Their team is always available for support." },
+              { name: "Suresh Babu", text: "The customized itinerary was perfect. Enjoyed every bit of our holiday." },
+              { name: "Swathi", text: "Friendly staff and excellent tour coordination. Truly a stress-free travel experience." }
+            ].concat([
+              { name: "Arun Prasath", text: "Thailand trip was just amazing. The guidance provided was very professional." },
+              { name: "Deepika M", text: "Everything from visa to stay was well managed. Planet Life is the best in Madurai." },
+              { name: "Rahul Singh", text: "Had a great time in Singapore. Transparent pricing and no hidden costs." },
+              { name: "Meera Krishnan", text: "Highly recommends for international tours. Their team is always available for support." },
+              { name: "Suresh Babu", text: "The customized itinerary was perfect. Enjoyed every bit of our holiday." },
+              { name: "Swathi", text: "Friendly staff and excellent tour coordination. Truly a stress-free travel experience." }
+            ]).map((review, i) => (
+              <div key={i} className="inline-block w-[350px] bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
+                <div className="flex items-center gap-1 text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 font-medium mb-6 whitespace-normal line-clamp-3">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-extrabold uppercase">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-extrabold text-black uppercase text-sm">{review.name}</p>
+                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Google Local Guide</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <a 
+            href="https://www.google.com/search?q=planet+life+madurai+reviews" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-black font-extrabold uppercase text-sm hover:text-red-600 transition-colors tracking-widest"
+          >
+            Read All 500+ Google Reviews <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* Happy Customers Section */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 mb-16">
+          <ScrollReveal width="100%">
+             <div className="flex flex-col items-center text-center">
+               <h2 className="text-4xl md:text-6xl font-sans font-extrabold text-black mb-6 uppercase tracking-tighter">
+                Happy Customers, <span className="text-red-600">Happy Stories</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12 font-medium">
+                Join thousands of satisfied travelers who have explored the world with us. Every picture tells a story of adventure and joy.
+              </p>
+             </div>
+          </ScrollReveal>
+        </div>
+
+        <StoryMarquee />
+
+        <div className="container mx-auto px-4 text-center mt-16">
+          <Button size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 font-extrabold uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105">
             View Instagram Stories
           </Button>
         </div>
