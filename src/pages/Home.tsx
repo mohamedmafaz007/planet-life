@@ -449,7 +449,7 @@ const Home = () => {
               ))
             ) : (
               featuredDestinations.map((destination, index) => (
-                <ScrollReveal key={destination.id} delay={index * 0.1}>
+                <ScrollReveal key={destination.id} delay={index * 0.1} width="100%" overflow="visible">
                   <Link to={`/destination/${destination.id}`} className="group block h-full">
                     <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
                       <img

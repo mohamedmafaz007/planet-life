@@ -7,6 +7,7 @@ interface ScrollRevealProps {
     delay?: number;
     direction?: "up" | "down" | "left" | "right";
     distance?: number;
+    overflow?: "hidden" | "visible";
 }
 
 export const ScrollReveal = ({
@@ -14,7 +15,8 @@ export const ScrollReveal = ({
     width = "fit-content",
     delay = 0,
     direction = "up",
-    distance = 50
+    distance = 50,
+    overflow = "hidden"
 }: ScrollRevealProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -30,7 +32,7 @@ export const ScrollReveal = ({
     };
 
     return (
-        <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+        <div ref={ref} style={{ position: "relative", width, overflow }}>
             <motion.div
                 variants={{
                     hidden: { opacity: 0, ...getInitialProps() },
