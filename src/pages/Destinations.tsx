@@ -3,22 +3,41 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAdmin } from "@/context/AdminContext";
 import { ArrowRight, MapPin } from "lucide-react";
-import malaysiaImg from "@/assets/malaysia_new.jpg";
-import thailandImg from "@/assets/thailand.jpg";
-import baliImg from "@/assets/bali_new.jpg";
+import malaysiaImg from "@/assets/malaysia_main_new.jpg";
+import thailandImg from "@/assets/thailand_new.jpg";
+import baliImg from "@/assets/bali_main_new.jpg";
 import vietnamImg from "@/assets/vietnam_new.jpg";
-import dubaiImg from "@/assets/dubai.jpg";
-import singaporeImg from "@/assets/singapore.jpg";
+import dubaiImg from "@/assets/dubai_new.jpg";
+import singaporeImg from "@/assets/singapore_main_new.jpg";
 import meghalayaImg from "@/assets/meghalaya_new.jpg";
+import maldivesImg from "@/assets/maldives_main_new.jpg";
+import srilankaImg from "@/assets/srilanka_main.jpg";
 
 const imageMap: Record<string, string> = {
-  "malaysia_new.jpg": malaysiaImg,
-  "thailand.jpg": thailandImg,
-  "bali_new.jpg": baliImg,
+  "malaysia_main_new.jpg": malaysiaImg,
+  "thailand_new.jpg": thailandImg,
+  "bali_main_new.jpg": baliImg,
   "vietnam_new.jpg": vietnamImg,
-  "dubai.jpg": dubaiImg,
-  "singapore.jpg": singaporeImg,
-  "meghalaya_new.jpg": meghalayaImg
+  "dubai_new.jpg": dubaiImg,
+  "singapore_main_new.jpg": singaporeImg,
+  "meghalaya_new.jpg": meghalayaImg,
+  "maldives_main_new.jpg": maldivesImg,
+  "srilanka_main.jpg": srilankaImg,
+  "mal_adv_1.jpg": "/src/assets/mal_adv_1.jpg",
+  "mal_adv_2.jpg": "/src/assets/mal_adv_2.jpg",
+  "thailand_adv_1.jpg": "/src/assets/thailand_adv_1.jpg",
+  "thailand_adv_2.jpg": "/src/assets/thailand_adv_2.jpg",
+  "thailand_adv_3.jpg": "/src/assets/thailand_adv_3.jpg",
+  "bali_adv_1.jpg": "/src/assets/bali_adv_1.jpg",
+  "bali_adv_2.jpg": "/src/assets/bali_adv_2.jpg",
+  "bali_adv_3.jpg": "/src/assets/bali_adv_3.jpg",
+  "dubai_adv_1.jpg": "/src/assets/dubai_adv_1.jpg",
+  "dubai_adv_2.jpg": "/src/assets/dubai_adv_2.jpg",
+  "dubai_adv_3.jpg": "/src/assets/dubai_adv_3.jpg",
+  "mald_adv_1.jpg": "/src/assets/mald_adv_1.jpg",
+  "sing_adv_1.jpg": "/src/assets/sing_adv_1.jpg",
+  "sl_adv_1.jpg": "/src/assets/sl_adv_1.jpg",
+  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg"
 };
 
 const Destinations = () => {

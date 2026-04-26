@@ -11,7 +11,7 @@ import malaysiaImg from "@/assets/malaysia_new.jpg";
 import thailandImg from "@/assets/thailand.jpg";
 import baliImg from "@/assets/bali_new.jpg";
 import vietnamImg from "@/assets/vietnam_new.jpg";
-import dubaiImg from "@/assets/dubai.jpg";
+import dubaiImg from "@/assets/dubai_new.jpg";
 import singaporeImg from "@/assets/singapore.jpg";
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
