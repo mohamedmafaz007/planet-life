@@ -238,7 +238,7 @@ const DestinationDetail = () => {
   const safeDescription = destination.description || "";
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       <Helmet>
         <title>{destination.name} Tour Packages | Planet Life</title>
         <meta name="description" content={safeDescription.substring(0, 160)} />

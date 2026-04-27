@@ -85,7 +85,7 @@ const Quote = () => {
     };
 
     return (
-        <div className="min-h-screen pt-20 relative overflow-hidden font-sans">
+        <div className="min-h-screen relative overflow-hidden font-sans">
             {/* Background Video */}
             <video
                 autoPlay
@@ -100,9 +100,9 @@ const Quote = () => {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
-            <div className="container mx-auto px-4 relative z-10 py-12">
+            <div className="container mx-auto px-4 relative z-10 py-12 pt-32">
                 <div className="text-center mb-16 text-white max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading text-white">
                         Your Dream Holiday Awaits
                     </h1>
                     <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-medium leading-relaxed font-sans">

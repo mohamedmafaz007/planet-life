@@ -70,12 +70,12 @@ const About = () => {
         <div className="absolute inset-0 z-0 bg-red-600" />
 
         <div className="container mx-auto px-4 relative z-10 text-center pt-20">
-          <ScrollReveal>
-            <span className="text-white font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Story</span>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-white drop-shadow-2xl uppercase tracking-tight">
+          <ScrollReveal width="100%">
+            <span className="text-black font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Story</span>
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-black drop-shadow-2xl uppercase tracking-tight">
               {aboutContent.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/90 max-w-3xl mx-auto font-medium leading-relaxed">
               {aboutContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -122,7 +122,7 @@ const About = () => {
       {/* Core Values */}
       <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4">
-          <ScrollReveal>
+          <ScrollReveal width="100%">
             <div className="text-center mb-16">
               <span className="text-primary font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Philosophy</span>
               <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground uppercase tracking-tight">
@@ -222,7 +222,7 @@ const About = () => {
       {/* Travel Gallery */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <ScrollReveal>
+          <ScrollReveal width="100%">
             <div className="text-center mb-16">
               <span className="text-red-600 font-extrabold tracking-[0.2em] uppercase mb-4 block">Visual Journey</span>
               <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
@@ -279,7 +279,7 @@ const About = () => {
       {/* Mission Section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <ScrollReveal>
+          <ScrollReveal width="100%">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block p-4 rounded-full bg-red-600/10 mb-8">
                 <Globe className="w-8 h-8 text-black" />

@@ -57,14 +57,14 @@ const Destinations = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-background/50">
+    <div className="min-h-screen bg-background/50">
       {/* Hero */}
-      <section className="bg-[#121212] text-white py-24 relative overflow-hidden shadow-2xl">
+      <section className="bg-[#121212] text-white pt-32 pb-24 relative overflow-hidden shadow-2xl">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 text-center relative z-10 font-heading">
-          <ScrollReveal>
+          <ScrollReveal width="100%">
             <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">World Exploration</span>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 uppercase tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 uppercase tracking-tighter text-white">
               Explore Our Destinations
             </h1>
             <p className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">

@@ -45,11 +45,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-white font-sans">
+    <div className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="bg-red-600 text-black py-20 relative overflow-hidden shadow-xl">
+      <section className="bg-red-600 text-black pt-32 pb-20 relative overflow-hidden shadow-xl">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <ScrollReveal>
+          <ScrollReveal width="100%">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase tracking-tight">
               {contactContent.heroTitle}
             </h1>

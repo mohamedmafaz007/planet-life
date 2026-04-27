@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,25 @@ import { useAdmin } from "@/context/AdminContext";
 const Navbar = () => {
     const { destinations } = useAdmin();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, []);
+
+    const handleMouseEnter = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        setIsDropdownOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setIsDropdownOpen(false);
+        }, 150);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,11 +71,19 @@ const Navbar = () => {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-6">
                         <Link to="/" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">Home</Link>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-1 font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm outline-none">
+                        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+                            <DropdownMenuTrigger 
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                className="flex items-center gap-1 font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm outline-none cursor-default"
+                            >
                                 Destinations <ChevronDown className="w-4 h-4" />
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className="bg-white border-black/10 p-2 min-w-[280px] z-[60]">
+                            <DropdownMenuContent 
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                className="bg-white border-black/10 p-2 min-w-[280px] z-[60]"
+                            >
                                 <div className="grid grid-cols-2 gap-2 p-2">
                                     <div>
                                         <DropdownMenuLabel className="text-[10px] text-red-600 font-black uppercase mb-1 px-2">International Tours</DropdownMenuLabel>

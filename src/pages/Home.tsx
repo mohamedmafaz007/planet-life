@@ -429,85 +429,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Destinations */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
-            <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">World-Class Experiences</span>
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
-              Trending Destinations
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-              Explore our most popular international destinations, handpicked for your perfect vacation.
-            </p>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading ? (
-              Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="h-[450px] rounded-[2rem] overflow-hidden bg-white p-4 space-y-4">
-                  <Skeleton className="w-full h-2/3 rounded-2xl" />
-                  <Skeleton className="w-3/4 h-8" />
-                  <Skeleton className="w-1/2 h-6" />
-                  <div className="flex justify-between items-center pt-4">
-                    <Skeleton className="w-24 h-10" />
-                    <Skeleton className="w-12 h-12 rounded-full" />
-                  </div>
-                </div>
-              ))
-            ) : (
-              featuredDestinations.map((destination, index) => (
-                <ScrollReveal key={destination.id} delay={index * 0.1} width="100%" overflow="visible">
-                  <Link to={`/destination/${destination.id}`} className="group block h-full">
-                    <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
-                      <img
-                        src={getImageSrc(destination.image)}
-                        alt={destination.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent duration-500 group-hover:from-red-600/90" />
-
-                      {/* Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                        <div className="flex justify-between items-end mb-2">
-                          <h3 className="text-3xl font-sans font-extrabold mb-1 text-white uppercase">{destination.name}</h3>
-                          <div className="bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter mb-2 shadow-lg">
-                            {destination.packages.length} Packages
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-2 text-white/90 mb-6 font-bold uppercase text-xs tracking-widest">
-                          <MapPin className="w-4 h-4 text-red-600" />
-                          <span>{destination.country}</span>
-                        </div>
-
-                        <div className="border-t border-white/20 pt-6 mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">
-                          <div>
-                            <p className="text-[10px] text-white/70 uppercase tracking-[0.2em] font-black mb-1">Starting From</p>
-                             <p className="text-2xl font-extrabold text-white">₹{destination.packages[0]?.price.toLocaleString()}</p>
-                          </div>
-                          <span className="bg-white text-black p-4 rounded-full hover:bg-black hover:text-white transition-all shadow-xl">
-                            <ArrowRight className="w-5 h-5" />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </ScrollReveal>
-              ))
-            )}
-          </div>
-
-          <div className="text-center mt-20">
-            <Button asChild size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 text-lg font-extrabold uppercase transition-all duration-300 shadow-2xl tracking-widest">
-              <Link to="/destinations">View All Destinations</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Google Reviews Section */}
       <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 mb-16">
@@ -631,6 +552,85 @@ const Home = () => {
           >
             Read All 500+ Google Reviews <ArrowRight className="w-4 h-4" />
           </a>
+        </div>
+      </section>
+
+      {/* Featured Destinations */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">World-Class Experiences</span>
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
+              Trending Destinations
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+              Explore our most popular international destinations, handpicked for your perfect vacation.
+            </p>
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {isLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="h-[450px] rounded-[2rem] overflow-hidden bg-white p-4 space-y-4">
+                  <Skeleton className="w-full h-2/3 rounded-2xl" />
+                  <Skeleton className="w-3/4 h-8" />
+                  <Skeleton className="w-1/2 h-6" />
+                  <div className="flex justify-between items-center pt-4">
+                    <Skeleton className="w-24 h-10" />
+                    <Skeleton className="w-12 h-12 rounded-full" />
+                  </div>
+                </div>
+              ))
+            ) : (
+              featuredDestinations.slice(0, 6).map((destination, index) => (
+                <ScrollReveal key={destination.id} delay={index * 0.1} width="100%" overflow="visible">
+                  <Link to={`/destination/${destination.id}`} className="group block h-full">
+                    <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
+                      <img
+                        src={getImageSrc(destination.image)}
+                        alt={destination.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent duration-500 group-hover:from-red-600/90" />
+
+                      {/* Content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <div className="flex justify-between items-end mb-2">
+                          <h3 className="text-3xl font-sans font-extrabold mb-1 text-white uppercase">{destination.name}</h3>
+                          <div className="bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter mb-2 shadow-lg">
+                            {destination.packages.length} Packages
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-white/90 mb-6 font-bold uppercase text-xs tracking-widest">
+                          <MapPin className="w-4 h-4 text-red-600" />
+                          <span>{destination.country}</span>
+                        </div>
+
+                        <div className="border-t border-white/20 pt-6 mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">
+                          <div>
+                            <p className="text-[10px] text-white/70 uppercase tracking-[0.2em] font-black mb-1">Starting From</p>
+                             <p className="text-2xl font-extrabold text-white">₹{destination.packages[0]?.price.toLocaleString()}</p>
+                          </div>
+                          <span className="bg-white text-black p-4 rounded-full hover:bg-black hover:text-white transition-all shadow-xl">
+                            <ArrowRight className="w-5 h-5" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))
+            )}
+          </div>
+
+          <div className="text-center mt-20">
+            <Button asChild size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 text-lg font-extrabold uppercase transition-all duration-300 shadow-2xl tracking-widest">
+              <Link to="/destinations">View All Destinations</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

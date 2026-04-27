@@ -120,7 +120,7 @@ const Booking = () => {
     };
 
     return (
-        <div className="min-h-screen pt-20 relative overflow-hidden font-sans">
+        <div className="min-h-screen relative overflow-hidden font-sans">
             {/* Background Media */}
             {found.video ? (
                 <video
@@ -142,7 +142,7 @@ const Booking = () => {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
-            <div className="container mx-auto px-4 relative z-10 py-12">
+            <div className="container mx-auto px-4 relative z-10 py-12 pt-32">
                 <Button variant="ghost" asChild className="mb-6 text-white hover:text-white hover:bg-white/20 uppercase font-black tracking-widest text-xs">
                     <Link to={`/destination/${found.destinationId}`}>
                         <ArrowLeft className="mr-2 h-4 w-4" />

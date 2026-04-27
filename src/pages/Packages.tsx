@@ -163,9 +163,9 @@ const Packages = () => {
   );
 
   return (
-    <div className="min-h-screen pt-20 bg-[#f4f4f5] overflow-x-hidden pb-32">
+    <div className="min-h-screen bg-[#f4f4f5] overflow-x-hidden pb-32">
       {/* ── Hero ── */}
-      <section className="bg-[#0a0a0a] text-white py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-[#0a0a0a] text-white pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.2)_0%,_transparent_60%)]" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal width="100%">
@@ -336,7 +336,7 @@ const DestinationBento = ({
                   </div>
 
                   <h3 className="text-2xl md:text-3xl font-heading font-black uppercase tracking-tighter leading-[1.1] mb-2 drop-shadow-2xl transform transition-transform duration-500 group-hover/card:-translate-y-2">
-                    {pkg.nights}N / {pkg.days}D
+                    <span className="text-red-600">{pkg.nights}N / {pkg.days}D</span>
                     <br />
                     <span className="text-white/70 text-lg md:text-xl tracking-tight">Package</span>
                   </h3>
