@@ -7,12 +7,14 @@ import heroVideo from "@/assets/hero-video.mp4";
 import malaysiaImg from "@/assets/malaysia_main_new.jpg";
 import thailandImg from "@/assets/thailand_new.jpg";
 import baliImg from "@/assets/bali_main_new.jpg";
-import vietnamImg from "@/assets/vietnam_new.jpg";
+import vietnamImg from "@/assets/vietnam/vietnam_main.jpg";
 import dubaiImg from "@/assets/dubai_new.jpg";
 import singaporeImg from "@/assets/singapore_main_new.jpg";
 import meghalayaImg from "@/assets/meghalaya_new.jpg";
 import maldivesImg from "@/assets/maldives_main_new.jpg";
 import srilankaImg from "@/assets/srilanka_main.jpg";
+import keralaImg from "@/assets/kerala/kerala_main.jpg";
+// Removed direct import of Andaman asset to troubleshoot
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -28,12 +30,14 @@ const imageMap: Record<string, string> = {
   "malaysia_main_new.jpg": malaysiaImg,
   "thailand_new.jpg": thailandImg,
   "bali_main_new.jpg": baliImg,
-  "vietnam_new.jpg": vietnamImg,
+  "vietnam_main.jpg": vietnamImg,
   "dubai_new.jpg": dubaiImg,
   "singapore_main_new.jpg": singaporeImg,
   "meghalaya_new.jpg": meghalayaImg,
   "maldives_main_new.jpg": maldivesImg,
   "srilanka_main.jpg": srilankaImg,
+  "kerala_main.jpg": keralaImg,
+  "andaman_main.jpg": "/src/assets/andaman/andaman_main.jpg",
   "mal_adv_1.jpg": "/src/assets/mal_adv_1.jpg",
   "mal_adv_2.jpg": "/src/assets/mal_adv_2.jpg",
   "thailand_adv_1.jpg": "/src/assets/thailand_adv_1.jpg",
@@ -48,7 +52,12 @@ const imageMap: Record<string, string> = {
   "mald_adv_1.jpg": "/src/assets/mald_adv_1.jpg",
   "sing_adv_1.jpg": "/src/assets/sing_adv_1.jpg",
   "sl_adv_1.jpg": "/src/assets/sl_adv_1.jpg",
-  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg"
+  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg",
+  "himachal_main.webp": "/src/assets/himachal/himachal_main.webp",
+  "kashmir_main.jpg": "/src/assets/kashmir/kashmir_main.jpg",
+  "goa_main.jpg": "/src/assets/goa/goa_main.jpg",
+  "kar_main.jpg": "/src/assets/karnataka/kar_main.jpg",
+  "malaysia_new_front.jpg": "/src/assets/malaysia_new_front.jpg",
 };
 
 const Home = () => {

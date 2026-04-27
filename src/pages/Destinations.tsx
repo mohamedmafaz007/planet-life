@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAdmin } from "@/context/AdminContext";
 import { ArrowRight, MapPin } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import malaysiaImg from "@/assets/malaysia_main_new.jpg";
 import thailandImg from "@/assets/thailand_new.jpg";
 import baliImg from "@/assets/bali_main_new.jpg";
@@ -37,7 +38,15 @@ const imageMap: Record<string, string> = {
   "mald_adv_1.jpg": "/src/assets/mald_adv_1.jpg",
   "sing_adv_1.jpg": "/src/assets/sing_adv_1.jpg",
   "sl_adv_1.jpg": "/src/assets/sl_adv_1.jpg",
-  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg"
+  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg",
+  "andaman_main.jpg": "/src/assets/andaman/andaman_main.jpg",
+  "andaman_adv_1.jpg": "/src/assets/andaman/andaman_adv_1.jpg",
+  "himachal_main.webp": "/src/assets/himachal/himachal_main.webp",
+  "him_adv_1.jpg": "/src/assets/himachal/him_adv_1.jpg",
+  "kashmir_main.jpg": "/src/assets/kashmir/kashmir_main.jpg",
+  "goa_main.jpg": "/src/assets/goa/goa_main.jpg",
+  "kar_main.jpg": "/src/assets/karnataka/kar_main.jpg",
+  "malaysia_new_front.jpg": "/src/assets/malaysia_new_front.jpg",
 };
 
 const Destinations = () => {
@@ -108,7 +117,9 @@ const Destinations = () => {
                     <div>
                       <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold mb-1 font-heading">Starting from</p>
                       <p className="text-3xl font-bold text-foreground font-heading">
-                        ₹{Math.min(...destination.packages.map(p => p.price)).toLocaleString()}
+                        ₹{destination.packages.length > 0 
+                          ? Math.min(...destination.packages.map(p => p.price)).toLocaleString() 
+                          : "0"}
                       </p>
                     </div>
                     <Button asChild className="bg-foreground hover:bg-primary text-background hover:text-white rounded-full px-8 py-6 font-bold uppercase tracking-widest text-[10px] transition-all shadow-lg hover:scale-105 font-heading">

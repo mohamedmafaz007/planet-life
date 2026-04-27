@@ -35,7 +35,7 @@ export const destinations: Destination[] = [
     name: "Malaysia",
     country: "Malaysia",
     description: "A beautiful fusion of modern icons and natural wonders — from the Petronas Twin Towers to the pristine beaches of Langkawi and the cool heights of Genting.",
-    image: "malaysia_main_new.jpg",
+    image: "malaysia_new_front.jpg",
     video: "malaysia_video_final.mp4",
     featured: true,
     whyVisit: [
@@ -360,15 +360,15 @@ export const destinations: Destination[] = [
         duration: "4 Nights 5 Days (Phuket & Krabi)",
         nights: 4,
         days: 5,
-        price: 24999,
+        price: 22000,
         image: "thailand_adv_1.jpg",
         inclusions: [
           "4 Nights Hotel Accommodation (3★/4★ options)",
+          "Daily Hotel Breakfast",
           "Island Tours on SIC (Phi Phi, Khai, 4-Island)",
-          "All transfers (Private from Airport, Shared for Tours)",
-          "Daily Breakfast",
           "Indian Lunch on Day 2 & Day 4",
           "Phuket & Krabi City Tours",
+          "All transfers (Private/Shared as per plan)",
           "Private Airport Transfers"
         ],
         itinerary: [
@@ -393,7 +393,7 @@ export const destinations: Destination[] = [
               "Visit Maya Bay and Pileh Lagoon (Snorkeling)",
               "See Monkey Beach",
               "Relaxation and swimming at Khai Island",
-              "Buffet Lunch Included"
+              "Indian Buffet Lunch Included"
             ]
           },
           {
@@ -713,77 +713,280 @@ export const destinations: Destination[] = [
     id: "vietnam",
     name: "Vietnam",
     country: "Vietnam",
-    description: "From the bustling streets of Hanoi to the serene waters of Ha Long Bay, Vietnam offers a perfect blend of natural beauty, rich history, and delicious cuisine.",
-    image: "vietnam_new.jpg",
-    video: "hero-video.mp4",
+    description: "Experience the magic of Vietnam — from the emerald waters of Ha Long Bay and the historic charm of Hoi An to the vibrant life in Hanoi and the tropical paradise of Phu Quoc.",
+    image: "vietnam_main.jpg",
+    video: "vietnam_video.mp4",
     featured: true,
     whyVisit: [
-      "Cruise through the stunning Ha Long Bay",
-      "Experience the vibrant streets of Hanoi's Old Quarter",
-      "Taste authentic Vietnamese cuisine and coffee",
-      "Explore ancient temples and French colonial architecture"
+      "Walk the iconic Golden Bridge in the misty Ba Na Hills",
+      "Cruise through the UNESCO World Heritage limestone karsts of Ha Long Bay",
+      "Explore the lantern-lit streets of Hoi An Ancient Town",
+      "Experience the pristine beaches and world-class theme parks of Phu Quoc Island"
+    ],
+    adventureImages: [
+      "viet_adv_1.jpg",
+      "viet_adv_2.jpg",
+      "viet_adv_3.jpg",
+      "viet_adv_4.jpg"
     ],
     packages: [
       {
-        id: "vietnam-3n4d",
-        duration: "3 Nights 4 Days",
-        nights: 3,
-        days: 4,
-        price: 21999,
-        image: "vietnam_new.jpg",
+        id: "vietnam-6d5n-central-north",
+        duration: "6 Days 5 Nights (Central & North Vietnam)",
+        nights: 5,
+        days: 6,
+        price: 32000,
+        image: "viet_adv_1.jpg",
         inclusions: [
-          "Flight Tickets",
-          "Airport Pickup & Drop",
-          "Daily Breakfast",
-          "3 Star Hotel Accommodation",
-          "Entry Tickets to Attractions",
-          "Ha Long Bay Cruise",
-          "City Tours"
+          "5 Nights stay in 3/4★ hotels (Double/Twin sharing)",
+          "Daily breakfast + meals as per itinerary",
+          "Private transportation for all sightseeings",
+          "Entrance fees for sightseeing attractions",
+          "Ha Long Bay Cruise with buffet lunch",
+          "Airport transfers (PVT basis)"
         ],
         itinerary: [
           {
             day: 1,
-            title: "Arrival in Hanoi",
-            description: "Welcome to Vietnam's capital",
+            title: "Arrival in Da Nang | Marble Mountain | Hoi An",
+            description: "Arrival at Da Nang and exploration of the central coast.",
             activities: [
-              "Airport transfer to hotel",
-              "Explore Hoan Kiem Lake and Ngoc Son Temple",
-              "Evening water puppet show",
-              "Dinner at Old Quarter"
+              "Meet guide at Da Nang Airport & transfer to hotel",
+              "Visit Marble Mountains - explore caves & pagodas",
+              "Basket boat ride at Bay Mau Coconut Forest",
+              "Tour Hoi An Ancient Town (Japanese Bridge, Riverside Market)",
+              "Dinner at a local restaurant"
             ]
           },
           {
             day: 2,
-            title: "Hanoi City Tour",
-            description: "Discover Hanoi's heritage",
+            title: "Ba Na Hills | Golden Bridge | Fantasy Park",
+            description: "A full day at the stunning Ba Na Hills mountain resort.",
             activities: [
-              "Visit Ho Chi Minh Mausoleum and Museum",
-              "Tour Temple of Literature",
-              "Explore Old Quarter streets",
-              "Cyclo ride through the city",
-              "Traditional Vietnamese dinner"
+              "World's longest cable car ride to Ba Na Hills",
+              "Walk the iconic Golden Bridge",
+              "Explore Le Jardin d'Amour Gardens & Linh Ung Pagoda",
+              "Free time for rides & fun at Fantasy Park",
+              "Evening visit to local silk village"
             ]
           },
           {
             day: 3,
-            title: "Ha Long Bay Cruise",
-            description: "UNESCO World Heritage wonder",
+            title: "Flight to Ha Noi | Half-Day City Tour",
+            description: "Travel to the capital city of Hanoi.",
             activities: [
-              "Drive to Ha Long Bay",
-              "Cruise through limestone karsts",
-              "Visit Sung Sot Cave",
-              "Kayaking and swimming",
-              "Return to Hanoi"
+              "Morning flight to Ha Noi & transfer to hotel",
+              "Visit Tran Quoc Pagoda & Temple of Literature",
+              "Explore Hoa Lo Prison Museum",
+              "Evening free to explore Old Quarter & Ta Hien nightlife"
             ]
           },
           {
             day: 4,
-            title: "Shopping & Departure",
-            description: "Final day in Hanoi",
+            title: "Ninh Binh Excursion (Hoa Lu & Tam Coc)",
+            description: "Experience the 'Ha Long Bay on Land'.",
             activities: [
-              "Shopping at Dong Xuan Market",
-              "Last-minute souvenir hunting",
-              "Airport transfer for departure"
+              "Drive to Ninh Binh to visit Hoa Lu Ancient Capital",
+              "Visit Dinh-Le temples",
+              "Boat ride through Tam Coc caves among limestone cliffs",
+              "Return to Ha Noi in the evening"
+            ]
+          },
+          {
+            day: 5,
+            title: "Ha Long Bay Day Cruise",
+            description: "A breathtaking cruise through Vietnam's most famous natural wonder.",
+            activities: [
+              "Transfer to Tuan Chau Harbor & board Cozy Bay Premium Cruise",
+              "Visit Surprising Cave & Titop Island (viewpoint)",
+              "Kayaking or bamboo boat ride at Luon Cave",
+              "Lunch onboard & sunset tea party"
+            ]
+          },
+          {
+            day: 6,
+            title: "Departure from Ha Noi",
+            description: "Final breakfast and airport transfer.",
+            activities: [
+              "Breakfast at hotel & check-out",
+              "Transfer to airport for return flight"
+            ]
+          }
+        ]
+      },
+      {
+        id: "vietnam-8d7n-phuquoc-hanoi-sapa",
+        duration: "8 Days 7 Nights (Phu Quoc, Hanoi & Sapa)",
+        nights: 7,
+        days: 8,
+        price: 40000,
+        image: "viet_adv_2.jpg",
+        inclusions: [
+          "Accommodation in Twin/Double Sharing",
+          "A/C Transport with Experienced Driver",
+          "Local English-speaking Guide (Where Mentioned)",
+          "Meals as Mentioned (Breakfast & Lunch)",
+          "Halong Bay Cruise (Shared) with Lunch",
+          "Entry Fees as per itinerary",
+          "1 Bottle of Water Per Person / Day"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival in Phu Quoc - Leisure Day",
+            description: "Welcome to the pearl island of Vietnam.",
+            activities: [
+              "Meet & Greet at Phu Quoc Airport & transfer to hotel",
+              "Free time to relax on the beach or explore nearby cafés",
+              "Overnight in Phu Quoc"
+            ]
+          },
+          {
+            day: 2,
+            title: "VinWonders & Grand World",
+            description: "Adventure at Vietnam's biggest theme park and the sleepless city.",
+            activities: [
+              "Full day at VinWonders Theme Park",
+              "Visit Grand World - 'Sleepless City'",
+              "Optional Venice-style boat ride",
+              "The Colors of Venice Show & Bamboo Legend structure"
+            ]
+          },
+          {
+            day: 3,
+            title: "4 Island Tour + Cable Car + Waterpark",
+            description: "Island hopping and world-class aerial views.",
+            activities: [
+              "Visit Pearl Farm, speedboat to Coral Park",
+              "Snorkeling at Mong Tay & Gam Ghi Islands",
+              "Vietnamese Lunch on island",
+              "Visit Thom Island & Aquatopia Waterpark",
+              "Return via 25-min Cable Car"
+            ]
+          },
+          {
+            day: 4,
+            title: "Flight to Hanoi + City Tour",
+            description: "Travel to the historic heart of Vietnam.",
+            activities: [
+              "Flight from Phu Quoc to Hanoi",
+              "Visit Ho Chi Minh Complex & One Pillar Pagoda",
+              "Tour President's Fish Pond & Stilt House",
+              "Explore Old Quarters (Hang Gai, Opera House, Silk Street)"
+            ]
+          },
+          {
+            day: 5,
+            title: "Ha Long Bay Cruise",
+            description: "A shared cruise experience in the bay.",
+            activities: [
+              "Transfer to Tuan Chau Harbor & board Cozy Bay Premium Cruise",
+              "Onboard Lunch & Visit Surprising Cave",
+              "Trek to the top of Titop Island",
+              "Kayaking or Bamboo Boat at Luon Cave",
+              "Sunset Party with Tea & Cakes"
+            ]
+          },
+          {
+            day: 6,
+            title: "Hanoi - Sapa",
+            description: "Journey into the northern mountains.",
+            activities: [
+              "Transfer to Sapa (5.5 hrs via expressway)",
+              "Check-in at hotel & free evening",
+              "Explore Sapa Night Market & Church"
+            ]
+          },
+          {
+            day: 7,
+            title: "Fansipan Mountain & Cat Cat Village",
+            description: "The roof of Indochina and cultural heritage.",
+            activities: [
+              "Cable Car to Fansipan Summit (3,143m)",
+              "Visit Pagodas and hike to the peak",
+              "Afternoon visit to Cat Cat Village (Black Hmong tribe)",
+              "Cultural dance show"
+            ]
+          },
+          {
+            day: 8,
+            title: "Sapa - Hanoi - Departure",
+            description: "Final return to Hanoi for your flight.",
+            activities: [
+              "Breakfast & checkout from Sapa",
+              "Transfer to Hanoi Airport for departure flight"
+            ]
+          }
+        ]
+      },
+      {
+        id: "vietnam-5d4n-phuquoc-adventure",
+        duration: "5 Days 4 Nights (Phu Quoc Adventure)",
+        nights: 4,
+        days: 5,
+        price: 45000,
+        image: "viet_adv_4.jpg",
+        inclusions: [
+          "Private airport pick-up & drop-off",
+          "Private transfers to attractions",
+          "Entry Tickets: VinWonders, Safari, Grand World",
+          "3 Island Tour by Speedboat (Group Tour)",
+          "Flycam video & photos session",
+          "Thom Island Cable Car & Aquatopia Water Park",
+          "South Island Guided Tour"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival in Phu Quoc & Grand World",
+            description: "Start your adventure at the vibrant Grand World.",
+            activities: [
+              "Private airport pick-up & transfer to Grand World",
+              "Free evening to explore night market & dining",
+              "Optional: Vietnamese Quintessence Show & Teddy Bear Museum"
+            ]
+          },
+          {
+            day: 2,
+            title: "VinWonders & Safari Experience",
+            description: "A day of wildlife and theme park thrills.",
+            activities: [
+              "Private transfer to VinWonders & Safari",
+              "Explore VinWonders Theme Park & Waterpark",
+              "Visit Vinpearl Safari open zoo & animal shows"
+            ]
+          },
+          {
+            day: 3,
+            title: "Three Island Adventure by Speedboat",
+            description: "Snorkeling and beach fun in the southern islands.",
+            activities: [
+              "Speedboat tour to Mong Tay, Gam Ghi & May Rut Islands",
+              "Snorkeling among coral reefs",
+              "Flycam video & photos session",
+              "Thom Island Cable Car ride",
+              "Access to Aquatopia Water Park"
+            ]
+          },
+          {
+            day: 4,
+            title: "South Island Exploration",
+            description: "Discover the history and industry of the island.",
+            activities: [
+              "Visit Pearl Farm & Sim Wine garden",
+              "Explore Phu Quoc Prison Museum & Ho Quoc Pagoda",
+              "Relax at Sao Beach",
+              "Chill at Sonato Beach Club",
+              "Photo stops at Sunset Town & Kiss Bridge"
+            ]
+          },
+          {
+            day: 5,
+            title: "Departure",
+            description: "Final breakfast and transfer.",
+            activities: [
+              "Breakfast at hotel & check-out",
+              "Private transfer to Phu Quoc Airport"
             ]
           }
         ]
@@ -1217,7 +1420,7 @@ export const destinations: Destination[] = [
     description: "The 'Abode of Clouds' features breathtaking waterfalls, living root bridges, pristine lakes, and some of the wettest places on Earth with stunning natural beauty.",
     image: "meghalaya_new.jpg",
     video: "hero-video.mp4",
-    featured: true,
+    featured: false,
     whyVisit: [
       "Trek to the famous Double Decker Living Root Bridge",
       "Witness Asia's cleanest village - Mawlynnong",
@@ -1448,6 +1651,1365 @@ export const destinations: Destination[] = [
             activities: [
               "Breakfast and check out",
               "Proceed to the airport for departure"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "kerala",
+    name: "Kerala",
+    country: "India",
+    description: "God's Own Country — where misty hill stations, serene backwaters, lush tea gardens, and golden beaches come together for the perfect escape. From the houseboat cruises of Alleppey to the wildlife of Thekkady, Kerala is nature at its finest.",
+    image: "kerala_main.jpg",
+    video: "kerala_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Cruise through the serene backwaters of Alleppey on a traditional houseboat",
+      "Explore the misty tea gardens and waterfalls of Munnar",
+      "Spot elephants and tigers at the Periyar Wildlife Sanctuary in Thekkady",
+      "Discover the adventure meadows and pine forests of Vagamon"
+    ],
+    adventureImages: [
+      "kerala_adv_1.jpg",
+      "kerala_adv_2.jpg",
+      "kerala_adv_3.jpg",
+      "kerala_adv_4.jpg",
+      "kerala_adv_5.jpg",
+      "kerala_adv_6.jpg"
+    ],
+    packages: [
+      {
+        id: "kerala-4d3n-south",
+        duration: "4 Days 3 Nights (South Kerala – Mist & Water)",
+        nights: 3,
+        days: 4,
+        price: 4500,
+        image: "kerala_adv_1.jpg",
+        inclusions: [
+          "Pickup & Drop at Ernakulam Railway Station",
+          "3 Breakfast, 1 Lunch & 1 Dinner",
+          "4 Days private cab for entire tour",
+          "2 Nights Hotel Accommodation at Munnar",
+          "1 Night Boathouse Accommodation Alleppey"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Cochin to Munnar",
+            description: "Arrive and transfer to the scenic hill station of Munnar.",
+            activities: [
+              "Pickup from Ernakulam Railway Station / Cochin Airport",
+              "Drive to Munnar – Nature Lover's Paradise",
+              "Check-in at hotel/resort",
+              "Leisure time enjoying the beauty of Munnar",
+              "Overnight stay at Munnar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Full Day Munnar Excursion",
+            description: "Discover all the grandeurs of this gorgeous hill station.",
+            activities: [
+              "Breakfast at hotel",
+              "Visit Echo Point, Gundala Lake & Elephant Arrival Point",
+              "Explore Mattuppetty Dam & Tata Tea Museum",
+              "Visit Eravikulam National Park & Blossom Hydel Park",
+              "Spice plantation & Anaimudi Peak",
+              "Overnight stay at Munnar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Munnar to Alleppey – Backwater Cruise",
+            description: "Drive through green valley and check into a traditional houseboat.",
+            activities: [
+              "Drive through scenic green valley to Alleppey",
+              "Check-in to Kerala houseboat – welcome drink",
+              "Backwater cruise through narrow canals & paddy fields",
+              "Enjoy the cool breeze and stunning backwater views",
+              "Night halt on houseboat"
+            ]
+          },
+          {
+            day: 4,
+            title: "Alleppey to Departure",
+            description: "Morning cruise, Cochin sightseeing and onward journey.",
+            activities: [
+              "Morning backwater day cruise",
+              "Breakfast & checkout from houseboat",
+              "Half-day sightseeing of Cochin",
+              "Drop at Airport / Railway Station"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-5d4n-munnar-vagamon-thekkady",
+        duration: "5 Days 4 Nights (Munnar, Vagamon & Thekkady)",
+        nights: 4,
+        days: 5,
+        price: 4500,
+        image: "kerala_adv_2.jpg",
+        inclusions: [
+          "Pickup & Drop at Ernakulam Railway Station",
+          "4 Breakfast & 1 Dinner",
+          "5 Days private cab for entire tour",
+          "4 Nights Accommodation at Munnar, Vagamon & Thekkady",
+          "Parking, Petrol & Toll fee"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Kochi to Munnar",
+            description: "Transfer to the misty highlands with waterfall stops en route.",
+            activities: [
+              "Pickup from Ernakulam Railway Station / Cochin Airport",
+              "Visit Cheeyappara & Valara Waterfalls en route",
+              "Check-in at Cloud Castle Resort (tea plantation property)",
+              "Visit Tea Museum & Pothamedu Viewpoint",
+              "Overnight stay in Munnar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Munnar Sightseeing",
+            description: "Explore the best of Munnar's wildlife and natural beauty.",
+            activities: [
+              "Eravikulam National Park – spot the Nilgiri Tahr",
+              "Mattupetty Dam & Echo Point",
+              "Kundala Lake – boating & kayaking",
+              "Leisure time for shopping",
+              "Overnight stay in Munnar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Munnar to Vagamon",
+            description: "Adventure and nature at the meadows of Vagamon.",
+            activities: [
+              "Drive to Vagamon (101 km, 3-4 hrs)",
+              "Check-in at The Grassmere Resort",
+              "Vagamon Meadows & Pine Forest",
+              "Vagamon Adventure Park activities",
+              "Jeep Safari – 3 viewpoints, 1 tunnel, 1 waterfall",
+              "Campfire & Dinner at resort"
+            ]
+          },
+          {
+            day: 4,
+            title: "Vagamon to Thekkady",
+            description: "Wildlife and martial arts in the jungle.",
+            activities: [
+              "Drive to Thekkady (49 km, 2 hrs)",
+              "Periyar Wildlife Sanctuary – Jungle Safari / Boat Ride",
+              "Elephant Ride & Bathing Experience",
+              "Kadathanadan Kalari – Martial Arts Show",
+              "Overnight stay in Thekkady"
+            ]
+          },
+          {
+            day: 5,
+            title: "Thekkady to Kochi – Departure",
+            description: "Drive back to Kochi and head home.",
+            activities: [
+              "Drive to Kochi (154 km, 5 hrs)",
+              "Drop at Airport / Railway Station"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-3d2n-munnar-kolukkumalai",
+        duration: "3 Days 2 Nights (Munnar & Kolukkumalai Safari)",
+        nights: 2,
+        days: 3,
+        price: 4500,
+        image: "kerala_adv_3.jpg",
+        inclusions: [
+          "Day 1 Hotel Accommodation at Munnar",
+          "Day 2 Tent Stay at campsite",
+          "Day 2 BBQ Dinner",
+          "Day 2 & 3 Breakfast",
+          "Day 2 Common Campfire",
+          "Day 3 Jeep Safari to Kolukkumalai",
+          "Private vehicle for entire tour",
+          "Pickup & Drop at Kochi",
+          "Petrol, Toll & Parking Fee"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Munnar Sightseeing",
+            description: "Pickup from Kochi and explore Munnar's iconic sites.",
+            activities: [
+              "Pickup from Kochi Railway Station / Airport",
+              "En route: Valara & Cheeyappara Waterfalls",
+              "Check-in at Munnar Castle hotel",
+              "Mattupetty Dam, Echo Point & Shooting Point",
+              "Rose Garden, Botanical Garden & Elephant Point",
+              "Overnight stay at Munnar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Suryanelli Camp & Sunset Trek",
+            description: "Drive to campsite with scenic stops and a guided sunset trek.",
+            activities: [
+              "Checkout from hotel after breakfast",
+              "En route: Idli Mountain View, Lockhart Gap, Periakanal Waterfalls & Anerangal Dam",
+              "Check-in to campsite",
+              "Evening tea & snacks",
+              "Guided Sunset Trek",
+              "Common Campfire & BBQ Dinner",
+              "Overnight in tents"
+            ]
+          },
+          {
+            day: 3,
+            title: "Kolukkumalai Sunrise Jeep Safari",
+            description: "World's highest organic tea estate at sunrise.",
+            activities: [
+              "4 AM Jeep Safari to Kolukkumalai – world's highest organic tea estate",
+              "Sunrise views from the peak",
+              "Breakfast at campsite",
+              "Checkout & departure"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-3d2n-varkala",
+        duration: "3 Days 2 Nights (Varkala – Beaches & Cliffs)",
+        nights: 2,
+        days: 3,
+        price: 4500,
+        image: "kerala_adv_4.jpg",
+        inclusions: [
+          "2 Nights Stay at Resort with Swimming Pool",
+          "2 Breakfast",
+          "Private vehicle for entire tour",
+          "Pickup & Drop at Varkala Railway Station",
+          "Petrol, Toll & Parking Fee"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Local Exploration",
+            description: "Arrive at Varkala and explore the coastal and cultural gems.",
+            activities: [
+              "Pickup from Varkala Railway Station",
+              "Jatayu Earth's Center – world's largest bird sculpture",
+              "Mangrove Forest eco-trail",
+              "Elephant Park – close encounter with elephants",
+              "Check-in at resort & relax by the beach",
+              "Overnight stay at Varkala"
+            ]
+          },
+          {
+            day: 2,
+            title: "Backwaters, Beaches & Cliffs",
+            description: "Island, aquarium, cliff views and a stunning sunset.",
+            activities: [
+              "Breakfast at resort",
+              "Golden Island – serene backwater island by boat",
+              "Varkala Aquarium",
+              "Varkala Cliff – scenic views, cafés & shopping",
+              "Black Beach – unique sand & stunning sunset",
+              "Overnight stay at Varkala"
+            ]
+          },
+          {
+            day: 3,
+            title: "Forts & Farewell",
+            description: "Historic landmarks and departure.",
+            activities: [
+              "Breakfast & check-out",
+              "Anchuthengu Fort – historic British-era fort by the sea",
+              "Varkala Lighthouse – breathtaking views",
+              "Shopping & local market exploration",
+              "Drop at Varkala Railway Station"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-3d2n-vagamon",
+        duration: "3 Days 2 Nights (Vagamon – Meadows & Adventure)",
+        nights: 2,
+        days: 3,
+        price: 4500,
+        image: "kerala_adv_5.jpg",
+        inclusions: [
+          "Pickup & Drop at Kottayam Bus Stand / Railway Station",
+          "3 Days Private Cab for Sightseeing",
+          "Toll Fees, Fuel Charges & Parking Fees",
+          "1 Night Accommodation in Resort with Swimming Pool at Vagamon",
+          "1 Night Tent Stay at Vagamon",
+          "Daily Breakfast & Dinner (2 Days)"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Vagamon",
+            description: "Transfer to Vagamon and soak in the serene meadows.",
+            activities: [
+              "Pickup from Kottayam Railway Station",
+              "Transfer to Vagamon",
+              "Check-in at Green Palace Residency Resort",
+              "Vagamon Meadows & Pine Forest",
+              "Dinner & overnight stay at resort"
+            ]
+          },
+          {
+            day: 2,
+            title: "Adventure Awaits!",
+            description: "Full day of activities, viewpoints and campfire.",
+            activities: [
+              "Breakfast at resort",
+              "Optional Jeep Safari (3-4 hrs)",
+              "3 Stunning Viewpoints: Lemongrass View, Idukki Dam View, Ulupunni Peak",
+              "Tunnel Exploration & Waterfall Bathing",
+              "Vagamon Adventure Park",
+              "Campfire (complimentary, weather dependent)",
+              "Dinner & overnight stay at campsite"
+            ]
+          },
+          {
+            day: 3,
+            title: "Spiritual Sites & Departure",
+            description: "Visit sacred hills and return home.",
+            activities: [
+              "Breakfast at campsite",
+              "Visit Kurisumala, Thangalpara & Murugan Mala",
+              "Drop at Kottayam Railway Station"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-3d2n-wayanad",
+        duration: "3 Days 2 Nights (Wayanad – Forests & Falls)",
+        nights: 2,
+        days: 3,
+        price: 4500,
+        image: "kerala_adv_6.jpg",
+        inclusions: [
+          "Pickup & Drop at Kozhikode Bus Stand / Railway Station",
+          "3 Days Private Cab for Sightseeing",
+          "Toll Fees, Fuel Charges & Parking Fees",
+          "1 Night Accommodation in Resort with Swimming Pool at Wayanad",
+          "1 Night Hilltop Tent Stay at Wayanad",
+          "Daily Breakfast & Dinner (2 Days)"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Nature's Welcome",
+            description: "Arrive and immerse in the natural wonders of Wayanad.",
+            activities: [
+              "Pickup from Kozhikode Railway Station",
+              "Thusharagiri Waterfalls",
+              "Lakkidi Viewpoint – breathtaking valley views",
+              "En Ooru Tribal Village – cultural immersion",
+              "Pookode Lake",
+              "Check-in at Besrauma Vythiri Resort",
+              "Dinner & overnight stay in Wayanad"
+            ]
+          },
+          {
+            day: 2,
+            title: "Explore & Experience",
+            description: "Dams, caves, and a unique glass bridge adventure.",
+            activities: [
+              "Breakfast at resort",
+              "Karapuzha Dam & Kanthanpara Waterfalls",
+              "Edakkal Caves – ancient history walk",
+              "900 Kandi Glass Bridge (Jeep charges extra)",
+              "Check-in at campsite",
+              "Campfire (weather permitting)",
+              "Dinner & tent stay"
+            ]
+          },
+          {
+            day: 3,
+            title: "The Grand Finale",
+            description: "Sunrise, dams, lakes and waterfalls before departure.",
+            activities: [
+              "Sunrise view from campsite",
+              "Breakfast & checkout",
+              "Banasura Sagar Dam – India's largest earthen dam",
+              "Karlad Lake",
+              "Meenmutty Waterfalls & Tea Plantation visit",
+              "Drop at Kozhikode Railway Station"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kerala-5d4n-munnar-thekkady-alleppey",
+        duration: "5 Days 4 Nights (Munnar, Thekkady & Alleppey)",
+        nights: 4,
+        days: 5,
+        price: 4500,
+        image: "kerala_main.jpg",
+        inclusions: [
+          "Pickup & Drop at Ernakulam Railway Station",
+          "4 Breakfast, 1 Lunch & 1 Dinner",
+          "5 Days private cab for entire tour",
+          "3 Nights Hotel Accommodation at Munnar & Thekkady",
+          "1 Night Boathouse Accommodation Alleppey"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Kochi to Munnar",
+            description: "Scenic drive with waterfalls and tea gardens en route.",
+            activities: [
+              "Pickup from Ernakulam Railway Station / Cochin Airport",
+              "Visit Cheeyappara & Valara Waterfalls en route",
+              "Check-in at tea plantation resort (Munnar Castle / Cloud Castle)",
+              "Visit Tea Museum & Pothamedu Viewpoint",
+              "Dinner & overnight stay in Munnar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Munnar Sightseeing",
+            description: "Explore the lush highlands of Munnar.",
+            activities: [
+              "Eravikulam National Park – Nilgiri Tahr spotting",
+              "Mattupetty Dam & Echo Point",
+              "Kundala Lake – Boating & Kayaking",
+              "Evening leisure shopping",
+              "Dinner & overnight stay in Munnar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Munnar to Thekkady",
+            description: "Wildlife, spice gardens and a cultural martial arts show.",
+            activities: [
+              "Drive to Thekkady via Lockhart Gap Viewpoint",
+              "Spice Plantation visit",
+              "Periyar Wildlife Sanctuary – Jungle Safari / Boat Ride",
+              "Elephant Ride & Bathing Experience",
+              "Kadathanadan Kalari – Martial Arts Show",
+              "Dinner & overnight stay in Thekkady"
+            ]
+          },
+          {
+            day: 4,
+            title: "Thekkady to Alleppey – Houseboat",
+            description: "Experience the magic of Kerala's iconic backwaters.",
+            activities: [
+              "Drive to Alleppey (140 km, 4 hrs)",
+              "Check-in to traditional houseboat",
+              "Backwater cruise through scenic canals",
+              "Kerala-style meals onboard",
+              "Sunset views from the boat",
+              "Dinner & overnight stay on houseboat"
+            ]
+          },
+          {
+            day: 5,
+            title: "Alleppey to Kochi – Departure",
+            description: "Morning cruise and final transfer to Kochi.",
+            activities: [
+              "Morning backwater cruise",
+              "Drive to Kochi (150 km, 4.5 hrs)",
+              "Drop at Airport / Railway Station"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "andaman",
+    name: "Andaman & Nicobar",
+    country: "India",
+    description: "A tropical paradise in the Bay of Bengal, Andaman & Nicobar Islands are famous for their pristine white sandy beaches, crystal-clear turquoise waters, and vibrant marine life. From the historic Cellular Jail to the world-renowned Radhanagar Beach, experience an unforgettable island getaway.",
+    image: "andaman_main.jpg",
+    video: "andaman_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Relax on Radhanagar Beach, rated as one of Asia's best beaches",
+      "Explore the historic Cellular Jail and its moving Light & Sound Show",
+      "Discover vibrant coral reefs and marine life at Elephant Beach",
+      "Experience the unique rock formations of the Natural Bridge on Neil Island"
+    ],
+    adventureImages: [
+      "andaman_adv_1.jpg",
+      "andaman_adv_2.jpg",
+      "andaman_adv_3.jpg",
+      "andaman_adv_4.jpg",
+      "andaman_adv_5.jpg"
+    ],
+    packages: [
+      {
+        id: "andaman-5n6d",
+        duration: "5 Nights 6 Days",
+        nights: 5,
+        days: 6,
+        price: 22000,
+        image: "andaman_adv_1.jpg",
+        inclusions: [
+          "Pick up & Drop at Veer Savarkar International Airport",
+          "Private luxury A/C car for transfers & sightseeing",
+          "Accommodation: 02 nights Port Blair, 02 nights Havelock, 01 night Neil Island",
+          "Daily Breakfast",
+          "Private cruise transfers to Havelock & Neil (round trip)",
+          "Entry permits, tickets, and boat transfers as per itinerary",
+          "Hotel GST included",
+          "Premium Package available at ₹25,000"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Port Blair City Tour",
+            description: "Welcome to Andaman and explore the historic landmarks of Port Blair.",
+            activities: [
+              "Airport pickup and hotel transfer",
+              "Visit Cellular Jail (Historic Monument)",
+              "Relax at Corbyn's Cove Beach",
+              "Light & Sound Show at Cellular Jail",
+              "Overnight stay in Port Blair"
+            ]
+          },
+          {
+            day: 2,
+            title: "Port Blair to Havelock Island",
+            description: "Cruise to Havelock and visit the world-famous Radhanagar Beach.",
+            activities: [
+              "Transfer to harbor for cruise to Havelock",
+              "Visit Kalapathar Beach (Golden sand & black rocks)",
+              "Visit Radhanagar Beach (One of Asia's best beaches)",
+              "Overnight stay in Havelock"
+            ]
+          },
+          {
+            day: 3,
+            title: "Elephant Beach Excursion",
+            description: "A day for snorkeling and underwater beauty at Elephant Beach.",
+            activities: [
+              "Speed boat to Elephant Beach",
+              "Snorkeling with vibrant coral reefs",
+              "Optional glass-bottom boat rides",
+              "Rest of the day at leisure",
+              "Overnight stay in Havelock"
+            ]
+          },
+          {
+            day: 4,
+            title: "Havelock to Neil Island",
+            description: "Transfer to Neil Island and witness a stunning sunset.",
+            activities: [
+              "Ferry to Neil Island (Shaheed Dweep)",
+              "Visit Bharatpur Beach (Swimming & water activities)",
+              "Visit Laxmanpur Beach (Sunset Point)",
+              "Overnight stay in Neil Island"
+            ]
+          },
+          {
+            day: 5,
+            title: "Neil Island to Port Blair",
+            description: "Return to Port Blair and discover local culture and crafts.",
+            activities: [
+              "Visit Natural Bridge (Rock formation)",
+              "Ferry back to Port Blair",
+              "Visit Anthropological Museum",
+              "Shopping at Sagarika Emporium",
+              "Overnight stay in Port Blair"
+            ]
+          },
+          {
+            day: 6,
+            title: "Departure",
+            description: "Bid farewell to the islands.",
+            activities: [
+              "Hotel check-out",
+              "Transfer to Port Blair Airport"
+            ]
+          }
+        ]
+      },
+      {
+        id: "andaman-3n4d",
+        duration: "3 Nights 4 Days",
+        nights: 3,
+        days: 4,
+        price: 15000,
+        image: "andaman_adv_2.jpg",
+        inclusions: [
+          "Pick up & Drop at Veer Savarkar International Airport",
+          "Private A/C car for transfers & sightseeing",
+          "Accommodation: 01 night Port Blair, 02 nights Havelock Island",
+          "Daily Breakfast",
+          "Private cruise transfers to Havelock (round trip)",
+          "Entry permits, tickets, and boat transfers as per itinerary",
+          "Hotel GST included",
+          "Premium Package available at ₹18,000"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Transfer to Havelock",
+            description: "Arrive at Port Blair and immediately cruise to the beautiful Havelock Island.",
+            activities: [
+              "Airport pickup and transfer to harbor",
+              "Board cruise to Havelock Island",
+              "Visit Radhanagar Beach (White sand & crystal waters)",
+              "Overnight stay at Havelock Island"
+            ]
+          },
+          {
+            day: 2,
+            title: "Elephant Beach Excursion",
+            description: "Explore the snorkeling paradise of Elephant Beach.",
+            activities: [
+              "Speed boat to Elephant Beach",
+              "Swimming and snorkeling at the pristine beach",
+              "Evening at leisure",
+              "Overnight stay at Havelock Island"
+            ]
+          },
+          {
+            day: 3,
+            title: "Havelock to Port Blair City Tour",
+            description: "Return to the capital and visit the historic Cellular Jail.",
+            activities: [
+              "Cruise back to Port Blair",
+              "Visit Cellular Jail & Anthropological Museum",
+              "Light & Sound Show at Cellular Jail",
+              "Shopping at Sagarika Emporium",
+              "Overnight stay at Port Blair"
+            ]
+          },
+          {
+            day: 4,
+            title: "Departure",
+            description: "Final sunrise and airport transfer.",
+            activities: [
+              "Breakfast and check-out",
+              "Transfer to Port Blair Airport / Harbour"
+            ]
+          }
+        ]
+      },
+      {
+        id: "andaman-4n5d",
+        duration: "4 Nights 5 Days",
+        nights: 4,
+        days: 5,
+        price: 20000,
+        image: "andaman_adv_3.jpg",
+        inclusions: [
+          "Pick up & Drop at Veer Savarkar International Airport",
+          "Private A/C car for transfers & sightseeing",
+          "Accommodation: 01 night Port Blair, 02 nights Havelock, 01 night Neil Island",
+          "Daily Breakfast (except day 1)",
+          "Private cruise transfers (Port Blair to Havelock to Neil)",
+          "Entry permits, tickets, and boat transfers as per itinerary",
+          "Hotel GST included",
+          "Premium Package available at ₹23,000"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Port Blair to Havelock",
+            description: "Welcome to Andaman and transfer to the stunning Havelock Island.",
+            activities: [
+              "Airport pickup and escort to harbor",
+              "Cruise to Havelock Island",
+              "Visit Radhanagar Beach (Grade A beach)",
+              "Overnight stay at Havelock"
+            ]
+          },
+          {
+            day: 2,
+            title: "Elephant Beach",
+            description: "A day at the most visited snorkeling destination.",
+            activities: [
+              "Speed boat to Elephant Beach",
+              "Secluded beach experience with clear blue waters",
+              "Complimentary snorkeling session",
+              "Overnight stay at Havelock"
+            ]
+          },
+          {
+            day: 3,
+            title: "Havelock to Neil Island",
+            description: "Transfer to the 'vegetable bowl' of Andaman.",
+            activities: [
+              "Ferry to Neil Island",
+              "Visit Bharatpur Beach & Laxmanpur Beach",
+              "Enjoy amazing sunset view",
+              "Overnight stay at Neil Island"
+            ]
+          },
+          {
+            day: 4,
+            title: "Neil to Port Blair & City Tour",
+            description: "Visit the Natural Bridge and historical monuments of Port Blair.",
+            activities: [
+              "Visit Natural Bridge (Rock formation)",
+              "Return journey to Port Blair by boat",
+              "Visit Cellular Jail & Anthropological Museum",
+              "Light and Sound Show at Cellular Jail",
+              "Shopping at Sagarika Emporium",
+              "Overnight stay at Port Blair"
+            ]
+          },
+          {
+            day: 5,
+            title: "Departure",
+            description: "Depart with wonderful and sweet memories.",
+            activities: [
+              "Breakfast and check-out",
+              "Transfer to Port Blair Airport / Harbour"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "himachal",
+    name: "Himachal Pradesh",
+    country: "India",
+    description: "The land of eternal snows, Himachal Pradesh is a paradise for nature lovers and adventure seekers alike. From the colonial charm of Shimla to the adventurous valleys of Manali, experience the Himalayas in all their glory.",
+    image: "himachal_main.webp",
+    video: "himachal_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Explore the scenic ridge and colonial architecture of Shimla",
+      "Adventure activities like paragliding and river rafting in Manali",
+      "Visit the spiritual abode of Dalai Lama in Dharamshala",
+      "Witness the stunning beauty of Solang Valley and Rohtang Pass"
+    ],
+    adventureImages: [
+      "him_adv_1.jpg",
+      "him_adv_2.jpg",
+      "him_adv_3.jpg",
+      "him_adv_4.jpg",
+      "him_adv_5.jpg"
+    ],
+    packages: [
+      {
+        id: "himachal-5n6d-shimla-manali",
+        duration: "5 Nights 6 Days (Shimla & Manali)",
+        nights: 5,
+        days: 6,
+        price: 18500,
+        image: "him_adv_1.jpg",
+        inclusions: [
+          "5 Nights stay in comfortable hotels",
+          "Daily Breakfast and Dinner",
+          "Private cab for all transfers and sightseeing",
+          "Sightseeing of Shimla, Kufri, Manali, and Solang Valley",
+          "Taxes and driver allowances"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival in Delhi | Transfer to Shimla",
+            description: "Journey from the plains to the queen of hills.",
+            activities: [
+              "Pickup from Delhi Airport/Station",
+              "Drive to Shimla (approx. 8 hours)",
+              "Check-in at Shimla hotel",
+              "Evening at leisure on Mall Road",
+              "Overnight stay in Shimla"
+            ]
+          },
+          {
+            day: 2,
+            title: "Shimla & Kufri Exploration",
+            description: "Discover the scenic beauty and colonial heritage.",
+            activities: [
+              "Visit Kufri - Himalayan Nature Park & Fun World",
+              "Visit Jakhoo Temple and Ridge",
+              "Walk through Christ Church and Gaiety Theatre",
+              "Shopping at Lakkar Bazaar",
+              "Overnight stay in Shimla"
+            ]
+          },
+          {
+            day: 3,
+            title: "Shimla to Manali via Kullu",
+            description: "A scenic drive along the Beas River.",
+            activities: [
+              "Breakfast and checkout from Shimla",
+              "Drive to Manali (approx. 7-8 hours)",
+              "Enroute visit Kullu Valley and Shawl Factory",
+              "Enjoy river rafting in Beas River (optional)",
+              "Overnight stay in Manali"
+            ]
+          },
+          {
+            day: 4,
+            title: "Manali Local Sightseeing",
+            description: "Explore the cultural and natural highlights of Manali.",
+            activities: [
+              "Visit Hadimba Devi Temple",
+              "Explore Vashisht Village and hot springs",
+              "Visit Tibetan Monastery",
+              "Evening stroll at Mall Road and Old Manali",
+              "Overnight stay in Manali"
+            ]
+          },
+          {
+            day: 5,
+            title: "Solang Valley / Snow Point",
+            description: "Adventure and snow in the high mountains.",
+            activities: [
+              "Visit Solang Valley for paragliding and zorbing",
+              "Visit Atal Tunnel and Sissu (subject to permit/weather)",
+              "Enjoy snow activities",
+              "Return to Manali",
+              "Overnight stay in Manali"
+            ]
+          },
+          {
+            day: 6,
+            title: "Manali to Delhi | Departure",
+            description: "Bid farewell to the mountains.",
+            activities: [
+              "Breakfast and checkout",
+              "Drive back to Delhi",
+              "Drop at Delhi Airport/Station for departure"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "kashmir",
+    name: "Kashmir",
+    country: "India",
+    description: "Experience the 'Paradise on Earth' with its serene lakes, snow-capped mountains, and lush Mughal gardens. From the tranquil Dal Lake to the adventurous slopes of Gulmarg, Kashmir offers a soul-stirring escape into nature.",
+    image: "kashmir_main.jpg",
+    video: "kashmir_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Stay in traditional houseboats on the world-famous Dal Lake",
+      "Witness the stunning beauty of Sonamarg and the Thajiwas Glacier",
+      "Explore the vibrant Mughal Gardens and historical landmarks of Srinagar",
+      "Enjoy the thrill of the Gulmarg Gondola, one of the highest in the world"
+    ],
+    adventureImages: [
+      "kas_adv_1.jpg",
+      "kas_adv_2.jpg",
+      "kas_adv_3.jpg",
+      "kas_adv_4.jpg",
+      "kas_adv_5.jpg",
+      "kas_adv_6.jpg"
+    ],
+    packages: [
+      {
+        id: "kashmir-4n5d-basic",
+        duration: "4 Nights 5 Days (Basic)",
+        nights: 4,
+        days: 5,
+        price: 16000,
+        image: "kas_adv_1.jpg",
+        inclusions: [
+          "4 Nights Stay (City Residency / Sri Mazda / Country Side)",
+          "Daily Breakfast & Dinner",
+          "Airport Pickup & Drop",
+          "5 Days Individual Cab for Sightseeing",
+          "1 hr Complimentary Shikara Ride",
+          "24/7 Ground Support"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival Srinagar | Local Sightseeing",
+            description: "Welcome to Srinagar! Begin your journey with a tour of the famous Mughal Gardens.",
+            activities: [
+              "Airport Pickup and transfer to hotel",
+              "Visit Shankaracharya Temple overlooking Dal Lake",
+              "Explore Mughal Gardens: Nishat Garden & Shalimar Garden",
+              "Visit Pari Mahal and Chashme Shahi",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Sonamarg - The Meadow of Gold",
+            description: "Explore the stunning landscapes of Sonamarg and the Thajiwas Glacier.",
+            activities: [
+              "Drive to Sonamarg (approx. 3 hours)",
+              "Visit Thajiwas Glacier (Pony/Taxi ride optional)",
+              "Evening return to Srinagar",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Pahalgam - The Valley of Shepherds",
+            description: "Visit the film-famous valleys of Pahalgam and the saffron fields.",
+            activities: [
+              "Enroute visit Saffron Fields and Cricket Bat Factories",
+              "Explore Aru Valley, Betaab Valley, and Chandanwari",
+              "Visit Baisaran Valley (Mini Switzerland) by pony",
+              "Evening at leisure and overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 4,
+            title: "Gulmarg - The Meadow of Flowers",
+            description: "A day for snow and the world-famous Gondola ride.",
+            activities: [
+              "Full day trip to Gulmarg",
+              "Optional Gondola ride (highest golf course)",
+              "Explore the snowy slopes and ski resort",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 5,
+            title: "Shikara Ride & Departure",
+            description: "Final sunrise on Dal Lake before you head home.",
+            activities: [
+              "1 hr Shikara Ride on Dal Lake (Floating Gardens & Inner Markets)",
+              "Scenic view of Zabarwan Mountains",
+              "Transfer to Srinagar Airport for departure"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kashmir-4n5d-economy",
+        duration: "4 Nights 5 Days (Economy)",
+        nights: 4,
+        days: 5,
+        price: 18500,
+        image: "kas_adv_2.jpg",
+        inclusions: [
+          "4 Nights Stay (Shahzir villa / Palazzo Zaffrino / Siddiq palace deluxe)",
+          "Daily Breakfast & Dinner",
+          "Airport Pickup & Drop",
+          "5 Days Individual Cab for Sightseeing",
+          "1 hr Complimentary Shikara Ride",
+          "24/7 Ground Support"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival Srinagar | Local Sightseeing",
+            description: "Welcome to Srinagar! Begin your journey with a tour of the famous Mughal Gardens.",
+            activities: [
+              "Airport Pickup and transfer to hotel",
+              "Visit Shankaracharya Temple overlooking Dal Lake",
+              "Explore Mughal Gardens: Nishat Garden & Shalimar Garden",
+              "Visit Pari Mahal and Chashme Shahi",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Sonamarg - The Meadow of Gold",
+            description: "Explore the stunning landscapes of Sonamarg and the Thajiwas Glacier.",
+            activities: [
+              "Drive to Sonamarg (approx. 3 hours)",
+              "Visit Thajiwas Glacier (Pony/Taxi ride optional)",
+              "Evening return to Srinagar",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Pahalgam - The Valley of Shepherds",
+            description: "Visit the film-famous valleys of Pahalgam and the saffron fields.",
+            activities: [
+              "Enroute visit Saffron Fields and Cricket Bat Factories",
+              "Explore Aru Valley, Betaab Valley, and Chandanwari",
+              "Visit Baisaran Valley (Mini Switzerland) by pony",
+              "Evening at leisure and overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 4,
+            title: "Gulmarg - The Meadow of Flowers",
+            description: "A day for snow and the world-famous Gondola ride.",
+            activities: [
+              "Full day trip to Gulmarg",
+              "Optional Gondola ride (highest golf course)",
+              "Explore the snowy slopes and ski resort",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 5,
+            title: "Shikara Ride & Departure",
+            description: "Final sunrise on Dal Lake before you head home.",
+            activities: [
+              "1 hr Shikara Ride on Dal Lake (Floating Gardens & Inner Markets)",
+              "Scenic view of Zabarwan Mountains",
+              "Transfer to Srinagar Airport for departure"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kashmir-4n5d-premium",
+        duration: "4 Nights 5 Days (Premium)",
+        nights: 4,
+        days: 5,
+        price: 20000,
+        image: "kas_adv_3.jpg",
+        inclusions: [
+          "4 Nights Stay (Siddiq palace Super deluxe / Sahara grand hills / GM Castle)",
+          "Daily Breakfast & Dinner",
+          "Airport Pickup & Drop",
+          "5 Days Individual Cab for Sightseeing",
+          "1 hr Complimentary Shikara Ride",
+          "24/7 Ground Support"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival Srinagar | Local Sightseeing",
+            description: "Welcome to Srinagar! Begin your journey with a tour of the famous Mughal Gardens.",
+            activities: [
+              "Airport Pickup and transfer to hotel",
+              "Visit Shankaracharya Temple overlooking Dal Lake",
+              "Explore Mughal Gardens: Nishat Garden & Shalimar Garden",
+              "Visit Pari Mahal and Chashme Shahi",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Sonamarg - The Meadow of Gold",
+            description: "Explore the stunning landscapes of Sonamarg and the Thajiwas Glacier.",
+            activities: [
+              "Drive to Sonamarg (approx. 3 hours)",
+              "Visit Thajiwas Glacier (Pony/Taxi ride optional)",
+              "Evening return to Srinagar",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Pahalgam - The Valley of Shepherds",
+            description: "Visit the film-famous valleys of Pahalgam and the saffron fields.",
+            activities: [
+              "Enroute visit Saffron Fields and Cricket Bat Factories",
+              "Explore Aru Valley, Betaab Valley, and Chandanwari",
+              "Visit Baisaran Valley (Mini Switzerland) by pony",
+              "Evening at leisure and overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 4,
+            title: "Gulmarg - The Meadow of Flowers",
+            description: "A day for snow and the world-famous Gondola ride.",
+            activities: [
+              "Full day trip to Gulmarg",
+              "Optional Gondola ride (highest golf course)",
+              "Explore the snowy slopes and ski resort",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 5,
+            title: "Shikara Ride & Departure",
+            description: "Final sunrise on Dal Lake before you head home.",
+            activities: [
+              "1 hr Shikara Ride on Dal Lake (Floating Gardens & Inner Markets)",
+              "Scenic view of Zabarwan Mountains",
+              "Transfer to Srinagar Airport for departure"
+            ]
+          }
+        ]
+      },
+      {
+        id: "kashmir-4n5d-luxury",
+        duration: "4 Nights 5 Days (Luxury)",
+        nights: 4,
+        days: 5,
+        price: 23000,
+        image: "kas_adv_4.jpg",
+        inclusions: [
+          "4 Nights Stay (Stay villa / Karam gold / The Azara)",
+          "Daily Breakfast & Dinner",
+          "Airport Pickup & Drop",
+          "5 Days Individual Cab for Sightseeing",
+          "1 hr Complimentary Shikara Ride",
+          "24/7 Ground Support"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival Srinagar | Local Sightseeing",
+            description: "Welcome to Srinagar! Begin your journey with a tour of the famous Mughal Gardens.",
+            activities: [
+              "Airport Pickup and transfer to hotel",
+              "Visit Shankaracharya Temple overlooking Dal Lake",
+              "Explore Mughal Gardens: Nishat Garden & Shalimar Garden",
+              "Visit Pari Mahal and Chashme Shahi",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 2,
+            title: "Sonamarg - The Meadow of Gold",
+            description: "Explore the stunning landscapes of Sonamarg and the Thajiwas Glacier.",
+            activities: [
+              "Drive to Sonamarg (approx. 3 hours)",
+              "Visit Thajiwas Glacier (Pony/Taxi ride optional)",
+              "Evening return to Srinagar",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Pahalgam - The Valley of Shepherds",
+            description: "Visit the film-famous valleys of Pahalgam and the saffron fields.",
+            activities: [
+              "Enroute visit Saffron Fields and Cricket Bat Factories",
+              "Explore Aru Valley, Betaab Valley, and Chandanwari",
+              "Visit Baisaran Valley (Mini Switzerland) by pony",
+              "Evening at leisure and overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 4,
+            title: "Gulmarg - The Meadow of Flowers",
+            description: "A day for snow and the world-famous Gondola ride.",
+            activities: [
+              "Full day trip to Gulmarg",
+              "Optional Gondola ride (highest golf course)",
+              "Explore the snowy slopes and ski resort",
+              "Overnight stay in Srinagar"
+            ]
+          },
+          {
+            day: 5,
+            title: "Shikara Ride & Departure",
+            description: "Final sunrise on Dal Lake before you head home.",
+            activities: [
+              "1 hr Shikara Ride on Dal Lake (Floating Gardens & Inner Markets)",
+              "Scenic view of Zabarwan Mountains",
+              "Transfer to Srinagar Airport for departure"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "goa",
+    name: "Goa",
+    country: "India",
+    description: "The land of sun, sand, and serenity. Goa is a tropical paradise where vibrant nightlife meets tranquil beaches and colonial history. Experience the thrill of North Goa and the peaceful soul of South Goa.",
+    image: "goa_main.jpg",
+    video: "goa_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Relax on the pristine beaches of Candolim, Calangute, and Baga",
+      "Explore the historic Old Goa Churches and colonial heritage",
+      "Enjoy the vibrant nightlife and sunset views at Chapora Fort",
+      "Witness the stunning marine life with dolphin spotting trips"
+    ],
+    adventureImages: [
+      "goa_adv_1.jpg",
+      "goa_adv_2.jpg",
+      "goa_adv_3.jpg",
+      "goa_adv_4.jpg"
+    ],
+    packages: [
+      {
+        id: "goa-2n3d-basic",
+        duration: "2 Nights 3 Days (North & South Goa)",
+        nights: 2,
+        days: 3,
+        price: 9500,
+        image: "goa_adv_1.jpg",
+        inclusions: [
+          "2 Nights Stay in 3★ AC Resort with Swimming Pool",
+          "Daily Breakfast",
+          "Private Vehicle for North & South Goa Sightseeing",
+          "Pickup & Drop by Private Car (Airport/Railway Station)",
+          "24/7 Support from Local Team"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival + North Goa Sightseeing",
+            description: "Welcome to Goa! Kick off your trip with the vibrant beaches and forts of the North.",
+            activities: [
+              "Airport Pickup and transfer to hotel",
+              "Visit Fort Aguada and Candolim Beach",
+              "Explore Calangute, Baga, and Anjuna Beach",
+              "Sunset views at Vagator Beach & Chapora Fort",
+              "Overnight stay at Resort"
+            ]
+          },
+          {
+            day: 2,
+            title: "South Goa Serenity",
+            description: "Discover the spiritual and historical heart of Goa.",
+            activities: [
+              "Visit Old Goa Churches and Wax Museum",
+              "Explore Miramar Beach and Dona Paula Jetty",
+              "Visit Mangueshi & Shantadurga Temples",
+              "Optional Mandovi River Cruise (Evening)",
+              "Overnight stay at Resort"
+            ]
+          },
+          {
+            day: 3,
+            title: "Leisure & Departure",
+            description: "Enjoy your final morning in paradise.",
+            activities: [
+              "Breakfast and morning at leisure",
+              "Transfer to Goa International Airport for departure"
+            ]
+          }
+        ]
+      },
+      {
+        id: "goa-3n4d-premium",
+        duration: "3 Nights 4 Days (Extended Goa Experience)",
+        nights: 3,
+        days: 4,
+        price: 14000,
+        image: "goa_adv_2.jpg",
+        inclusions: [
+          "3 Nights Accommodation in 3 Star AC Resort with Swimming Pool",
+          "Daily Breakfast",
+          "Pickup & Drop by Private Car (Airport/Railway Station)",
+          "Cab for 1 Day North Goa & 1 Day South Goa Sightseeing",
+          "24/7 Guidance by Local Team"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival & Leisure",
+            description: "Arrive in Goa and settle into your resort for a relaxing start.",
+            activities: [
+              "Airport Pickup and check-in",
+              "Evening at leisure to explore nearby beaches",
+              "Overnight stay at Resort"
+            ]
+          },
+          {
+            day: 2,
+            title: "North Goa Highlights",
+            description: "Dolphins, forts, and the best of North Goa's coastline.",
+            activities: [
+              "Dolphin Trip (optional)",
+              "Visit Fort Aguada, Candolim, and Calangute Beach",
+              "Explore Baga and Anjuna Beach",
+              "Vagator Beach and Chapora Fort",
+              "Overnight stay at Resort"
+            ]
+          },
+          {
+            day: 3,
+            title: "South Goa Cultural Tour",
+            description: "Churches, temples, and the scenic Mandovi river.",
+            activities: [
+              "Tour of Old Goa Churches and Wax Museum",
+              "Visit Miramar Beach and Dona Paula Jetty",
+              "Visit Sahakari Spice Farm and Mangueshi Temple",
+              "Panjim Church and Local Market visit",
+              "Evening Boat Cruise at Mandovi River",
+              "Overnight stay at Resort"
+            ]
+          },
+          {
+            day: 4,
+            title: "Departure",
+            description: "Final morning for last-minute shopping or beach relaxation.",
+            activities: [
+              "Breakfast and morning leisure",
+              "Drop at Goa Airport for departure"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "karnataka",
+    name: "Karnataka",
+    country: "India",
+    description: "A land of diverse landscapes and rich heritage. From the royal palaces of Mysore to the misty hills of Coorg, Karnataka offers a perfect blend of culture, nature, and adventure.",
+    image: "kar_main.jpg",
+    video: "kar_video.mp4",
+    featured: true,
+    whyVisit: [
+      "Explore the majestic Mysore Palace and its royal heritage",
+      "Relax in the misty coffee estates of Coorg",
+      "Visit the serene Namdroling Monastery (Golden Temple)",
+      "Interact with elephants at Dubare Elephant Camp"
+    ],
+    adventureImages: [
+      "kar_adv_1.jpg",
+      "kar_adv_2.jpg",
+      "kar_adv_3.jpg",
+      "kar_adv_4.jpg",
+      "kar_adv_5.jpg",
+      "kar_adv_6.jpg"
+    ],
+    packages: [
+      {
+        id: "kar-2n3d-coorg",
+        duration: "2 Nights 3 Days (Mysuru & Coorg)",
+        nights: 2,
+        days: 3,
+        price: 6500,
+        image: "kar_adv_1.jpg",
+        inclusions: [
+          "2 Nights stay at Coorg Misty Garden",
+          "Daily Breakfasts",
+          "Private vehicle for 3 days sightseeing",
+          "Pickup & Drop from Mysore Railway Station",
+          "24/7 Support from Local Team"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Mysuru to Coorg | Arrival",
+            description: "Journey from the royal city of Mysore to the misty hills of Coorg.",
+            activities: [
+              "Pickup from Mysuru and drive to Coorg",
+              "Visit Golden Temple (Namdroling Monastery)",
+              "Walk through Nisargadhama bamboo groves",
+              "Experience Dubare Elephant Camp",
+              "Sunset at Harangi Dam",
+              "Overnight stay in Coorg"
+            ]
+          },
+          {
+            day: 2,
+            title: "Coorg Sightseeing",
+            description: "Explore the natural and cultural highlights of Coorg.",
+            activities: [
+              "Trek to Abbey Falls",
+              "Visit Coorg Museum",
+              "Sunset at Raja's Seat",
+              "Explore Omkareshwara Temple",
+              "Overnight stay in Coorg"
+            ]
+          },
+          {
+            day: 3,
+            title: "Mysore Tour | Departure",
+            description: "Final day exploring the grandeur of Mysore before departure.",
+            activities: [
+              "Breakfast and check-out from Coorg",
+              "Tour the majestic Mysore Palace",
+              "Explore Mysore Zoo",
+              "Seek blessings at Chamundi Hills Temple",
+              "Drop-off at Mysore Railway Station"
             ]
           }
         ]

@@ -110,15 +110,18 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         try {
             // Explicitly clear old versions to force refresh
-            localStorage.removeItem("destinations_v16");
-            localStorage.removeItem("destinations_v15");
+            Object.keys(localStorage).forEach(key => {
+                if (key.startsWith("destinations_v")) {
+                    localStorage.removeItem(key);
+                }
+            });
 
             const storedAuth = localStorage.getItem("isAdminAuthenticated");
             if (storedAuth === "true") {
                 setIsAuthenticated(true);
             }
 
-            const storedDestinations = localStorage.getItem("destinations_v19");
+            const storedDestinations = localStorage.getItem("destinations_v28");
             if (storedDestinations) {
                 setDestinations(JSON.parse(storedDestinations));
             } else {
@@ -147,7 +150,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     // Save destinations to localStorage whenever they change
     useEffect(() => {
         if (destinations.length > 0) {
-            localStorage.setItem("destinations_v19", JSON.stringify(destinations));
+            localStorage.setItem("destinations_v28", JSON.stringify(destinations));
         }
     }, [destinations]);
 

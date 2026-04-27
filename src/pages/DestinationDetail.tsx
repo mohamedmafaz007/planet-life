@@ -40,7 +40,12 @@ import slAdv1 from "@/assets/sl_adv_1.jpg";
 import slAdv2 from "@/assets/sl_adv_2.jpg";
 import slAdv3 from "@/assets/sl_adv_3.jpg";
 import slAdv4 from "@/assets/sl_adv_4.jpg";
-import vietnamImg from "@/assets/vietnam_new.jpg";
+import vietnamImg from "@/assets/vietnam/vietnam_main.jpg";
+import vietnamVideo from "@/assets/vietnam/vietnam_video.mp4";
+import vietAdv1 from "@/assets/vietnam/viet_adv_1.jpg";
+import vietAdv2 from "@/assets/vietnam/viet_adv_2.jpg";
+import vietAdv3 from "@/assets/vietnam/viet_adv_3.jpg";
+import vietAdv4 from "@/assets/vietnam/viet_adv_4.jpg";
 import dubaiImg from "@/assets/dubai_new.jpg";
 import dubaiVideoNew from "@/assets/dubai_video_new.mp4";
 import dubaiAdv1 from "@/assets/dubai_adv_1.jpg";
@@ -62,6 +67,15 @@ import singAdv3 from "@/assets/sing_adv_3.jpg";
 import singAdv4 from "@/assets/sing_adv_4.jpg";
 import singAdv5 from "@/assets/sing_adv_5.jpg";
 import meghalayaImg from "@/assets/meghalaya_new.jpg";
+import keralaImg from "@/assets/kerala/kerala_main.jpg";
+import keralaVideo from "@/assets/kerala/kerala_video.mp4";
+import keralaAdv1 from "@/assets/kerala/kerala_adv_1.jpg";
+import keralaAdv2 from "@/assets/kerala/kerala_adv_2.jpg";
+import keralaAdv3 from "@/assets/kerala/kerala_adv_3.jpg";
+import keralaAdv4 from "@/assets/kerala/kerala_adv_4.jpg";
+import keralaAdv5 from "@/assets/kerala/kerala_adv_5.jpg";
+import keralaAdv6 from "@/assets/kerala/kerala_adv_6.jpg";
+// Removed direct imports of Andaman assets to troubleshoot
 
 const imageMap: Record<string, string> = {
   "malaysia_main_new.jpg": malaysiaImg,
@@ -90,7 +104,12 @@ const imageMap: Record<string, string> = {
   "sl_adv_2.jpg": slAdv2,
   "sl_adv_3.jpg": slAdv3,
   "sl_adv_4.jpg": slAdv4,
-  "vietnam_new.jpg": vietnamImg,
+  "vietnam_main.jpg": vietnamImg,
+  "vietnam_video.mp4": vietnamVideo,
+  "viet_adv_1.jpg": vietAdv1,
+  "viet_adv_2.jpg": vietAdv2,
+  "viet_adv_3.jpg": vietAdv3,
+  "viet_adv_4.jpg": vietAdv4,
   "dubai_new.jpg": dubaiImg,
   "dubai_video_new.mp4": dubaiVideoNew,
   "dubai_adv_1.jpg": dubaiAdv1,
@@ -111,7 +130,52 @@ const imageMap: Record<string, string> = {
   "sing_adv_3.jpg": singAdv3,
   "sing_adv_4.jpg": singAdv4,
   "sing_adv_5.jpg": singAdv5,
-  "meghalaya_new.jpg": meghalayaImg
+  "meghalaya_new.jpg": meghalayaImg,
+  "kerala_main.jpg": keralaImg,
+  "kerala_video.mp4": keralaVideo,
+  "kerala_adv_1.jpg": keralaAdv1,
+  "kerala_adv_2.jpg": keralaAdv2,
+  "kerala_adv_3.jpg": keralaAdv3,
+  "kerala_adv_4.jpg": keralaAdv4,
+  "kerala_adv_5.jpg": keralaAdv5,
+  "kerala_adv_6.jpg": keralaAdv6,
+  "andaman_main.jpg": "/src/assets/andaman/andaman_main.jpg",
+  "andaman_video.mp4": "/src/assets/andaman/andaman_video.mp4",
+  "andaman_adv_1.jpg": "/src/assets/andaman/andaman_adv_1.jpg",
+  "andaman_adv_2.jpg": "/src/assets/andaman/andaman_adv_2.jpg",
+  "andaman_adv_3.jpg": "/src/assets/andaman/andaman_adv_3.jpg",
+  "andaman_adv_4.jpg": "/src/assets/andaman/andaman_adv_4.jpg",
+  "andaman_adv_5.jpg": "/src/assets/andaman/andaman_adv_5.jpg",
+  "himachal_main.webp": "/src/assets/himachal/himachal_main.webp",
+  "himachal_video.mp4": "/src/assets/himachal/himachal_video.mp4",
+  "him_adv_1.jpg": "/src/assets/himachal/him_adv_1.jpg",
+  "him_adv_2.jpg": "/src/assets/himachal/him_adv_2.jpg",
+  "him_adv_3.jpg": "/src/assets/himachal/him_adv_3.jpg",
+  "him_adv_4.jpg": "/src/assets/himachal/him_adv_4.jpg",
+  "him_adv_5.jpg": "/src/assets/himachal/him_adv_5.jpg",
+  "kashmir_main.jpg": "/src/assets/kashmir/kashmir_main.jpg",
+  "kashmir_video.mp4": "/src/assets/kashmir/kashmir_video.mp4",
+  "kas_adv_1.jpg": "/src/assets/kashmir/kas_adv_1.jpg",
+  "kas_adv_2.jpg": "/src/assets/kashmir/kas_adv_2.jpg",
+  "kas_adv_3.jpg": "/src/assets/kashmir/kas_adv_3.jpg",
+  "kas_adv_4.jpg": "/src/assets/kashmir/kas_adv_4.jpg",
+  "kas_adv_5.jpg": "/src/assets/kashmir/kas_adv_5.jpg",
+  "kas_adv_6.jpg": "/src/assets/kashmir/kas_adv_6.jpg",
+  "goa_main.jpg": "/src/assets/goa/goa_main.jpg",
+  "goa_video.mp4": "/src/assets/goa/goa_video.mp4",
+  "goa_adv_1.jpg": "/src/assets/goa/goa_adv_1.jpg",
+  "goa_adv_2.jpg": "/src/assets/goa/goa_adv_2.jpg",
+  "goa_adv_3.jpg": "/src/assets/goa/goa_adv_3.jpg",
+  "goa_adv_4.jpg": "/src/assets/goa/goa_adv_4.jpg",
+  "kar_main.jpg": "/src/assets/karnataka/kar_main.jpg",
+  "kar_video.mp4": "/src/assets/karnataka/kar_video.mp4",
+  "kar_adv_1.jpg": "/src/assets/karnataka/kar_adv_1.jpg",
+  "kar_adv_2.jpg": "/src/assets/karnataka/kar_adv_2.jpg",
+  "kar_adv_3.jpg": "/src/assets/karnataka/kar_adv_3.jpg",
+  "kar_adv_4.jpg": "/src/assets/karnataka/kar_adv_4.jpg",
+  "kar_adv_5.jpg": "/src/assets/karnataka/kar_adv_5.jpg",
+  "kar_adv_6.jpg": "/src/assets/karnataka/kar_adv_6.jpg",
+  "malaysia_new_front.jpg": "/src/assets/malaysia_new_front.jpg",
 };
 
 const DestinationDetail = () => {
