@@ -261,12 +261,24 @@ export const imageMap: Record<string, string> = {
   "kar_adventure_4.jpg": karAdv4,
   "kar_adventure_5.jpg": karAdv5,
   "kar_adventure_6.jpg": karAdv6,
+
+  // ── Legacy aliases (old names that may exist in cached localStorage) ──
+  "malaysia_new_front.jpg": malaysiaFrontImg,
+  "malaysia_new.jpg": malaysiaImg,
 };
 
 /**
  * Resolves a filename key to its Vite-processed asset URL.
+ * Handles both clean keys ("file.jpg") and legacy full paths
+ * ("/src/assets/file.jpg") that may linger in cached data.
  * Falls back to the raw string if not found in the map.
  */
 export const getImageSrc = (img: string): string => {
-  return imageMap[img] || img;
+  // Direct lookup first (fast path)
+  if (imageMap[img]) return imageMap[img];
+
+  // If the key looks like a path (e.g. "/src/assets/foo.jpg"), extract
+  // just the filename and try again.  This covers stale localStorage data.
+  const basename = img.includes("/") ? img.split("/").pop()! : img;
+  return imageMap[basename] || img;
 };

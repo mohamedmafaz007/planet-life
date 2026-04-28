@@ -109,9 +109,9 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     // Load data from localStorage on mount
     useEffect(() => {
         try {
-            // Explicitly clear old versions to force refresh
+            // Explicitly clear ALL old versions to force refresh
             Object.keys(localStorage).forEach(key => {
-                if (key.startsWith("destinations_v")) {
+                if (key.startsWith("destinations_v") && key !== "destinations_v31") {
                     localStorage.removeItem(key);
                 }
             });
@@ -121,7 +121,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
                 setIsAuthenticated(true);
             }
 
-            const storedDestinations = localStorage.getItem("destinations_v30");
+            const storedDestinations = localStorage.getItem("destinations_v31");
             if (storedDestinations) {
                 setDestinations(JSON.parse(storedDestinations));
             } else {
@@ -150,7 +150,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     // Save destinations to localStorage whenever they change
     useEffect(() => {
         if (destinations.length > 0) {
-            localStorage.setItem("destinations_v30", JSON.stringify(destinations));
+            localStorage.setItem("destinations_v31", JSON.stringify(destinations));
         }
     }, [destinations]);
 
