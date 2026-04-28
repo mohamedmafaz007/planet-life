@@ -53,23 +53,23 @@ const Navbar = () => {
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-red-600 shadow-xl ${isScrolled ? "py-2" : "py-4"
                 }`}
         >
-            <div className="container mx-auto px-4 flex justify-between items-center">
+            <div className="container mx-auto px-3 mobile:px-4 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="flex items-center space-x-2">
                     <img
                         src="/planet-life-logo.jpg"
                         alt="Planet Life Logo"
-                        className="h-10 w-auto rounded-md shadow-sm"
+                        className="h-8 mobile:h-10 w-auto rounded-md shadow-sm"
                     />
-                    <span className="text-xl font-heading font-bold tracking-tight text-foreground uppercase">
+                    <span className="text-sm mobile:text-lg sm:text-xl font-heading font-bold tracking-tight text-foreground uppercase truncate max-w-[80px] xs:max-w-[100px] mobile:max-w-[120px] sm:max-w-none">
                         PLANET LIFE
                     </span>
                 </Link>
 
                 {/* Right Side Actions */}
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-2 mobile:gap-4 sm:gap-6 lg:gap-8">
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-6">
+                    <div className="hidden lg:flex items-center gap-6">
                         <Link to="/" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">Home</Link>
                         <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
                             <DropdownMenuTrigger 
@@ -87,7 +87,7 @@ const Navbar = () => {
                                 <div className="grid grid-cols-2 gap-2 p-2">
                                     <div>
                                         <DropdownMenuLabel className="text-[10px] text-red-600 font-black uppercase mb-1 px-2">International Tours</DropdownMenuLabel>
-                                        {["Thailand", "Malaysia", "Bali", "Maldives", "Vietnam", "Srilanka", "Dubai", "Singapore"].map((name) => {
+                                        {["Thailand", "Malaysia", "Bali", "Maldives", "Vietnam", "Sri Lanka", "Dubai", "Singapore"].map((name) => {
                                             const dest = destinations.find(d => 
                                                 d.name.toLowerCase() === name.toLowerCase() || 
                                                 d.country.toLowerCase() === name.toLowerCase()
@@ -144,17 +144,18 @@ const Navbar = () => {
                     {/* Get Quote Button (Visible on all screens) */}
                     <Link to="/quote">
                         <Button
-                            className="bg-foreground hover:bg-foreground/80 text-background font-bold rounded-full px-8 font-heading border border-foreground/10 uppercase text-[10px] tracking-widest shadow-lg transition-transform hover:scale-105"
+                            className="bg-foreground hover:bg-foreground/80 text-background font-bold rounded-full px-3 mobile:px-4 sm:px-8 py-2 font-heading border border-foreground/10 uppercase text-[8px] mobile:text-[9px] sm:text-[10px] tracking-wider sm:tracking-widest shadow-lg transition-transform hover:scale-105"
                         >
-                            <Phone className="w-3 h-3 mr-2" />
-                            Get Quote
+                            <Phone className="w-3 h-3 mr-1 sm:mr-2" />
+                            <span className="hidden mobile:inline">Get Quote</span>
+                            <span className="mobile:hidden">Quote</span>
                         </Button>
                     </Link>
 
                     {/* Mobile Menu Trigger */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon" className="md:hidden text-black hover:bg-black/10">
+                            <Button variant="ghost" size="icon" className="lg:hidden text-black hover:bg-black/10">
                                 <Menu className="h-6 w-6" />
                             </Button>
                         </DropdownMenuTrigger>
@@ -166,7 +167,7 @@ const Navbar = () => {
                             <div className="my-2 border-t border-black/10 pt-2 px-2">
                                 <p className="text-[10px] text-red-600 font-black uppercase mb-2">International Tours</p>
                                 <div className="grid grid-cols-2 gap-1 mb-4">
-                                    {["Thailand", "Malaysia", "Bali", "Maldives", "Vietnam", "Srilanka", "Dubai", "Singapore"].map(name => {
+                                    {["Thailand", "Malaysia", "Bali", "Maldives", "Vietnam", "Sri Lanka", "Dubai", "Singapore"].map(name => {
                                         const dest = destinations.find(d => 
                                             d.name.toLowerCase() === name.toLowerCase() || 
                                             d.country.toLowerCase() === name.toLowerCase()

@@ -3,20 +3,20 @@ import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, ShieldCheck
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0f1115] text-white pt-24 pb-12">
+        <footer className="bg-[#0f1115] text-white pt-12 mobile:pt-16 md:pt-24 pb-8 mobile:pb-12">
             <div className="container mx-auto px-4">
                 {/* Partners Section */}
-                <div className="text-center mb-24 pb-16 border-b border-white/5">
-                    <span className="text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 block font-bold">Partnered With Global Tourism Boards</span>
-                    <div className="flex flex-wrap justify-center items-center gap-10 md:gap-24 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">PENANG</span>
-                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">ABU DHABI</span>
-                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">JAPAN.</span>
-                        <span className="text-3xl font-heading font-bold text-white tracking-tighter">THAILAND</span>
+                <div className="text-center mb-12 mobile:mb-16 md:mb-24 pb-8 mobile:pb-12 md:pb-16 border-b border-white/5">
+                    <span className="text-[9px] mobile:text-[10px] uppercase tracking-[0.3em] mobile:tracking-[0.4em] mb-6 mobile:mb-10 text-white/40 block font-bold">Partnered With Global Tourism Boards</span>
+                    <div className="grid grid-cols-2 mobile:flex mobile:flex-wrap justify-center items-center gap-4 mobile:gap-6 md:gap-10 lg:gap-24 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                        <span className="text-lg mobile:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white tracking-tighter text-center">PENANG</span>
+                        <span className="text-lg mobile:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white tracking-tighter text-center">ABU DHABI</span>
+                        <span className="text-lg mobile:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white tracking-tighter text-center">JAPAN.</span>
+                        <span className="text-lg mobile:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white tracking-tighter text-center">THAILAND</span>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div className="grid grid-cols-1 mobile:grid-cols-2 lg:grid-cols-4 gap-8 mobile:gap-10 lg:gap-16 mb-12 mobile:mb-16 md:mb-20">
                     {/* Company Info */}
                     <div className="space-y-8">
                         <Link to="/" className="inline-block group">
@@ -85,8 +85,8 @@ const Footer = () => {
                 </div>
 
                 {/* Trust Badges */}
-                <div className="border-t border-white/5 py-20">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div className="border-t border-white/5 py-10 mobile:py-14 md:py-20">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mobile:gap-8 md:gap-12">
                         {[
                             { icon: ShieldCheck, label: "100% Secure", sub: "Payment Protection" },
                             { icon: Clock, label: "24/7 Support", sub: "Trip Assistance" },
@@ -104,7 +104,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="border-t border-white/5 pt-8 mobile:pt-12 flex flex-col md:flex-row justify-between items-center gap-4 mobile:gap-6">
                     <p className="text-white/30 text-[11px] font-bold tracking-widest uppercase">
                         &copy; {new Date().getFullYear()} PLANET LIFE. All rights reserved.
                     </p>

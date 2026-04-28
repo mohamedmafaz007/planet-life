@@ -121,7 +121,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
                 setIsAuthenticated(true);
             }
 
-            const storedDestinations = localStorage.getItem("destinations_v28");
+            const storedDestinations = localStorage.getItem("destinations_v30");
             if (storedDestinations) {
                 setDestinations(JSON.parse(storedDestinations));
             } else {
@@ -150,7 +150,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     // Save destinations to localStorage whenever they change
     useEffect(() => {
         if (destinations.length > 0) {
-            localStorage.setItem("destinations_v28", JSON.stringify(destinations));
+            localStorage.setItem("destinations_v30", JSON.stringify(destinations));
         }
     }, [destinations]);
 

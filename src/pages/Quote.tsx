@@ -100,12 +100,12 @@ const Quote = () => {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
-            <div className="container mx-auto px-4 relative z-10 py-12 pt-32">
-                <div className="text-center mb-16 text-white max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading text-white">
+            <div className="container mx-auto px-3 mobile:px-4 relative z-10 py-8 mobile:py-10 md:py-12 pt-24 mobile:pt-28 md:pt-32">
+                <div className="text-center mb-8 mobile:mb-12 md:mb-16 text-white max-w-4xl mx-auto">
+                    <h1 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 mobile:mb-6 md:mb-8 uppercase tracking-tighter leading-tight font-heading text-white">
                         Your Dream Holiday Awaits
                     </h1>
-                    <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-medium leading-relaxed font-sans">
+                    <p className="max-w-2xl mx-auto text-white/80 text-sm mobile:text-base md:text-lg lg:text-xl font-medium leading-relaxed font-sans">
                         Experience precision travel planning. Customized international journeys tailored to your soul.
                     </p>
                 </div>
@@ -263,7 +263,7 @@ const Quote = () => {
                     </Card>
 
                     {/* Stats Bar */}
-                    <div className="mt-12 bg-white text-black rounded-2xl p-6 md:p-8 w-full max-w-5xl shadow-2xl flex flex-wrap justify-between items-center gap-6">
+                    <div className="mt-8 mobile:mt-10 md:mt-12 bg-white text-black rounded-xl mobile:rounded-2xl p-4 mobile:p-5 md:p-6 lg:p-8 w-full max-w-5xl shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-4 mobile:gap-5 md:gap-6">
                         <div className="flex items-center gap-3">
                             <div className="bg-red-50 p-2 rounded-full">
                                 <Star className="w-5 h-5 text-red-600 fill-red-600" />

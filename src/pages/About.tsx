@@ -66,16 +66,16 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[45vh] mobile:h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-red-600" />
 
-        <div className="container mx-auto px-4 relative z-10 text-center pt-20">
+        <div className="container mx-auto px-3 mobile:px-4 relative z-10 text-center pt-16 mobile:pt-20">
           <ScrollReveal width="100%">
-            <span className="text-black font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Story</span>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-black drop-shadow-2xl uppercase tracking-tight">
+            <span className="text-black font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase mb-3 mobile:mb-4 block text-[10px] mobile:text-xs">Our Story</span>
+            <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-3 mobile:mb-4 md:mb-6 text-black drop-shadow-2xl uppercase tracking-tight">
               {aboutContent.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-black/90 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 max-w-3xl mx-auto font-medium leading-relaxed">
               {aboutContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -83,9 +83,9 @@ const About = () => {
       </section>
 
       {/* Our Story Section - Split Layout */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+      <section className="py-12 mobile:py-16 md:py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 mobile:px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-8 mobile:gap-12 md:gap-16">
             <div className="lg:w-1/2">
               <ScrollReveal direction="left">
                 <div className="relative">
@@ -94,7 +94,7 @@ const About = () => {
                   <img
                     src={logoImg}
                     alt="Planet Life Logo"
-                    className="rounded-lg shadow-2xl w-full h-[500px] object-contain bg-black relative z-10"
+                    className="rounded-lg shadow-2xl w-full h-[250px] mobile:h-[350px] sm:h-[400px] lg:h-[500px] object-contain bg-black relative z-10"
                   />
                 </div>
               </ScrollReveal>
@@ -102,7 +102,7 @@ const About = () => {
 
             <div className="lg:w-1/2">
               <ScrollReveal direction="right">
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-foreground leading-tight uppercase tracking-tight">
+                <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-heading font-bold mb-4 mobile:mb-6 md:mb-8 text-foreground leading-tight uppercase tracking-tight">
                   {aboutContent.ourStoryTitle}
                 </h2>
                 <div className="w-20 h-1 bg-primary rounded-full mb-8" />
@@ -120,18 +120,18 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
-        <div className="container mx-auto px-4">
+      <section className="py-12 mobile:py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+        <div className="container mx-auto px-3 mobile:px-4">
           <ScrollReveal width="100%">
             <div className="text-center mb-16">
-              <span className="text-primary font-bold tracking-[0.3em] uppercase mb-4 block text-xs">Our Philosophy</span>
-              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground uppercase tracking-tight">
+              <span className="text-primary font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase mb-3 mobile:mb-4 block text-[10px] mobile:text-xs">Our Philosophy</span>
+              <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-heading font-bold text-foreground uppercase tracking-tight">
                 Why Travelers Choose Us
               </h2>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 mobile:grid-cols-2 lg:grid-cols-4 gap-4 mobile:gap-6 md:gap-8">
             {values.map((value, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <div className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 h-full flex flex-col">
@@ -152,9 +152,9 @@ const About = () => {
       </section>
 
       {/* Meet the Founder Section - Alternating Layout */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+      <section className="py-12 mobile:py-16 md:py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 mobile:px-4">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-8 mobile:gap-12 md:gap-16">
             <div className="lg:w-1/2">
               <ScrollReveal direction="right">
                 <div className="relative">
@@ -162,7 +162,7 @@ const About = () => {
                   <img
                     src={aboutContent.founderImage}
                     alt="Founder"
-                    className="rounded-3xl shadow-2xl w-full h-[600px] object-cover"
+                    className="rounded-3xl shadow-2xl w-full h-[300px] mobile:h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
                   />
                   <div className="absolute bottom-6 right-6 left-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-red-600/20">
                     <p className="text-sm text-red-600 uppercase tracking-widest font-extrabold mb-1">Founder & CEO</p>
@@ -174,7 +174,7 @@ const About = () => {
 
             <div className="lg:w-1/2">
               <ScrollReveal direction="left">
-                <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black leading-tight uppercase">
+                <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-sans font-extrabold mb-4 mobile:mb-6 md:mb-8 text-black leading-tight uppercase">
                   {aboutContent.founderTitle}
                 </h2>
                 <div className="prose prose-lg text-black font-medium max-w-none">
@@ -195,18 +195,18 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-red-600 relative overflow-hidden">
+      <section className="py-10 mobile:py-14 md:py-20 bg-red-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-black rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mobile:gap-8 md:gap-12 text-center">
             {stats.map((stat, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <div className="space-y-2">
-                  <div className="text-4xl md:text-5xl font-sans font-extrabold text-black">
+                  <div className="text-2xl mobile:text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-black">
                     {stat.number}
                   </div>
                   <div className="text-black/80 uppercase tracking-widest text-xs font-extrabold">
@@ -220,18 +220,18 @@ const About = () => {
       </section>
 
       {/* Travel Gallery */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-12 mobile:py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-3 mobile:px-4">
           <ScrollReveal width="100%">
             <div className="text-center mb-16">
-              <span className="text-red-600 font-extrabold tracking-[0.2em] uppercase mb-4 block">Visual Journey</span>
-              <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
+              <span className="text-red-600 font-extrabold tracking-[0.15em] mobile:tracking-[0.2em] uppercase mb-3 mobile:mb-4 block text-[10px] mobile:text-xs">Visual Journey</span>
+              <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-sans font-extrabold text-black uppercase">
                 Our World Through Your Eyes
               </h2>
             </div>
           </ScrollReveal>
 
-          <div className="relative px-12">
+          <div className="relative px-2 mobile:px-4 sm:px-8 md:px-12">
             <ScrollReveal delay={0.2}>
               <Carousel
                 opts={{
@@ -247,7 +247,7 @@ const About = () => {
               >
                 <CarouselContent className="-ml-4">
                   {galleryImages.map((img, index) => (
-                    <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={index} className="pl-4 basis-full mobile:basis-1/2 lg:basis-1/3">
                       <div className="p-1">
                         <div
                           className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/5]"
@@ -277,17 +277,17 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-12 mobile:py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-3 mobile:px-4">
           <ScrollReveal width="100%">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block p-4 rounded-full bg-red-600/10 mb-8">
                 <Globe className="w-8 h-8 text-black" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-sans font-extrabold mb-8 text-black uppercase">
+              <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-sans font-extrabold mb-4 mobile:mb-6 md:mb-8 text-black uppercase">
                 {aboutContent.missionTitle}
               </h2>
-              <p className="text-2xl text-black font-extrabold leading-relaxed italic font-sans">
+              <p className="text-base mobile:text-lg sm:text-xl md:text-2xl text-black font-extrabold leading-relaxed italic font-sans">
                 "{aboutContent.missionText}"
               </p>
               <div className="mt-12 flex justify-center">

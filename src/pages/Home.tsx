@@ -10,7 +10,6 @@ import baliImg from "@/assets/bali_main_new.jpg";
 import vietnamImg from "@/assets/vietnam/vietnam_main.jpg";
 import dubaiImg from "@/assets/dubai_new.jpg";
 import singaporeImg from "@/assets/singapore_main_new.jpg";
-import meghalayaImg from "@/assets/meghalaya_new.jpg";
 import maldivesImg from "@/assets/maldives_main_new.jpg";
 import srilankaImg from "@/assets/srilanka_main.jpg";
 import keralaImg from "@/assets/kerala/kerala_main.jpg";
@@ -33,7 +32,6 @@ const imageMap: Record<string, string> = {
   "vietnam_main.jpg": vietnamImg,
   "dubai_new.jpg": dubaiImg,
   "singapore_main_new.jpg": singaporeImg,
-  "meghalaya_new.jpg": meghalayaImg,
   "maldives_main_new.jpg": maldivesImg,
   "srilanka_main.jpg": srilankaImg,
   "kerala_main.jpg": keralaImg,
@@ -180,37 +178,35 @@ const Home = () => {
           loop
           muted
           playsInline
-          poster="/src/assets/hero-bg.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-tropical-island-with-white-sand-4127-large.mp4" type="video/mp4" />
           <source src={heroVideo} type="video/mp4" />
         </video>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative container mx-auto px-4 flex-grow flex flex-col md:flex-row items-center justify-between pt-24 pb-12 z-10">
+        <div className="relative container mx-auto px-3 mobile:px-4 flex-grow flex flex-col lg:flex-row items-center justify-between pt-20 mobile:pt-24 pb-8 mobile:pb-12 z-10">
           {/* Left Content */}
-          <div className="text-white max-w-3xl mb-12 md:mb-0 z-10">
+          <div className="text-white max-w-3xl mb-8 mobile:mb-12 lg:mb-0 z-10">
             <ScrollReveal>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
-                Customized <br className="hidden lg:block" /> International Adventures
+            <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-3 mobile:mb-4 sm:mb-6 leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
+                Customized <br className="hidden sm:block" /> International Adventures
               </h1>
-              <p className="text-xl md:text-2xl mb-10 text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
+              <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl mb-6 mobile:mb-8 sm:mb-10 text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
                 Experience the epitome of luxury and adventure with our carefully curated international journeys.
               </p>
-              <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-8 py-6 text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-8 md:mb-0">
-                Explore Packages <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-5 mobile:px-6 sm:px-8 py-4 mobile:py-5 sm:py-6 text-xs mobile:text-sm sm:text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-6 mobile:mb-8 lg:mb-0">
+                Explore Packages <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </ScrollReveal>
           </div>
 
           {/* Right Booking Card */}
-          <div className="w-full md:w-[400px] bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-6 relative border border-white/20">
-            <div className="text-center mb-8">
-              <h3 className="font-heading font-semibold text-muted-foreground text-sm uppercase tracking-[0.2em] mb-2">Your Perfect Holiday Awaits!</h3>
-              <h2 className="text-2xl font-bold text-foreground font-heading uppercase">Get Your Custom Quote</h2>
+          <div className="w-full lg:w-[400px] bg-white/95 backdrop-blur-sm rounded-2xl mobile:rounded-3xl shadow-2xl p-4 mobile:p-5 sm:p-6 relative border border-white/20">
+            <div className="text-center mb-4 mobile:mb-6 sm:mb-8">
+              <h3 className="font-heading font-semibold text-muted-foreground text-[10px] mobile:text-xs sm:text-sm uppercase tracking-[0.15em] mobile:tracking-[0.2em] mb-1 mobile:mb-2">Your Perfect Holiday Awaits!</h3>
+              <h2 className="text-lg mobile:text-xl sm:text-2xl font-bold text-foreground font-heading uppercase">Get Your Custom Quote</h2>
             </div>
 
             {step === 1 ? (
@@ -374,53 +370,47 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="relative bg-white border-t border-gray-100 shadow-2xl py-8 z-20">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-6 md:gap-4">
+        <div className="relative bg-white border-t border-gray-100 shadow-2xl py-4 mobile:py-6 md:py-8 z-20">
+          <div className="container mx-auto px-3 mobile:px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mobile:gap-5 md:gap-6">
 
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
                   <Star className="w-4 h-4 text-red-600 fill-red-600" />
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">4.9/5 Ratings</p>
-                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">On Google Reviews</p>
+                <div className="flex flex-col min-w-0">
+                  <p className="font-extrabold text-[10px] mobile:text-xs text-black font-sans uppercase truncate">4.9/5 Ratings</p>
+                  <p className="text-[7px] mobile:text-[8px] text-black/50 font-black uppercase tracking-tighter truncate">On Google Reviews</p>
                 </div>
               </div>
-
-              <div className="hidden md:block h-6 w-px bg-gray-200" />
 
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
                   <Clock className="w-4 h-4 text-red-600" />
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">24/7 Support</p>
-                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Trip Assistance</p>
+                <div className="flex flex-col min-w-0">
+                  <p className="font-extrabold text-[10px] mobile:text-xs text-black font-sans uppercase truncate">24/7 Support</p>
+                  <p className="text-[7px] mobile:text-[8px] text-black/50 font-black uppercase tracking-tighter truncate">Trip Assistance</p>
                 </div>
               </div>
-
-              <div className="hidden md:block h-6 w-px bg-gray-200" />
 
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
                   <Shield className="w-4 h-4 text-red-600" />
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">100% Secure</p>
-                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Payment Protection</p>
+                <div className="flex flex-col min-w-0">
+                  <p className="font-extrabold text-[10px] mobile:text-xs text-black font-sans uppercase truncate">100% Secure</p>
+                  <p className="text-[7px] mobile:text-[8px] text-black/50 font-black uppercase tracking-tighter truncate">Payment Protection</p>
                 </div>
               </div>
-
-              <div className="hidden md:block h-6 w-px bg-gray-200" />
 
               <div className="flex items-center gap-2">
                 <div className="flex-shrink-0 bg-red-50 p-1.5 rounded-full">
                   <CheckCircle2 className="w-4 h-4 text-red-600" />
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <p className="whitespace-nowrap font-extrabold text-xs text-black font-sans uppercase">Customized</p>
-                  <p className="whitespace-nowrap text-[8px] text-black/50 font-black uppercase tracking-tighter">Tailor-made Trips</p>
+                <div className="flex flex-col min-w-0">
+                  <p className="font-extrabold text-[10px] mobile:text-xs text-black font-sans uppercase truncate">Customized</p>
+                  <p className="text-[7px] mobile:text-[8px] text-black/50 font-black uppercase tracking-tighter truncate">Tailor-made Trips</p>
                 </div>
               </div>
 
@@ -430,23 +420,23 @@ const Home = () => {
       </section>
 
       {/* Google Reviews Section */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 mb-16">
+      <section className="py-12 mobile:py-16 md:py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-3 mobile:px-4 mb-8 mobile:mb-12 md:mb-16">
           <ScrollReveal width="100%">
              <div className="w-full flex flex-col items-center text-center">
               {/* Rating Badge */}
-              <div className="flex items-center gap-4 bg-white px-10 py-5 rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-black/5 mb-14 transition-all duration-500 mx-auto group">
+              <div className="flex items-center gap-2 mobile:gap-3 sm:gap-4 bg-white px-4 mobile:px-6 sm:px-10 py-3 mobile:py-4 sm:py-5 rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-black/5 mb-8 mobile:mb-10 md:mb-14 transition-all duration-500 mx-auto group">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
                 <div className="h-6 w-px bg-gray-100 mx-2" />
-                <span className="text-foreground font-bold text-xl tracking-tight">4.9/5 Rating</span>
+                <span className="text-foreground font-bold text-sm mobile:text-base sm:text-lg md:text-xl tracking-tight">4.9/5 Rating</span>
               </div>
               
-              <h2 className="text-5xl md:text-8xl font-heading font-bold text-foreground mb-10 uppercase tracking-tighter leading-[0.85] max-w-5xl mx-auto">
-                What Our Travelers <br className="hidden md:block" /> Say on Google
+              <h2 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-foreground mb-6 mobile:mb-8 md:mb-10 uppercase tracking-tighter leading-[0.85] max-w-5xl mx-auto">
+                What Our Travelers <br className="hidden sm:block" /> Say on Google
               </h2>
               
               <div className="flex items-center justify-center gap-8 w-full max-w-md mx-auto">
@@ -481,7 +471,7 @@ const Home = () => {
               { name: "Sathish Kumar", text: "Best decision for our family trip. Hassle-free experience and top-notch hospitality." },
               { name: "Karthik Raja", text: "Best customized international trips. Their attention to detail is impressive." }
             ]).map((review, i) => (
-              <div key={i} className="inline-block w-[350px] bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
+              <div key={i} className="inline-block w-[260px] mobile:w-[300px] sm:w-[350px] bg-white p-5 mobile:p-6 sm:p-8 rounded-2xl mobile:rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
                 <div className="flex items-center gap-1 text-yellow-400 mb-4">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-current" />
@@ -520,7 +510,7 @@ const Home = () => {
               { name: "Suresh Babu", text: "The customized itinerary was perfect. Enjoyed every bit of our holiday." },
               { name: "Swathi", text: "Friendly staff and excellent tour coordination. Truly a stress-free travel experience." }
             ]).map((review, i) => (
-              <div key={i} className="inline-block w-[350px] bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
+              <div key={i} className="inline-block w-[260px] mobile:w-[300px] sm:w-[350px] bg-white p-5 mobile:p-6 sm:p-8 rounded-2xl mobile:rounded-3xl shadow-xl border border-gray-100 flex-shrink-0">
                 <div className="flex items-center gap-1 text-yellow-400 mb-4">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-current" />
@@ -556,11 +546,11 @@ const Home = () => {
       </section>
 
       {/* Featured Destinations */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 mobile:py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
-            <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">World-Class Experiences</span>
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
+          <div className="text-center mb-10 mobile:mb-14 md:mb-20 max-w-3xl mx-auto">
+            <span className="text-primary font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase text-[10px] mobile:text-xs mb-3 mobile:mb-4 block">World-Class Experiences</span>
+            <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 mobile:mb-6 uppercase tracking-tight">
               Trending Destinations
             </h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
@@ -572,7 +562,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {isLoading ? (
               Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="h-[450px] rounded-[2rem] overflow-hidden bg-white p-4 space-y-4">
+                <div key={i} className="h-[300px] mobile:h-[380px] md:h-[450px] rounded-[1.5rem] mobile:rounded-[2rem] overflow-hidden bg-white p-3 mobile:p-4 space-y-3 mobile:space-y-4">
                   <Skeleton className="w-full h-2/3 rounded-2xl" />
                   <Skeleton className="w-3/4 h-8" />
                   <Skeleton className="w-1/2 h-6" />
@@ -586,7 +576,7 @@ const Home = () => {
               featuredDestinations.slice(0, 6).map((destination, index) => (
                 <ScrollReveal key={destination.id} delay={index * 0.1} width="100%" overflow="visible">
                   <Link to={`/destination/${destination.id}`} className="group block h-full">
-                    <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
+                    <div className="relative h-[300px] mobile:h-[380px] md:h-[450px] rounded-[1.5rem] mobile:rounded-[2rem] overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white">
                       <img
                         src={getImageSrc(destination.image)}
                         alt={destination.name}
@@ -596,9 +586,9 @@ const Home = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent duration-500 group-hover:from-red-600/90" />
 
                       {/* Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 mobile:p-6 sm:p-8 text-white transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                         <div className="flex justify-between items-end mb-2">
-                          <h3 className="text-3xl font-sans font-extrabold mb-1 text-white uppercase">{destination.name}</h3>
+                          <h3 className="text-xl mobile:text-2xl sm:text-3xl font-sans font-extrabold mb-1 text-white uppercase">{destination.name}</h3>
                           <div className="bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter mb-2 shadow-lg">
                             {destination.packages.length} Packages
                           </div>
@@ -626,8 +616,8 @@ const Home = () => {
             )}
           </div>
 
-          <div className="text-center mt-20">
-            <Button asChild size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 text-lg font-extrabold uppercase transition-all duration-300 shadow-2xl tracking-widest">
+          <div className="text-center mt-10 mobile:mt-14 md:mt-20">
+            <Button asChild size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-6 mobile:px-8 sm:px-12 py-5 mobile:py-6 sm:py-8 text-sm mobile:text-base sm:text-lg font-extrabold uppercase transition-all duration-300 shadow-2xl tracking-wider sm:tracking-widest">
               <Link to="/destinations">View All Destinations</Link>
             </Button>
           </div>
@@ -635,15 +625,15 @@ const Home = () => {
       </section>
 
       {/* Happy Customers Section */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 mb-16">
+      <section className="py-12 mobile:py-16 md:py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 mobile:px-4 mb-8 mobile:mb-12 md:mb-16">
           <ScrollReveal width="100%">
              <div className="flex flex-col items-center text-center">
-               <span className="text-muted-foreground font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Traveler Community</span>
-               <h2 className="text-4xl md:text-7xl font-heading font-bold text-foreground mb-8 uppercase tracking-tighter">
+               <span className="text-muted-foreground font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase text-[10px] mobile:text-xs mb-3 mobile:mb-4 block">Traveler Community</span>
+               <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-4 mobile:mb-6 md:mb-8 uppercase tracking-tighter">
                 Happy Customers, <span className="text-primary italic">Happy Stories</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
+              <p className="text-sm mobile:text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 mobile:mb-12 md:mb-16 font-medium leading-relaxed">
                 Join thousands of satisfied travelers who have explored the world with us. <br className="hidden md:block" /> Every picture tells a story of adventure and joy.
               </p>
              </div>
@@ -652,8 +642,8 @@ const Home = () => {
 
         <StoryMarquee />
 
-        <div className="container mx-auto px-4 text-center mt-16">
-          <Button size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-12 py-8 font-extrabold uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105">
+        <div className="container mx-auto px-4 text-center mt-8 mobile:mt-12 md:mt-16">
+          <Button size="lg" className="bg-black hover:bg-red-600 text-white rounded-full px-6 mobile:px-8 sm:px-12 py-5 mobile:py-6 sm:py-8 font-extrabold uppercase tracking-wider sm:tracking-widest transition-all duration-300 shadow-2xl hover:scale-105">
             View Instagram Stories
           </Button>
         </div>

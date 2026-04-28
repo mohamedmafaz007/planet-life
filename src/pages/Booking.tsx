@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,6 +25,11 @@ const Booking = () => {
 
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setStep(1); // Reset to first step if package changes
+    }, [packageId]);
 
     // Form State
     const [formData, setFormData] = useState({
@@ -120,7 +125,7 @@ const Booking = () => {
     };
 
     return (
-        <div className="min-h-screen relative overflow-hidden font-sans">
+        <div className="min-h-screen relative overflow-hidden font-sans" key={packageId}>
             {/* Background Media */}
             {found.video ? (
                 <video
@@ -142,7 +147,7 @@ const Booking = () => {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
-            <div className="container mx-auto px-4 relative z-10 py-12 pt-32">
+            <div className="container mx-auto px-3 mobile:px-4 relative z-10 py-8 mobile:py-10 md:py-12 pt-24 mobile:pt-28 md:pt-32">
                 <Button variant="ghost" asChild className="mb-6 text-white hover:text-white hover:bg-white/20 uppercase font-black tracking-widest text-xs">
                     <Link to={`/destination/${found.destinationId}`}>
                         <ArrowLeft className="mr-2 h-4 w-4" />
@@ -150,11 +155,11 @@ const Booking = () => {
                     </Link>
                 </Button>
 
-                <div className="text-center mb-16 text-white max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-tight font-heading">
+                <div className="text-center mb-8 mobile:mb-12 md:mb-16 text-white max-w-4xl mx-auto">
+                    <h1 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 mobile:mb-6 md:mb-8 uppercase tracking-tighter leading-tight font-heading">
                         {found.title}
                     </h1>
-                    <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-medium leading-relaxed">
+                    <p className="max-w-2xl mx-auto text-white/80 text-sm mobile:text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                         Secure your spot for an unforgettable experience in {found.destinationName}. Custom planning at your fingertips.
                     </p>
                 </div>
@@ -312,7 +317,7 @@ const Booking = () => {
                     </Card>
 
                     {/* Stats Bar */}
-                    <div className="mt-12 bg-white text-black rounded-2xl p-6 md:p-8 w-full max-w-5xl shadow-2xl flex flex-wrap justify-between items-center gap-6">
+                    <div className="mt-8 mobile:mt-10 md:mt-12 bg-white text-black rounded-xl mobile:rounded-2xl p-4 mobile:p-5 md:p-6 lg:p-8 w-full max-w-5xl shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-4 mobile:gap-5 md:gap-6">
                         <div className="flex items-center gap-3">
                             <div className="bg-red-50 p-2 rounded-full">
                                 <Star className="w-5 h-5 text-red-600 fill-red-600" />

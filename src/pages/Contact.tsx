@@ -47,13 +47,13 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="bg-red-600 text-black pt-32 pb-20 relative overflow-hidden shadow-xl">
-        <div className="container mx-auto px-4 text-center relative z-10">
+      <section className="bg-red-600 text-black pt-24 mobile:pt-28 md:pt-32 pb-10 mobile:pb-14 md:pb-20 relative overflow-hidden shadow-xl">
+        <div className="container mx-auto px-3 mobile:px-4 text-center relative z-10">
           <ScrollReveal width="100%">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase tracking-tight">
+            <h1 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 mobile:mb-3 md:mb-4 uppercase tracking-tight">
               {contactContent.heroTitle}
             </h1>
-            <p className="text-lg md:text-2xl text-black/80 max-w-2xl mx-auto font-bold">
+            <p className="text-sm mobile:text-base sm:text-lg md:text-2xl text-black/80 max-w-2xl mx-auto font-bold">
               {contactContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -61,16 +61,16 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-12 mobile:py-16 md:py-24 relative">
+        <div className="container mx-auto px-3 mobile:px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mobile:gap-12 md:gap-16">
             {/* Contact Information */}
             <div>
               <ScrollReveal>
-                <h2 className="text-3xl font-extrabold mb-6 text-black uppercase tracking-tight">
+                <h2 className="text-xl mobile:text-2xl md:text-3xl font-extrabold mb-3 mobile:mb-4 md:mb-6 text-black uppercase tracking-tight">
                   {contactContent.sectionTitle}
                 </h2>
-                <p className="text-gray-600 mb-12 leading-relaxed text-lg font-medium">
+                <p className="text-gray-600 mb-6 mobile:mb-8 md:mb-12 leading-relaxed text-sm mobile:text-base md:text-lg font-medium">
                   {contactContent.sectionText}
                 </p>
               </ScrollReveal>
