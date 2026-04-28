@@ -4,57 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useAdmin } from "@/context/AdminContext";
 import { ArrowRight, MapPin } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import malaysiaImg from "@/assets/malaysia_main_new.jpg";
-import thailandImg from "@/assets/thailand_new.jpg";
-import baliImg from "@/assets/bali_main_new.jpg";
-import vietnamImg from "@/assets/vietnam/vietnam_main.jpg";
-import dubaiImg from "@/assets/dubai_new.jpg";
-import singaporeImg from "@/assets/singapore_main_new.jpg";
-import maldivesImg from "@/assets/maldives_main_new.jpg";
-import srilankaImg from "@/assets/srilanka_main.jpg";
-import keralaImg from "@/assets/kerala/kerala_main.jpg";
-
-const imageMap: Record<string, string> = {
-  "malaysia_main_new.jpg": malaysiaImg,
-  "thailand_new.jpg": thailandImg,
-  "bali_main_new.jpg": baliImg,
-  "vietnam_main.jpg": vietnamImg,
-  "dubai_new.jpg": dubaiImg,
-  "singapore_main_new.jpg": singaporeImg,
-  "maldives_main_new.jpg": maldivesImg,
-  "srilanka_main.jpg": srilankaImg,
-  "kerala_main.jpg": keralaImg,
-  "mal_adv_1.jpg": "/src/assets/mal_adv_1.jpg",
-  "mal_adv_2.jpg": "/src/assets/mal_adv_2.jpg",
-  "thailand_adv_1.jpg": "/src/assets/thailand_adv_1.jpg",
-  "thailand_adv_2.jpg": "/src/assets/thailand_adv_2.jpg",
-  "thailand_adv_3.jpg": "/src/assets/thailand_adv_3.jpg",
-  "bali_adv_1.jpg": "/src/assets/bali_adv_1.jpg",
-  "bali_adv_2.jpg": "/src/assets/bali_adv_2.jpg",
-  "bali_adv_3.jpg": "/src/assets/bali_adv_3.jpg",
-  "dubai_adv_1.jpg": "/src/assets/dubai_adv_1.jpg",
-  "dubai_adv_2.jpg": "/src/assets/dubai_adv_2.jpg",
-  "dubai_adv_3.jpg": "/src/assets/dubai_adv_3.jpg",
-  "mald_adv_1.jpg": "/src/assets/mald_adv_1.jpg",
-  "sing_adv_1.jpg": "/src/assets/sing_adv_1.jpg",
-  "sl_adv_1.jpg": "/src/assets/sl_adv_1.jpg",
-  "sl_adv_2.jpg": "/src/assets/sl_adv_2.jpg",
-  "andaman_main.jpg": "/src/assets/andaman/andaman_main.jpg",
-  "andaman_adv_1.jpg": "/src/assets/andaman/andaman_adv_1.jpg",
-  "himachal_main.webp": "/src/assets/himachal/himachal_main.webp",
-  "him_adv_1.jpg": "/src/assets/himachal/him_adv_1.jpg",
-  "kashmir_main.jpg": "/src/assets/kashmir/kashmir_main.jpg",
-  "goa_main.jpg": "/src/assets/goa/goa_main.jpg",
-  "kar_main.jpg": "/src/assets/karnataka/kar_main.jpg",
-  "malaysia_new_front.jpg": "/src/assets/malaysia_new_front.jpg",
-};
+import { getImageSrc } from "@/data/imageMap";
 
 const Destinations = () => {
   const { destinations } = useAdmin();
 
-  const getImageSrc = (img: string) => {
-    return imageMap[img] || img;
-  };
 
   return (
     <div className="min-h-screen bg-background/50">

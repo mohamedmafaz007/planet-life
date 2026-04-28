@@ -2,139 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Search, ArrowRight, Check } from "lucide-react";
-import malaysiaImg from "@/assets/malaysia_main_new.jpg";
-import thailandImg from "@/assets/thailand_new.jpg";
-import baliImg from "@/assets/bali_main_new.jpg";
-import vietnamImg from "@/assets/vietnam/vietnam_main.jpg";
-import viet_adv_1 from "@/assets/vietnam/viet_adv_1.jpg";
-import viet_adv_2 from "@/assets/vietnam/viet_adv_2.jpg";
-import viet_adv_3 from "@/assets/vietnam/viet_adv_3.jpg";
-import viet_adv_4 from "@/assets/vietnam/viet_adv_4.jpg";
-import dubaiImg from "@/assets/dubai_new.jpg";
-import singaporeImg from "@/assets/singapore_main_new.jpg";
-import maldivesImg from "@/assets/maldives_main_new.jpg";
-import srilankaImg from "@/assets/srilanka_main.jpg";
-import mal_adv_1 from "@/assets/mal_adv_1.jpg";
-import mal_adv_2 from "@/assets/mal_adv_2.jpg";
-import mal_adv_3 from "@/assets/mal_adv_3.jpg";
-import mal_adv_4 from "@/assets/mal_adv_4.jpg";
-import mal_adv_5 from "@/assets/mal_adv_5.jpg";
-import thailand_adv_1 from "@/assets/thailand_adv_1.jpg";
-import thailand_adv_2 from "@/assets/thailand_adv_2.jpg";
-import thailand_adv_3 from "@/assets/thailand_adv_3.jpg";
-import thailand_adv_4 from "@/assets/thailand_adv_4.jpg";
-import thailand_adv_5 from "@/assets/thailand_adv_5.jpg";
-import bali_adv_1 from "@/assets/bali_adv_1.jpg";
-import bali_adv_2 from "@/assets/bali_adv_2.jpg";
-import bali_adv_3 from "@/assets/bali_adv_3.jpg";
-import bali_adv_4 from "@/assets/bali_adv_4.jpg";
-import dubai_adv_1 from "@/assets/dubai_adv_1.jpg";
-import dubai_adv_2 from "@/assets/dubai_adv_2.jpg";
-import dubai_adv_3 from "@/assets/dubai_adv_3.jpg";
-import dubai_adv_4 from "@/assets/dubai_adv_4.jpg";
-import dubai_adv_5 from "@/assets/dubai_adv_5.jpg";
-import mald_adv_1 from "@/assets/mald_adv_1.jpg";
-import mald_adv_2 from "@/assets/mald_adv_2.jpg";
-import mald_adv_3 from "@/assets/mald_adv_3.jpg";
-import mald_adv_4 from "@/assets/mald_adv_4.jpg";
-import sing_adv_1 from "@/assets/sing_adv_1.jpg";
-import sing_adv_2 from "@/assets/sing_adv_2.jpg";
-import sing_adv_3 from "@/assets/sing_adv_3.jpg";
-import sing_adv_4 from "@/assets/sing_adv_4.jpg";
-import sing_adv_5 from "@/assets/sing_adv_5.jpg";
-import sl_adv_1 from "@/assets/sl_adv_1.jpg";
-import sl_adv_2 from "@/assets/sl_adv_2.jpg";
-import sl_adv_3 from "@/assets/sl_adv_3.jpg";
-import sl_adv_4 from "@/assets/sl_adv_4.jpg";
-import keralaImg from "@/assets/kerala/kerala_main.jpg";
-import kerala_adv_1 from "@/assets/kerala/kerala_adv_1.jpg";
-import kerala_adv_2 from "@/assets/kerala/kerala_adv_2.jpg";
-import kerala_adv_3 from "@/assets/kerala/kerala_adv_3.jpg";
-import kerala_adv_4 from "@/assets/kerala/kerala_adv_4.jpg";
-import kerala_adv_5 from "@/assets/kerala/kerala_adv_5.jpg";
-import kerala_adv_6 from "@/assets/kerala/kerala_adv_6.jpg";
-// Removed direct imports of Andaman assets to troubleshoot
+import { getImageSrc } from "@/data/imageMap";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useAdmin } from "@/context/AdminContext";
-
-const imageMap: Record<string, string> = {
-  "malaysia_main_new.jpg": malaysiaImg,
-  "thailand_new.jpg": thailandImg,
-  "bali_main_new.jpg": baliImg,
-  "vietnam_main.jpg": vietnamImg,
-  "viet_adv_1.jpg": viet_adv_1,
-  "viet_adv_2.jpg": viet_adv_2,
-  "viet_adv_3.jpg": viet_adv_3,
-  "viet_adv_4.jpg": viet_adv_4,
-  "dubai_new.jpg": dubaiImg,
-  "singapore_main_new.jpg": singaporeImg,
-  "maldives_main_new.jpg": maldivesImg,
-  "srilanka_main.jpg": srilankaImg,
-  "mal_adv_1.jpg": mal_adv_1,
-  "mal_adv_2.jpg": mal_adv_2,
-  "mal_adv_3.jpg": mal_adv_3,
-  "mal_adv_4.jpg": mal_adv_4,
-  "mal_adv_5.jpg": mal_adv_5,
-  "thailand_adv_1.jpg": thailand_adv_1,
-  "thailand_adv_2.jpg": thailand_adv_2,
-  "thailand_adv_3.jpg": thailand_adv_3,
-  "thailand_adv_4.jpg": thailand_adv_4,
-  "thailand_adv_5.jpg": thailand_adv_5,
-  "bali_adv_1.jpg": bali_adv_1,
-  "bali_adv_2.jpg": bali_adv_2,
-  "bali_adv_3.jpg": bali_adv_3,
-  "bali_adv_4.jpg": bali_adv_4,
-  "dubai_adv_1.jpg": dubai_adv_1,
-  "dubai_adv_2.jpg": dubai_adv_2,
-  "dubai_adv_3.jpg": dubai_adv_3,
-  "dubai_adv_4.jpg": dubai_adv_4,
-  "dubai_adv_5.jpg": dubai_adv_5,
-  "mald_adv_1.jpg": mald_adv_1,
-  "mald_adv_2.jpg": mald_adv_2,
-  "mald_adv_3.jpg": mald_adv_3,
-  "mald_adv_4.jpg": mald_adv_4,
-  "sing_adv_1.jpg": sing_adv_1,
-  "sing_adv_2.jpg": sing_adv_2,
-  "sing_adv_3.jpg": sing_adv_3,
-  "sing_adv_4.jpg": sing_adv_4,
-  "sing_adv_5.jpg": sing_adv_5,
-  "sl_adv_1.jpg": sl_adv_1,
-  "sl_adv_2.jpg": sl_adv_2,
-  "sl_adv_3.jpg": sl_adv_3,
-  "sl_adv_4.jpg": sl_adv_4,
-  "kerala_main.jpg": keralaImg,
-  "kerala_adv_1.jpg": kerala_adv_1,
-  "kerala_adv_2.jpg": kerala_adv_2,
-  "kerala_adv_3.jpg": kerala_adv_3,
-  "kerala_adv_4.jpg": kerala_adv_4,
-  "kerala_adv_5.jpg": kerala_adv_5,
-  "kerala_adv_6.jpg": kerala_adv_6,
-  "andaman_main.jpg": "/src/assets/andaman/andaman_main.jpg",
-  "andaman_adv_1.jpg": "/src/assets/andaman/andaman_adv_1.jpg",
-  "andaman_adv_2.jpg": "/src/assets/andaman/andaman_adv_2.jpg",
-  "andaman_adv_3.jpg": "/src/assets/andaman/andaman_adv_3.jpg",
-  "andaman_adv_4.jpg": "/src/assets/andaman/andaman_adv_4.jpg",
-  "andaman_adv_5.jpg": "/src/assets/andaman/andaman_adv_5.jpg",
-  "himachal_main.webp": "/src/assets/himachal/himachal_main.webp",
-  "him_adv_1.jpg": "/src/assets/himachal/him_adv_1.jpg",
-  "him_adv_2.jpg": "/src/assets/himachal/him_adv_2.jpg",
-  "him_adv_3.jpg": "/src/assets/himachal/him_adv_3.jpg",
-  "him_adv_4.jpg": "/src/assets/himachal/him_adv_4.jpg",
-  "him_adv_5.jpg": "/src/assets/himachal/him_adv_5.jpg",
-  "kashmir_main.jpg": "/src/assets/kashmir/kashmir_main.jpg",
-  "kas_adv_1.jpg": "/src/assets/kashmir/kas_adv_1.jpg",
-  "kas_adv_2.jpg": "/src/assets/kashmir/kas_adv_2.jpg",
-  "kas_adv_3.jpg": "/src/assets/kashmir/kas_adv_3.jpg",
-  "kas_adv_4.jpg": "/src/assets/kashmir/kas_adv_4.jpg",
-  "kas_adv_5.jpg": "/src/assets/kashmir/kas_adv_5.jpg",
-  "kas_adv_6.jpg": "/src/assets/kashmir/kas_adv_6.jpg",
-  "goa_main.jpg": "/src/assets/goa/goa_main.jpg",
-  "goa_adv_1.jpg": "/src/assets/goa/goa_adv_1.jpg",
-  "goa_adv_2.jpg": "/src/assets/goa/goa_adv_2.jpg",
-  "kar_main.jpg": "/src/assets/karnataka/kar_main.jpg",
-  "kar_adv_1.jpg": "/src/assets/karnataka/kar_adv_1.jpg",
-  "malaysia_new_front.jpg": "/src/assets/malaysia_new_front.jpg",
-};
 
 /* ─────────────────────────────────────────────
    MAIN PAGE
@@ -150,7 +20,6 @@ const Packages = () => {
     window.scrollTo(0, 0);
   }, [destParam]);
 
-  const getImageSrc = (img: string) => imageMap[img] || img;
 
   const groupedPackages = destinations.reduce(
     (acc, dest) => {
