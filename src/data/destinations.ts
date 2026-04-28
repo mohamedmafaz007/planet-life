@@ -35,7 +35,7 @@ export const destinations: Destination[] = [
     name: "Malaysia",
     country: "Malaysia",
     description: "A beautiful fusion of modern icons and natural wonders — from the Petronas Twin Towers to the pristine beaches of Langkawi and the cool heights of Genting.",
-    image: "malaysia_new_front.jpg",
+    image: "malaysia_new.jpg",
     video: "malaysia_video_final.mp4",
     featured: true,
     whyVisit: [
@@ -45,11 +45,11 @@ export const destinations: Destination[] = [
       "Relax on the turquoise waters of Pulau Dayang Bunting"
     ],
     adventureImages: [
-      "mal_adv_1.jpg",
-      "mal_adv_2.jpg",
-      "mal_adv_3.jpg",
-      "mal_adv_4.jpg",
-      "mal_adv_5.jpg"
+      "mal_adventure_1.jpg",
+      "mal_adventure_2.jpg",
+      "mal_adventure_3.jpg",
+      "mal_adventure_4.jpg",
+      "mal_adventure_5.jpg"
     ],
     packages: [
       {
@@ -58,7 +58,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 22999,
-        image: "mal_adv_3.jpg",
+        image: "mal_adventure_3.jpg",
         inclusions: [
           "4 Nights Accommodation (2N Langkawi + 2N Kuala Lumpur)",
           "Daily Breakfast (Except Day 1)",
@@ -135,7 +135,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 17999,
-        image: "mal_adv_4.jpg",
+        image: "mal_adventure_4.jpg",
         inclusions: [
           "3 Nights Accommodation (3★ with breakfast)",
           "KL City Tour with KL Tower Entry",
@@ -209,11 +209,11 @@ export const destinations: Destination[] = [
       "World-renowned Thai massage and delicious street food"
     ],
     adventureImages: [
-      "thailand_adv_1.jpg",
-      "thailand_adv_2.jpg",
-      "thailand_adv_3.jpg",
-      "thailand_adv_4.jpg",
-      "thailand_adv_5.jpg"
+      "thailand_adventure_1.jpg",
+      "thailand_adventure_2.jpg",
+      "thailand_adventure_3.jpg",
+      "thailand_adventure_4.jpg",
+      "thailand_adventure_5.jpg"
     ],
     packages: [
       {
@@ -222,7 +222,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 15999,
-        image: "thailand_adv_4.jpg",
+        image: "thailand_adventure_4.jpg",
         inclusions: [
           "Accommodation as mentioned",
           "Transfers and Entrance Tickets as per Itinerary",
@@ -286,7 +286,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 19999,
-        image: "thailand_adv_5.jpg",
+        image: "thailand_adventure_5.jpg",
         inclusions: [
           "Accommodation as mentioned",
           "Transfers and Entrance Tickets as per Itinerary",
@@ -361,7 +361,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 22000,
-        image: "thailand_adv_1.jpg",
+        image: "thailand_adventure_1.jpg",
         inclusions: [
           "4 Nights Hotel Accommodation (3★/4★ options)",
           "Daily Hotel Breakfast",
@@ -449,10 +449,10 @@ export const destinations: Destination[] = [
       "Experience the spiritual 'Gate of Heaven' at Lempuyang Temple"
     ],
     adventureImages: [
-      "bali_adv_1.jpg",
-      "bali_adv_2.jpg",
-      "bali_adv_3.jpg",
-      "bali_adv_4.jpg"
+      "bali_adventure_1.jpg",
+      "bali_adventure_2.jpg",
+      "bali_adventure_3.jpg",
+      "bali_adventure_4.jpg"
     ],
     packages: [
       {
@@ -461,7 +461,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 25000,
-        image: "bali_adv_4.jpg",
+        image: "bali_adventure_4.jpg",
         inclusions: [
           "4 Nights Stay in 3-Star Resort (Kuta/Nusa Dua)",
           "Daily Buffet Breakfast",
@@ -537,7 +537,7 @@ export const destinations: Destination[] = [
         nights: 5,
         days: 6,
         price: 32500,
-        image: "bali_adv_1.jpg",
+        image: "bali_adventure_1.jpg",
         inclusions: [
           "5 Nights Stay at Radhana Kuta Bali",
           "Daily Breakfast & 01 Mineral Water per day",
@@ -621,7 +621,7 @@ export const destinations: Destination[] = [
         nights: 6,
         days: 7,
         price: 50000,
-        image: "bali_adv_3.jpg",
+        image: "bali_adventure_3.jpg",
         inclusions: [
           "4 Nights at Risata Bali Resort (Superior Room)",
           "2 Nights at Alam Puisi (One Bedroom Pool Villa)",
@@ -724,10 +724,10 @@ export const destinations: Destination[] = [
       "Experience the pristine beaches and world-class theme parks of Phu Quoc Island"
     ],
     adventureImages: [
-      "viet_adv_1.jpg",
-      "viet_adv_2.jpg",
-      "viet_adv_3.jpg",
-      "viet_adv_4.jpg"
+      "viet_adventure_1.jpg",
+      "viet_adventure_2.jpg",
+      "viet_adventure_3.jpg",
+      "viet_adventure_4.jpg"
     ],
     packages: [
       {
@@ -736,7 +736,7 @@ export const destinations: Destination[] = [
         nights: 5,
         days: 6,
         price: 32000,
-        image: "viet_adv_1.jpg",
+        image: "viet_adventure_1.jpg",
         inclusions: [
           "5 Nights stay in 3/4★ hotels (Double/Twin sharing)",
           "Daily breakfast + meals as per itinerary",
@@ -820,7 +820,7 @@ export const destinations: Destination[] = [
         nights: 7,
         days: 8,
         price: 40000,
-        image: "viet_adv_2.jpg",
+        image: "viet_adventure_2.jpg",
         inclusions: [
           "Accommodation in Twin/Double Sharing",
           "A/C Transport with Experienced Driver",
@@ -925,7 +925,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 45000,
-        image: "viet_adv_4.jpg",
+        image: "viet_adventure_4.jpg",
         inclusions: [
           "Private airport pick-up & drop-off",
           "Private transfers to attractions",
@@ -1008,11 +1008,11 @@ export const destinations: Destination[] = [
       "Explore world-class malls, souks, and vibrant cultural landmarks"
     ],
     adventureImages: [
-      "dubai_adv_1.jpg",
-      "dubai_adv_2.jpg",
-      "dubai_adv_3.jpg",
-      "dubai_adv_4.jpg",
-      "dubai_adv_5.jpg"
+      "dubai_adventure_1.jpg",
+      "dubai_adventure_2.jpg",
+      "dubai_adventure_3.jpg",
+      "dubai_adventure_4.jpg",
+      "dubai_adventure_5.jpg"
     ],
     packages: [
       {
@@ -1021,7 +1021,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 35000,
-        image: "dubai_adv_4.jpg",
+        image: "dubai_adventure_4.jpg",
         inclusions: [
           "Airport Pickup & Drop",
           "3 Nights at 3★ Hotel with Daily Buffet Breakfast",
@@ -1084,7 +1084,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 42000,
-        image: "dubai_adv_5.jpg",
+        image: "dubai_adventure_5.jpg",
         inclusions: [
           "Airport Pickup & Drop (Private Transfers)",
           "4 Nights at Le Wana 3★ Hotel (Bed & Breakfast)",
@@ -1158,7 +1158,7 @@ export const destinations: Destination[] = [
         nights: 5,
         days: 6,
         price: 49999,
-        image: "dubai_adv_1.jpg",
+        image: "dubai_adventure_1.jpg",
         inclusions: [
           "Airport Pickup & Drop (Private Transfers)",
           "5 Nights at Citymax Bur Dubai — Standard Room (Bed & Breakfast)",
@@ -1253,10 +1253,10 @@ export const destinations: Destination[] = [
       "Enjoy traditional Malidivian fishing and BBQ dinners on the beach"
     ],
     adventureImages: [
-      "mald_adv_1.jpg",
-      "mald_adv_2.jpg",
-      "mald_adv_3.jpg",
-      "mald_adv_4.jpg"
+      "mald_adventure_1.jpg",
+      "mald_adventure_2.jpg",
+      "mald_adventure_3.jpg",
+      "mald_adventure_4.jpg"
     ],
     packages: [
       {
@@ -1265,7 +1265,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 34000,
-        image: "mald_adv_2.jpg",
+        image: "mald_adventure_2.jpg",
         inclusions: [
           "3 Nights stay at Maafushi Island (3-Star/4-Star options)",
           "Full Board (Breakfast, Lunch & Dinner)",
@@ -1342,11 +1342,11 @@ export const destinations: Destination[] = [
       "Enjoy a full day of fun at Sentosa Island including Wings of Time"
     ],
     adventureImages: [
-      "sing_adv_1.jpg",
-      "sing_adv_2.jpg",
-      "sing_adv_3.jpg",
-      "sing_adv_4.jpg",
-      "sing_adv_5.jpg"
+      "sing_adventure_1.jpg",
+      "sing_adventure_2.jpg",
+      "sing_adventure_3.jpg",
+      "sing_adventure_4.jpg",
+      "sing_adventure_5.jpg"
     ],
     packages: [
       {
@@ -1355,7 +1355,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 38000,
-        image: "sing_adv_2.jpg",
+        image: "sing_adventure_2.jpg",
         inclusions: [
           "3 Nights accommodation at selected hotel (Standard/Premium)",
           "Daily breakfast (except Day 1)",
@@ -1428,10 +1428,10 @@ export const destinations: Destination[] = [
       "Witness the majestic Pinnawala Elephant Orphanage"
     ],
     adventureImages: [
-      "sl_adv_1.jpg",
-      "sl_adv_2.jpg",
-      "sl_adv_3.jpg",
-      "sl_adv_4.jpg"
+      "sl_adventure_1.jpg",
+      "sl_adventure_2.jpg",
+      "sl_adventure_3.jpg",
+      "sl_adventure_4.jpg"
     ],
     packages: [
       {
@@ -1440,7 +1440,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 22000,
-        image: "sl_adv_3.jpg",
+        image: "sl_adventure_3.jpg",
         inclusions: [
           "Accommodations with dinner and breakfast in 3/4 star hotel",
           "Transport in an A/C Vehicle with English speaking guide",
@@ -1500,7 +1500,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 28000,
-        image: "sl_adv_4.jpg",
+        image: "sl_adventure_4.jpg",
         inclusions: [
           "Accommodations with dinner and breakfast in 3 star hotels",
           "Transport in an A/C Vehicle with English speaking guide",
@@ -1579,12 +1579,12 @@ export const destinations: Destination[] = [
       "Discover the adventure meadows and pine forests of Vagamon"
     ],
     adventureImages: [
-      "kerala_adv_1.jpg",
-      "kerala_adv_2.jpg",
-      "kerala_adv_3.jpg",
-      "kerala_adv_4.jpg",
-      "kerala_adv_5.jpg",
-      "kerala_adv_6.jpg"
+      "kerala_adventure_1.jpg",
+      "kerala_adventure_2.jpg",
+      "kerala_adventure_3.jpg",
+      "kerala_adventure_4.jpg",
+      "kerala_adventure_5.jpg",
+      "kerala_adventure_6.jpg"
     ],
     packages: [
       {
@@ -1593,7 +1593,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 4500,
-        image: "kerala_adv_1.jpg",
+        image: "kerala_adventure_1.jpg",
         inclusions: [
           "Pickup & Drop at Ernakulam Railway Station",
           "3 Breakfast, 1 Lunch & 1 Dinner",
@@ -1658,7 +1658,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 4500,
-        image: "kerala_adv_2.jpg",
+        image: "kerala_adventure_2.jpg",
         inclusions: [
           "Pickup & Drop at Ernakulam Railway Station",
           "4 Breakfast & 1 Dinner",
@@ -1733,7 +1733,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 4500,
-        image: "kerala_adv_3.jpg",
+        image: "kerala_adventure_3.jpg",
         inclusions: [
           "Day 1 Hotel Accommodation at Munnar",
           "Day 2 Tent Stay at campsite",
@@ -1792,7 +1792,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 4500,
-        image: "kerala_adv_4.jpg",
+        image: "kerala_adventure_4.jpg",
         inclusions: [
           "2 Nights Stay at Resort with Swimming Pool",
           "2 Breakfast",
@@ -1847,7 +1847,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 4500,
-        image: "kerala_adv_5.jpg",
+        image: "kerala_adventure_5.jpg",
         inclusions: [
           "Pickup & Drop at Kottayam Bus Stand / Railway Station",
           "3 Days Private Cab for Sightseeing",
@@ -1901,7 +1901,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 4500,
-        image: "kerala_adv_6.jpg",
+        image: "kerala_adventure_6.jpg",
         inclusions: [
           "Pickup & Drop at Kozhikode Bus Stand / Railway Station",
           "3 Days Private Cab for Sightseeing",
@@ -2048,11 +2048,11 @@ export const destinations: Destination[] = [
       "Experience the unique rock formations of the Natural Bridge on Neil Island"
     ],
     adventureImages: [
-      "andaman_adv_1.jpg",
-      "andaman_adv_2.jpg",
-      "andaman_adv_3.jpg",
-      "andaman_adv_4.jpg",
-      "andaman_adv_5.jpg"
+      "andaman_adventure_1.jpg",
+      "andaman_adventure_2.jpg",
+      "andaman_adventure_3.jpg",
+      "andaman_adventure_4.jpg",
+      "andaman_adventure_5.jpg"
     ],
     packages: [
       {
@@ -2061,7 +2061,7 @@ export const destinations: Destination[] = [
         nights: 5,
         days: 6,
         price: 22000,
-        image: "andaman_adv_1.jpg",
+        image: "andaman_adventure_1.jpg",
         inclusions: [
           "Pick up & Drop at Veer Savarkar International Airport",
           "Private luxury A/C car for transfers & sightseeing",
@@ -2148,7 +2148,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 15000,
-        image: "andaman_adv_2.jpg",
+        image: "andaman_adventure_2.jpg",
         inclusions: [
           "Pick up & Drop at Veer Savarkar International Airport",
           "Private A/C car for transfers & sightseeing",
@@ -2211,7 +2211,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 20000,
-        image: "andaman_adv_3.jpg",
+        image: "andaman_adventure_3.jpg",
         inclusions: [
           "Pick up & Drop at Veer Savarkar International Airport",
           "Private A/C car for transfers & sightseeing",
@@ -2297,11 +2297,11 @@ export const destinations: Destination[] = [
       "Witness the stunning beauty of Solang Valley and Rohtang Pass"
     ],
     adventureImages: [
-      "him_adv_1.jpg",
-      "him_adv_2.jpg",
-      "him_adv_3.jpg",
-      "him_adv_4.jpg",
-      "him_adv_5.jpg"
+      "him_adventure_1.jpg",
+      "him_adventure_2.jpg",
+      "him_adventure_3.jpg",
+      "him_adventure_4.jpg",
+      "him_adventure_5.jpg"
     ],
     packages: [
       {
@@ -2310,7 +2310,7 @@ export const destinations: Destination[] = [
         nights: 5,
         days: 6,
         price: 18500,
-        image: "him_adv_1.jpg",
+        image: "him_adventure_1.jpg",
         inclusions: [
           "5 Nights stay in comfortable hotels",
           "Daily Breakfast and Dinner",
@@ -2408,12 +2408,12 @@ export const destinations: Destination[] = [
       "Enjoy the thrill of the Gulmarg Gondola, one of the highest in the world"
     ],
     adventureImages: [
-      "kas_adv_1.jpg",
-      "kas_adv_2.jpg",
-      "kas_adv_3.jpg",
-      "kas_adv_4.jpg",
-      "kas_adv_5.jpg",
-      "kas_adv_6.jpg"
+      "kas_adventure_1.jpg",
+      "kas_adventure_2.jpg",
+      "kas_adventure_3.jpg",
+      "kas_adventure_4.jpg",
+      "kas_adventure_5.jpg",
+      "kas_adventure_6.jpg"
     ],
     packages: [
       {
@@ -2422,7 +2422,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 16000,
-        image: "kas_adv_1.jpg",
+        image: "kas_adventure_1.jpg",
         inclusions: [
           "4 Nights Stay (City Residency / Sri Mazda / Country Side)",
           "Daily Breakfast & Dinner",
@@ -2495,7 +2495,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 18500,
-        image: "kas_adv_2.jpg",
+        image: "kas_adventure_2.jpg",
         inclusions: [
           "4 Nights Stay (Shahzir villa / Palazzo Zaffrino / Siddiq palace deluxe)",
           "Daily Breakfast & Dinner",
@@ -2568,7 +2568,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 20000,
-        image: "kas_adv_3.jpg",
+        image: "kas_adventure_3.jpg",
         inclusions: [
           "4 Nights Stay (Siddiq palace Super deluxe / Sahara grand hills / GM Castle)",
           "Daily Breakfast & Dinner",
@@ -2641,7 +2641,7 @@ export const destinations: Destination[] = [
         nights: 4,
         days: 5,
         price: 23000,
-        image: "kas_adv_4.jpg",
+        image: "kas_adventure_4.jpg",
         inclusions: [
           "4 Nights Stay (Stay villa / Karam gold / The Azara)",
           "Daily Breakfast & Dinner",
@@ -2725,10 +2725,10 @@ export const destinations: Destination[] = [
       "Witness the stunning marine life with dolphin spotting trips"
     ],
     adventureImages: [
-      "goa_adv_1.jpg",
-      "goa_adv_2.jpg",
-      "goa_adv_3.jpg",
-      "goa_adv_4.jpg"
+      "goa_adventure_1.jpg",
+      "goa_adventure_2.jpg",
+      "goa_adventure_3.jpg",
+      "goa_adventure_4.jpg"
     ],
     packages: [
       {
@@ -2737,7 +2737,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 9500,
-        image: "goa_adv_1.jpg",
+        image: "goa_adventure_1.jpg",
         inclusions: [
           "2 Nights Stay in 3★ AC Resort with Swimming Pool",
           "Daily Breakfast",
@@ -2787,7 +2787,7 @@ export const destinations: Destination[] = [
         nights: 3,
         days: 4,
         price: 14000,
-        image: "goa_adv_2.jpg",
+        image: "goa_adventure_2.jpg",
         inclusions: [
           "3 Nights Accommodation in 3 Star AC Resort with Swimming Pool",
           "Daily Breakfast",
@@ -2859,12 +2859,12 @@ export const destinations: Destination[] = [
       "Interact with elephants at Dubare Elephant Camp"
     ],
     adventureImages: [
-      "kar_adv_1.jpg",
-      "kar_adv_2.jpg",
-      "kar_adv_3.jpg",
-      "kar_adv_4.jpg",
-      "kar_adv_5.jpg",
-      "kar_adv_6.jpg"
+      "kar_adventure_1.jpg",
+      "kar_adventure_2.jpg",
+      "kar_adventure_3.jpg",
+      "kar_adventure_4.jpg",
+      "kar_adventure_5.jpg",
+      "kar_adventure_6.jpg"
     ],
     packages: [
       {
@@ -2873,7 +2873,7 @@ export const destinations: Destination[] = [
         nights: 2,
         days: 3,
         price: 6500,
-        image: "kar_adv_1.jpg",
+        image: "kar_adventure_1.jpg",
         inclusions: [
           "2 Nights stay at Coorg Misty Garden",
           "Daily Breakfasts",
