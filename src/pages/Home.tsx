@@ -178,6 +178,7 @@ const Home = () => {
           loop
           muted
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src={heroVideo} type="video/mp4" />
@@ -580,6 +581,8 @@ const Home = () => {
                       <img
                         src={getImageSrc(destination.image)}
                         alt={destination.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       {/* Gradient Overlay */}
