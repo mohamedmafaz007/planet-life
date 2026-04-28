@@ -21,13 +21,31 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         // Split vendor code and heavy pages into separate chunks
-        manualChunks: {
-          // Core React libs — cached separately (rarely changes)
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          // UI framework
-          "vendor-ui": ["framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-tabs", "@radix-ui/react-select"],
-          // 3D libs — only needed on specific pages
-          "vendor-three": ["three", "@react-three/fiber", "@react-three/drei"],
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (
+              id.includes('/react/') ||
+              id.includes('/react-dom/') ||
+              id.includes('/react-router-dom/')
+            ) {
+              return 'vendor-react';
+            }
+            if (
+              id.includes('/framer-motion/') ||
+              id.includes('/@radix-ui/react-dialog/') ||
+              id.includes('/@radix-ui/react-tabs/') ||
+              id.includes('/@radix-ui/react-select/')
+            ) {
+              return 'vendor-ui';
+            }
+            if (
+              id.includes('/three/') ||
+              id.includes('/@react-three/fiber/') ||
+              id.includes('/@react-three/drei/')
+            ) {
+              return 'vendor-three';
+            }
+          }
         },
         // Organize output files by type
         assetFileNames: (assetInfo) => {

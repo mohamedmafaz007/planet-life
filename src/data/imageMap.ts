@@ -8,7 +8,7 @@
 
 // ── Malaysia ──
 import malaysiaImg from "@/assets/malaysia_main_new.jpg";
-import malaysiaFrontImg from "@/assets/malaysia_new.jpg";
+import malaysiaFrontImg from "@/assets/malaysia_profile_new.jpg";
 import malaysiaVideo from "@/assets/malaysia_video_final.mp4";
 import malAdv1 from "@/assets/mal_adventure_1.jpg";
 import malAdv2 from "@/assets/mal_adventure_2.jpg";
@@ -139,7 +139,7 @@ import karAdv6 from "@/assets/karnataka/kar_adventure_6.jpg";
 export const imageMap: Record<string, string> = {
   // ── Malaysia ──
   "malaysia_main_new.jpg": malaysiaImg,
-  "malaysia_new.jpg": malaysiaFrontImg,
+  "malaysia_profile_new.jpg": malaysiaFrontImg,
   "malaysia_video_final.mp4": malaysiaVideo,
   "mal_adventure_1.jpg": malAdv1,
   "mal_adventure_2.jpg": malAdv2,

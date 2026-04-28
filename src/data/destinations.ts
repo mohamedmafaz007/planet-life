@@ -35,7 +35,7 @@ export const destinations: Destination[] = [
     name: "Malaysia",
     country: "Malaysia",
     description: "A beautiful fusion of modern icons and natural wonders — from the Petronas Twin Towers to the pristine beaches of Langkawi and the cool heights of Genting.",
-    image: "malaysia_new.jpg",
+    image: "malaysia_profile_new.jpg",
     video: "malaysia_video_final.mp4",
     featured: true,
     whyVisit: [
