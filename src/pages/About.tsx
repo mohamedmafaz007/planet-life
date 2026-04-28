@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Globe, Heart, Award, Users, X, ArrowRight, Quote } from "lucide-react";
-import malaysiaImg from "@/assets/malaysia_new.jpg";
+import malaysiaImg from "@/assets/malaysia_main_new.jpg";
 import thailandImg from "@/assets/thailand.jpg";
 import baliImg from "@/assets/bali_new.jpg";
 import vietnamImg from "@/assets/vietnam_new.jpg";
