@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { Destination, destinations as initialDestinations } from "@/data/destinations";
+import { api } from "@/lib/api";
 
 // Content Interfaces
 export interface HomeContent {
@@ -40,7 +41,7 @@ export interface PackagesContent {
 
 interface AdminContextType {
     isAuthenticated: boolean;
-    login: (password: string) => boolean;
+    login: (email: string, password: string) => Promise<boolean>;
     logout: () => void;
     destinations: Destination[];
     addDestination: (destination: Destination) => void;
@@ -61,8 +62,8 @@ const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
 // Default Values (Current Hardcoded Content)
 const defaultHomeContent: HomeContent = {
-    heroTitle: "Let's Go Travel",
-    heroSubtitle: "Discover the world's most breathtaking destinations with curated premium packages",
+    heroTitle: "Customized International Adventures",
+    heroSubtitle: "Experience the epitome of luxury and adventure with our carefully curated international journeys.",
     whyChooseUsTitle: "Why Choose Planet Life?",
     whyChooseUsSubtitle: "We deliver exceptional travel experiences with attention to every detail",
     ctaTitle: "Ready to Start Your Adventure?",
@@ -106,104 +107,105 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     const [contactContent, setContactContent] = useState<ContactContent>(defaultContactContent);
     const [packagesContent, setPackagesContent] = useState<PackagesContent>(defaultPackagesContent);
 
-    // Load data from localStorage on mount
+    // Load data from API on mount
     useEffect(() => {
-        try {
-            // Explicitly clear ALL old versions to force refresh
-            Object.keys(localStorage).forEach(key => {
-                if (key.startsWith("destinations_v") && key !== "destinations_v31") {
-                    localStorage.removeItem(key);
+        const loadData = async () => {
+            try {
+                const storedAuth = localStorage.getItem("isAdminAuthenticated");
+                const token = localStorage.getItem("adminToken");
+                if (storedAuth === "true" && token) {
+                    setIsAuthenticated(true);
                 }
-            });
 
-            const storedAuth = localStorage.getItem("isAdminAuthenticated");
-            if (storedAuth === "true") {
-                setIsAuthenticated(true);
-            }
+                // Fetch everything from API
+                const [dests, home, about, contact, packages] = await Promise.all([
+                    api.getDestinations().catch(() => initialDestinations),
+                    api.getContent("home").catch(() => ({ data: defaultHomeContent })),
+                    api.getContent("about").catch(() => ({ data: defaultAboutContent })),
+                    api.getContent("contact").catch(() => ({ data: defaultContactContent })),
+                    api.getContent("packages").catch(() => ({ data: defaultPackagesContent }))
+                ]);
 
-            const storedDestinations = localStorage.getItem("destinations_v31");
-            if (storedDestinations) {
-                setDestinations(JSON.parse(storedDestinations));
-            } else {
+                setDestinations(dests || initialDestinations);
+                setHomeContent(home.data || defaultHomeContent);
+                setAboutContent(about.data || defaultAboutContent);
+                setContactContent(contact.data || defaultContactContent);
+                setPackagesContent(packages.data || defaultPackagesContent);
+            } catch (error) {
+                console.error("Error loading data from API:", error);
                 setDestinations(initialDestinations);
             }
-
-            // Load Content
-            const storedHome = localStorage.getItem("homeContent");
-            if (storedHome) setHomeContent(JSON.parse(storedHome));
-
-            const storedAbout = localStorage.getItem("aboutContent");
-            if (storedAbout) setAboutContent(JSON.parse(storedAbout));
-
-            const storedContact = localStorage.getItem("contactContent");
-            if (storedContact) setContactContent(JSON.parse(storedContact));
-
-            const storedPackages = localStorage.getItem("packagesContent");
-            if (storedPackages) setPackagesContent(JSON.parse(storedPackages));
-        } catch (error) {
-            console.error("Error loading data from localStorage:", error);
-            // Fallback to defaults if parsing fails
-            setDestinations(initialDestinations);
-        }
+        };
+        loadData();
     }, []);
 
-    // Save destinations to localStorage whenever they change
-    useEffect(() => {
-        if (destinations.length > 0) {
-            localStorage.setItem("destinations_v31", JSON.stringify(destinations));
-        }
-    }, [destinations]);
+    // Helper to get token
+    const getToken = () => localStorage.getItem("adminToken") || "";
 
-    // Save Content to localStorage
-    useEffect(() => {
-        localStorage.setItem("homeContent", JSON.stringify(homeContent));
-    }, [homeContent]);
-
-    useEffect(() => {
-        localStorage.setItem("aboutContent", JSON.stringify(aboutContent));
-    }, [aboutContent]);
-
-    useEffect(() => {
-        localStorage.setItem("contactContent", JSON.stringify(contactContent));
-    }, [contactContent]);
-
-    useEffect(() => {
-        localStorage.setItem("packagesContent", JSON.stringify(packagesContent));
-    }, [packagesContent]);
-
-    const login = (password: string) => {
-        if (password === "password123") {
+    const login = async (email: string, password: string) => {
+        try {
+            const { token } = await api.login(email, password);
             setIsAuthenticated(true);
             localStorage.setItem("isAdminAuthenticated", "true");
+            localStorage.setItem("adminToken", token);
             return true;
+        } catch (error) {
+            throw error;
         }
-        return false;
     };
 
     const logout = () => {
         setIsAuthenticated(false);
         localStorage.removeItem("isAdminAuthenticated");
+        localStorage.removeItem("adminToken");
     };
 
-    const addDestination = (destination: Destination) => {
-        setDestinations((prev) => [...prev, destination]);
+    const addDestination = async (destination: Destination) => {
+        try {
+            const newDest = await api.createDestination(destination, getToken());
+            setDestinations((prev) => [...prev, newDest]);
+        } catch (error) {
+            console.error("Error creating destination", error);
+        }
     };
 
-    const updateDestination = (updatedDestination: Destination) => {
-        setDestinations((prev) =>
-            prev.map((dest) => (dest.id === updatedDestination.id ? updatedDestination : dest))
-        );
+    const updateDestination = async (updatedDestination: Destination) => {
+        try {
+            const updated = await api.updateDestination(updatedDestination.id, updatedDestination, getToken());
+            setDestinations((prev) =>
+                prev.map((dest) => (dest.id === updated.id ? updated : dest))
+            );
+        } catch (error) {
+            console.error("Error updating destination", error);
+        }
     };
 
-    const deleteDestination = (id: string) => {
-        setDestinations((prev) => prev.filter((dest) => dest.id !== id));
+    const deleteDestination = async (id: string) => {
+        try {
+            await api.deleteDestination(id, getToken());
+            setDestinations((prev) => prev.filter((dest) => dest.id !== id));
+        } catch (error) {
+            console.error("Error deleting destination", error);
+        }
     };
 
     // Content Updaters
-    const updateHomeContent = (content: HomeContent) => setHomeContent(content);
-    const updateAboutContent = (content: AboutContent) => setAboutContent(content);
-    const updateContactContent = (content: ContactContent) => setContactContent(content);
-    const updatePackagesContent = (content: PackagesContent) => setPackagesContent(content);
+    const updateHomeContent = async (content: HomeContent) => {
+        await api.updateContent("home", content, getToken());
+        setHomeContent(content);
+    };
+    const updateAboutContent = async (content: AboutContent) => {
+        await api.updateContent("about", content, getToken());
+        setAboutContent(content);
+    };
+    const updateContactContent = async (content: ContactContent) => {
+        await api.updateContent("contact", content, getToken());
+        setContactContent(content);
+    };
+    const updatePackagesContent = async (content: PackagesContent) => {
+        await api.updateContent("packages", content, getToken());
+        setPackagesContent(content);
+    };
 
     return (
         <AdminContext.Provider

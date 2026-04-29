@@ -11,6 +11,7 @@ import HomeEditor from "./editors/HomeEditor";
 import AboutEditor from "./editors/AboutEditor";
 import ContactEditor from "./editors/ContactEditor";
 import PackagesEditor from "./editors/PackagesEditor";
+import PackagesList from "./editors/PackagesList";
 
 const AdminDashboard = () => {
     const { destinations, deleteDestination, addDestination, updateDestination, logout } = useAdmin();
@@ -120,8 +121,13 @@ const AdminDashboard = () => {
                     </div>
                 </TabsContent>
 
-                <TabsContent value="packages">
+
+                <TabsContent value="packages" className="space-y-6">
                     <PackagesEditor />
+                    <PackagesList onEditDestination={(id) => {
+                        const dest = destinations.find(d => d.id === id);
+                        if (dest) handleEdit(dest);
+                    }} />
                 </TabsContent>
 
                 <TabsContent value="about">

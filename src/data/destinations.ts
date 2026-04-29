@@ -990,6 +990,70 @@ export const destinations: Destination[] = [
             ]
           }
         ]
+      },
+      {
+        id: "vietnam-3n4d",
+        duration: "3 Nights 4 Days",
+        nights: 3,
+        days: 4,
+        price: 21999,
+        image: "vietnam_new.jpg",
+        inclusions: [
+          "Flight Tickets",
+          "Airport Pickup & Drop",
+          "Daily Breakfast",
+          "3 Star Hotel Accommodation",
+          "Entry Tickets to Attractions",
+          "Ha Long Bay Cruise",
+          "City Tours"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival in Hanoi",
+            description: "Welcome to Vietnam's capital",
+            activities: [
+              "Airport transfer to hotel",
+              "Explore Hoan Kiem Lake and Ngoc Son Temple",
+              "Evening water puppet show",
+              "Dinner at Old Quarter"
+            ]
+          },
+          {
+            day: 2,
+            title: "Hanoi City Tour",
+            description: "Discover Hanoi's heritage",
+            activities: [
+              "Visit Ho Chi Minh Mausoleum and Museum",
+              "Tour Temple of Literature",
+              "Explore Old Quarter streets",
+              "Cyclo ride through the city",
+              "Traditional Vietnamese dinner"
+            ]
+          },
+          {
+            day: 3,
+            title: "Ha Long Bay Cruise",
+            description: "UNESCO World Heritage wonder",
+            activities: [
+              "Drive to Ha Long Bay",
+              "Cruise through limestone karsts",
+              "Visit Sung Sot Cave",
+              "Kayaking and swimming",
+              "Return to Hanoi"
+            ]
+          },
+          {
+            day: 4,
+            title: "Shopping & Departure",
+            description: "Final day in Hanoi",
+            activities: [
+              "Shopping at Dong Xuan Market",
+              "Last-minute souvenir hunting",
+              "Airport transfer for departure"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1558,6 +1622,99 @@ export const destinations: Destination[] = [
             activities: [
               "Breakfast and check out",
               "Proceed to the airport for departure"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "meghalaya",
+    name: "Meghalaya",
+    country: "India",
+    description: "The 'Abode of Clouds' features breathtaking waterfalls, living root bridges, pristine lakes, and some of the wettest places on Earth with stunning natural beauty.",
+    image: "meghalaya_new.jpg",
+    video: "hero-video.mp4",
+    featured: true,
+    whyVisit: [
+      "Trek to the famous Double Decker Living Root Bridge",
+      "Witness Asia's cleanest village - Mawlynnong",
+      "Explore crystal clear rivers and natural pools",
+      "Experience unique Khasi tribal culture"
+    ],
+    packages: [
+      {
+        id: "meghalaya-4n5d",
+        duration: "4 Nights 5 Days",
+        nights: 4,
+        days: 5,
+        price: 15999,
+        image: "meghalaya_new.jpg",
+        inclusions: [
+          "Transportation (Bus/Car)",
+          "All Meals (Breakfast, Lunch, Dinner)",
+          "Accommodation in Hotels/Homestays",
+          "Trek Guide",
+          "Bamboo Trek",
+          "Double Decker Living Root Bridge Trek",
+          "Entry Fees to Attractions"
+        ],
+        itinerary: [
+          {
+            day: 1,
+            title: "Arrival in Shillong",
+            description: "The Scotland of the East",
+            activities: [
+              "Pickup from Guwahati",
+              "Drive to Shillong (3-4 hours)",
+              "Visit Elephant Falls",
+              "Explore Police Bazaar",
+              "Check-in and dinner"
+            ]
+          },
+          {
+            day: 2,
+            title: "Cherrapunji Wonders",
+            description: "The wettest place on Earth",
+            activities: [
+              "Visit Nohkalikai Falls",
+              "Explore Mawsmai Cave",
+              "See Seven Sisters Falls",
+              "Visit Eco Park",
+              "Overnight in Cherrapunji"
+            ]
+          },
+          {
+            day: 3,
+            title: "Double Decker Root Bridge Trek",
+            description: "Iconic living bridges",
+            activities: [
+              "Trek to Double Decker Living Root Bridge (3-4 hours)",
+              "Natural pool swimming",
+              "Bamboo trek experience",
+              "Return trek",
+              "Rest and relax"
+            ]
+          },
+          {
+            day: 4,
+            title: "Dawki & Mawlynnong",
+            description: "Crystal waters and clean village",
+            activities: [
+              "Visit Dawki - Umngot River (boat ride)",
+              "Explore Mawlynnong - Asia's cleanest village",
+              "Visit living root bridge in Mawlynnong",
+              "Return to Shillong"
+            ]
+          },
+          {
+            day: 5,
+            title: "Departure",
+            description: "Farewell to Meghalaya",
+            activities: [
+              "Visit Umiam Lake",
+              "Last-minute shopping",
+              "Drop to Guwahati airport/station"
             ]
           }
         ]

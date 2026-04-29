@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Admin User ───
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admins")
+}
+
+// ─── Destinations ───
+model Destination {
+  id              String    @id
+  name            String
+  country         String
+  description     String    @db.Text
+  image           String
+  video           String?
+  featured        Boolean   @default(false)
+  whyVisit        String[]  @map("why_visit")
+  adventureImages String[]  @map("adventure_images")
+
+  packages        Package[]
+
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  @@map("destinations")
+}
+
+// ─── Tour Packages ───
+model Package {
+  id            String   @id
+  duration      String
+  nights        Int
+  days          Int
+  price         Int
+  image         String?
+  inclusions    String[]
+
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  destinationId String      @map("destination_id")
+
+  itinerary     DayItinerary[]
+
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  @@map("packages")
+}
+
+// ─── Day-by-Day Itinerary ───
+model DayItinerary {
+  id          String   @id @default(cuid())
+  day         Int
+  title       String
+  description String   @db.Text
+  activities  String[]
+
+  package     Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  packageId   String   @map("package_id")
+
+  @@map("day_itineraries")
+}
+
+// ─── Page Content (Home, About, Contact, Packages) ───
+model PageContent {
+  id        String   @id @default(cuid())
+  page      String   @unique
+  data      Json
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("page_contents")
+}

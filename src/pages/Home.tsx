@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import StoryMarquee from "@/components/StoryMarquee";
 
 const Home = () => {
-  const { destinations } = useAdmin();
+  const { destinations, homeContent } = useAdmin();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(1);
@@ -145,10 +145,10 @@ const Home = () => {
           <div className="text-white max-w-3xl mb-8 mobile:mb-12 lg:mb-0 z-10">
             <ScrollReveal>
             <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-3 mobile:mb-4 sm:mb-6 leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
-                Customized <br className="hidden sm:block" /> International Adventures
+                {homeContent.heroTitle}
               </h1>
               <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl mb-6 mobile:mb-8 sm:mb-10 text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
-                Experience the epitome of luxury and adventure with our carefully curated international journeys.
+                {homeContent.heroSubtitle}
               </p>
               <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-5 mobile:px-6 sm:px-8 py-4 mobile:py-5 sm:py-6 text-xs mobile:text-sm sm:text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-6 mobile:mb-8 lg:mb-0">
                 Explore Packages <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />

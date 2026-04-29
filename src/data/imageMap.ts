@@ -274,6 +274,10 @@ export const imageMap: Record<string, string> = {
  * Falls back to the raw string if not found in the map.
  */
 export const getImageSrc = (img: string): string => {
+  if (!img) return "";
+  // Return Cloudinary or external URLs immediately
+  if (img.startsWith("http://") || img.startsWith("https://")) return img;
+
   // Direct lookup first (fast path)
   if (imageMap[img]) return imageMap[img];
 

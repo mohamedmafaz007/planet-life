@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { CloudinaryUpload } from "@/components/admin/CloudinaryUpload";
 
 const AboutEditor = () => {
     const { aboutContent, updateAboutContent } = useAdmin();
@@ -104,12 +105,11 @@ const AboutEditor = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="founderImage">Founder Image URL</Label>
-                            <Input
-                                id="founderImage"
-                                name="founderImage"
-                                value={formData.founderImage}
-                                onChange={handleChange}
+                            <Label htmlFor="founderImage">Founder Image</Label>
+                            <CloudinaryUpload 
+                                onUpload={(url) => setFormData(prev => ({ ...prev, founderImage: url }))}
+                                defaultImage={formData.founderImage}
+                                folder="planet_life/images"
                             />
                         </div>
                     </div>

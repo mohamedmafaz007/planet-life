@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, Trash, Upload, Image as ImageIcon } from "lucide-react";
+import { Plus, Trash } from "lucide-react";
 import PackageForm from "./PackageForm";
+import { CloudinaryUpload } from "@/components/admin/CloudinaryUpload";
 
 interface DestinationFormProps {
     initialData?: Destination;
@@ -53,22 +54,6 @@ const DestinationForm = ({ initialData, onSubmit, onCancel }: DestinationFormPro
         const newWhyVisit = [...formData.whyVisit];
         newWhyVisit.splice(index, 1);
         setFormData(prev => ({ ...prev, whyVisit: newWhyVisit }));
-    };
-
-    // Image Upload Handler
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            if (file.size > 5000000) { // 5MB limit
-                alert("File is too large. Please choose an image under 5MB.");
-                return;
-            }
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setFormData(prev => ({ ...prev, image: reader.result as string }));
-            };
-            reader.readAsDataURL(file);
-        }
     };
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -142,54 +127,31 @@ const DestinationForm = ({ initialData, onSubmit, onCancel }: DestinationFormPro
                         <h3 className="text-lg font-semibold border-b pb-2">Media</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <Label>Destination Image</Label>
-                                <div className="flex flex-col gap-2">
-                                    <div className="flex gap-2">
-                                        <Input
-                                            name="image"
-                                            value={formData.image}
-                                            onChange={handleChange}
-                                            placeholder="Image URL or Upload"
-                                        />
-                                        <div className="relative">
-                                            <input
-                                                type="file"
-                                                id="imageUpload"
-                                                className="hidden"
-                                                accept="image/*"
-                                                onChange={handleImageUpload}
-                                            />
-                                            <Button type="button" variant="outline" size="icon" asChild>
-                                                <label htmlFor="imageUpload" className="cursor-pointer">
-                                                    <Upload className="h-4 w-4" />
-                                                </label>
-                                            </Button>
-                                        </div>
-                                    </div>
-                                    {formData.image && (
-                                        <div className="relative w-full h-40 rounded-md overflow-hidden border">
-                                            <img
-                                                src={formData.image.startsWith("data:") || formData.image.startsWith("/") ? formData.image : `/${formData.image}`}
-                                                alt="Preview"
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                    )}
-                                </div>
+                                <Label>Destination Image (Main)</Label>
+                                <CloudinaryUpload 
+                                    onUpload={(url) => setFormData(prev => ({ ...prev, image: url }))}
+                                    defaultImage={formData.image}
+                                    folder="planet_life/images"
+                                />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="video">Video URL</Label>
+                                <Label>Video URL</Label>
+                                <CloudinaryUpload 
+                                    onUpload={(url) => setFormData(prev => ({ ...prev, video: url }))}
+                                    defaultImage={formData.video}
+                                    folder="planet_life/videos"
+                                />
+                                <p className="text-xs text-muted-foreground mt-2">
+                                    Alternatively, you can provide a direct link to an MP4 video file.
+                                </p>
                                 <Input
                                     id="video"
                                     name="video"
-                                    value={formData.video}
+                                    value={formData.video || ''}
                                     onChange={handleChange}
                                     placeholder="https://example.com/video.mp4"
                                 />
-                                <p className="text-xs text-muted-foreground">
-                                    Provide a direct link to an MP4 video file.
-                                </p>
                             </div>
                         </div>
                     </div>
