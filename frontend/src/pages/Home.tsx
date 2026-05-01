@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
 import StoryMarquee from "@/components/StoryMarquee";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const Home = () => {
   const { destinations, homeContent } = useAdmin();
@@ -109,9 +110,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
+    const timer = setTimeout(() => setIsLoading(false), 2000); // 2000ms gives time for the animation
     return () => clearTimeout(timer);
   }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="min-h-screen bg-white">

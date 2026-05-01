@@ -117,23 +117,36 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
                     setIsAuthenticated(true);
                 }
 
+                // Try to load from local storage first for instant UI
+                const cachedDests = localStorage.getItem("planetlife_destinations");
+                if (cachedDests) {
+                    try { setDestinations(JSON.parse(cachedDests)); } catch (e) {}
+                }
+
                 // Fetch everything from API
                 const [dests, home, about, contact, packages] = await Promise.all([
-                    api.getDestinations().catch(() => initialDestinations),
+                    api.getDestinations().catch(() => null),
                     api.getContent("home").catch(() => ({ data: defaultHomeContent })),
                     api.getContent("about").catch(() => ({ data: defaultAboutContent })),
                     api.getContent("contact").catch(() => ({ data: defaultContactContent })),
                     api.getContent("packages").catch(() => ({ data: defaultPackagesContent }))
                 ]);
 
-                setDestinations(dests || initialDestinations);
+                if (dests) {
+                    setDestinations(dests);
+                    localStorage.setItem("planetlife_destinations", JSON.stringify(dests));
+                } else if (!cachedDests) {
+                    setDestinations(initialDestinations);
+                }
+
                 setHomeContent(home.data || defaultHomeContent);
                 setAboutContent(about.data || defaultAboutContent);
                 setContactContent(contact.data || defaultContactContent);
                 setPackagesContent(packages.data || defaultPackagesContent);
             } catch (error) {
                 console.error("Error loading data from API:", error);
-                setDestinations(initialDestinations);
+                const cachedDests = localStorage.getItem("planetlife_destinations");
+                if (!cachedDests) setDestinations(initialDestinations);
             }
         };
         loadData();

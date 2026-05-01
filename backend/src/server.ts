@@ -51,12 +51,20 @@ app.post('/api/auth/login', async (req, res) => {
   res.status(200).json({ token });
 });
 
+// --- CACHE ---
+let destinationsCache: any = null;
+
 // --- DESTINATIONS ---
 app.get('/api/destinations', async (req, res) => {
+  if (destinationsCache) {
+    res.status(200).json(destinationsCache);
+    return;
+  }
   const destinations = await prisma.destination.findMany({
     include: { packages: { include: { itinerary: { orderBy: { day: 'asc' } } } } },
     orderBy: { name: 'asc' },
   });
+  destinationsCache = destinations;
   res.status(200).json(destinations);
 });
 
@@ -78,6 +86,7 @@ app.post('/api/destinations', verifyToken, async (req, res) => {
       },
       include: { packages: { include: { itinerary: { orderBy: { day: 'asc' } } } } },
     });
+    destinationsCache = null;
     res.status(201).json(newDest);
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -115,6 +124,7 @@ app.put('/api/destinations/:id', verifyToken, async (req, res) => {
       },
       include: { packages: { include: { itinerary: { orderBy: { day: 'asc' } } } } },
     });
+    destinationsCache = null;
     res.status(200).json(updatedDest);
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -124,6 +134,7 @@ app.put('/api/destinations/:id', verifyToken, async (req, res) => {
 app.delete('/api/destinations/:id', verifyToken, async (req, res) => {
   try {
     await prisma.destination.delete({ where: { id: req.params.id } });
+    destinationsCache = null;
     res.status(200).json({ message: 'Deleted successfully' });
   } catch (error: any) {
     res.status(400).json({ message: error.message });
