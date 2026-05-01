@@ -12,6 +12,7 @@ import BackToTop from "@/components/BackToTop";
 import { AdminProvider } from "@/context/AdminContext";
 
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import LoadingScreen from "@/components/LoadingScreen";
 
 // Lazy load all pages for code splitting — each page becomes its own JS chunk
 // This prevents loading ALL destination images/videos when visiting the homepage
@@ -30,14 +31,7 @@ const AdminDashboard = lazy(() => import("@/pages/admin/Dashboard"));
 const queryClient = new QueryClient();
 
 // Minimal loading fallback
-const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-10 h-10 border-4 border-red-600 border-t-transparent rounded-full animate-spin" />
-      <p className="text-sm text-gray-400 font-medium uppercase tracking-widest">Loading...</p>
-    </div>
-  </div>
-);
+const PageLoader = () => <LoadingScreen />;
 
 const App = () => {
   console.log("App component rendering");

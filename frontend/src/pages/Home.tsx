@@ -10,16 +10,14 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Helmet } from "react-helmet-async";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
 import StoryMarquee from "@/components/StoryMarquee";
-import LoadingScreen from "@/components/LoadingScreen";
 
 const Home = () => {
   const { destinations, homeContent } = useAdmin();
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [reviewsPaused, setReviewsPaused] = useState(false);
@@ -108,15 +106,6 @@ const Home = () => {
           language: ""
       });
   };
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000); // 2000ms gives time for the animation
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -540,7 +529,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading ? (
+            {destinations.length === 0 ? (
               Array.from({ length: 3 }).map((_, i) => (
                 <div key={i} className="h-[300px] mobile:h-[380px] md:h-[450px] rounded-[1.5rem] mobile:rounded-[2rem] overflow-hidden bg-white p-3 mobile:p-4 space-y-3 mobile:space-y-4">
                   <Skeleton className="w-full h-2/3 rounded-2xl" />
