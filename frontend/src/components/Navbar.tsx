@@ -61,7 +61,7 @@ const Navbar = () => {
                         alt="Planet Life Logo"
                         className="h-8 mobile:h-10 w-auto rounded-md shadow-sm"
                     />
-                    <span className="text-sm mobile:text-lg sm:text-xl font-heading font-bold tracking-tight text-foreground uppercase truncate max-w-[80px] xs:max-w-[100px] mobile:max-w-[120px] sm:max-w-none">
+                    <span className="text-sm mobile:text-lg sm:text-xl font-heading font-bold tracking-tight text-white uppercase truncate max-w-[80px] xs:max-w-[100px] mobile:max-w-[120px] sm:max-w-none">
                         PLANET LIFE
                     </span>
                 </Link>
@@ -70,12 +70,12 @@ const Navbar = () => {
                 <div className="flex items-center gap-2 mobile:gap-4 sm:gap-6 lg:gap-8">
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-6">
-                        <Link to="/" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">Home</Link>
+                        <Link to="/" className="font-bold hover:text-black/70 transition-colors text-white font-sans uppercase text-sm">Home</Link>
                         <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
                             <DropdownMenuTrigger 
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
-                                className="flex items-center gap-1 font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm outline-none cursor-default"
+                                className="flex items-center gap-1 font-bold hover:text-black/70 transition-colors text-white font-sans uppercase text-sm outline-none cursor-default"
                             >
                                 Destinations <ChevronDown className="w-4 h-4" />
                             </DropdownMenuTrigger>
@@ -136,9 +136,9 @@ const Navbar = () => {
                             </DropdownMenuContent>
                         </DropdownMenu>
 
-                        <Link to="/packages" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">Packages</Link>
-                        <Link to="/about" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">About Us</Link>
-                        <Link to="/contact" className="font-bold hover:text-white transition-colors text-black font-sans uppercase text-sm">Contact</Link>
+                        <Link to="/packages" className="font-bold hover:text-black/70 transition-colors text-white font-sans uppercase text-sm">Packages</Link>
+                        <Link to="/about" className="font-bold hover:text-black/70 transition-colors text-white font-sans uppercase text-sm">About Us</Link>
+                        <Link to="/contact" className="font-bold hover:text-black/70 transition-colors text-white font-sans uppercase text-sm">Contact</Link>
                     </div>
 
                     {/* Get Quote Button (Visible on all screens) */}
@@ -155,7 +155,7 @@ const Navbar = () => {
                     {/* Mobile Menu Trigger */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon" className="lg:hidden text-black hover:bg-black/10">
+                            <Button variant="ghost" size="icon" className="lg:hidden text-white hover:bg-white/10">
                                 <Menu className="h-6 w-6" />
                             </Button>
                         </DropdownMenuTrigger>

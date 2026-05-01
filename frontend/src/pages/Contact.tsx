@@ -47,13 +47,17 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="bg-red-600 text-black pt-24 mobile:pt-28 md:pt-32 pb-10 mobile:pb-14 md:pb-20 relative overflow-hidden shadow-xl">
-        <div className="container mx-auto px-3 mobile:px-4 text-center relative z-10">
+      <section className="bg-[#0a0a0a] text-white pt-24 mobile:pt-28 md:pt-32 lg:pt-40 pb-12 mobile:pb-16 md:pb-24 lg:pb-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.2)_0%,_transparent_60%)]" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal width="100%">
-            <h1 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 mobile:mb-3 md:mb-4 uppercase tracking-tight">
+            <span className="text-red-500 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-6 block drop-shadow-lg">
+              Get In Touch
+            </span>
+            <h1 className="text-3xl xs:text-4xl mobile:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black mb-4 mobile:mb-6 uppercase tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400">
               {contactContent.heroTitle}
             </h1>
-            <p className="text-sm mobile:text-base sm:text-lg md:text-2xl text-black/80 max-w-2xl mx-auto font-bold">
+            <p className="text-xs mobile:text-sm sm:text-base md:text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
               {contactContent.heroSubtitle}
             </p>
           </ScrollReveal>

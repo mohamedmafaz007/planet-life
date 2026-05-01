@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Globe, Heart, Award, Users, X, ArrowRight, Quote } from "lucide-react";
+import { Globe, Heart, Award, Users, X, ArrowRight, Quote, Briefcase, ShieldCheck, GraduationCap, Home } from "lucide-react";
 import malaysiaImg from "@/assets/malaysia_main_new.jpg";
 import thailandImg from "@/assets/thailand.jpg";
 import baliImg from "@/assets/bali_new.jpg";
@@ -66,16 +66,17 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[45vh] mobile:h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-red-600" />
-
-        <div className="container mx-auto px-3 mobile:px-4 relative z-10 text-center pt-16 mobile:pt-20">
+      <section className="bg-[#0a0a0a] text-white pt-24 mobile:pt-28 md:pt-32 lg:pt-40 pb-12 mobile:pb-16 md:pb-24 lg:pb-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.2)_0%,_transparent_60%)]" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <ScrollReveal width="100%">
-            <span className="text-black font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase mb-3 mobile:mb-4 block text-[10px] mobile:text-xs">Our Story</span>
-            <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-3 mobile:mb-4 md:mb-6 text-black drop-shadow-2xl uppercase tracking-tight">
+            <span className="text-red-500 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-6 block drop-shadow-lg">
+              Our Story
+            </span>
+            <h1 className="text-3xl xs:text-4xl mobile:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black mb-4 mobile:mb-6 uppercase tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400">
               {aboutContent.heroTitle}
             </h1>
-            <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xs mobile:text-sm sm:text-base md:text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
               {aboutContent.heroSubtitle}
             </p>
           </ScrollReveal>
@@ -112,6 +113,19 @@ const About = () => {
                   <p className="text-lg text-foreground/90 font-medium leading-relaxed text-justify">
                     {aboutContent.ourStoryText}
                   </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                  <div className="bg-red-50 p-6 rounded-2xl border border-red-100 shadow-sm hover:shadow-md transition-shadow">
+                    <h1 className="text-4xl font-heading font-black text-red-600 mb-2 tracking-tighter">7+ Years</h1>
+                    <h2 className="text-[10px] font-black tracking-widest text-black uppercase">Experience in this industry</h2>
+                    <p className="text-xs text-gray-600 mt-2 font-medium">Crafting unforgettable journeys with expertise, dedication, and deep local knowledge across the globe.</p>
+                  </div>
+                  <div className="bg-red-50 p-6 rounded-2xl border border-red-100 shadow-sm hover:shadow-md transition-shadow">
+                    <h1 className="text-4xl font-heading font-black text-red-600 mb-2 tracking-tighter">15+ Trips</h1>
+                    <h2 className="text-[10px] font-black tracking-widest text-black uppercase">Successful Strangers Trips</h2>
+                    <p className="text-xs text-gray-600 mt-2 font-medium">Connecting like-minded solo travelers through meticulously planned group adventures worldwide.</p>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -151,45 +165,47 @@ const About = () => {
         </div>
       </section>
 
-      {/* Meet the Founder Section - Alternating Layout */}
+      {/* Types of Trips Section */}
       <section className="py-12 mobile:py-16 md:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-3 mobile:px-4">
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-8 mobile:gap-12 md:gap-16">
-            <div className="lg:w-1/2">
-              <ScrollReveal direction="right">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#d4af37]/10 rounded-3xl transform translate-x-6 translate-y-6 -z-10" />
-                  <img
-                    src={aboutContent.founderImage}
-                    alt="Founder"
-                    className="rounded-3xl shadow-2xl w-full h-[300px] mobile:h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
-                  />
-                  <div className="absolute bottom-6 right-6 left-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-red-600/20">
-                    <p className="text-sm text-red-600 uppercase tracking-widest font-extrabold mb-1">Founder & CEO</p>
-                    <p className="text-black font-sans text-xl font-extrabold uppercase">Inspiration Behind Planet Life</p>
-                  </div>
-                </div>
-              </ScrollReveal>
+          <ScrollReveal width="100%">
+            <div className="text-center mb-16">
+              <span className="text-red-600 font-bold tracking-[0.2em] mobile:tracking-[0.3em] uppercase mb-3 mobile:mb-4 block text-[10px] mobile:text-xs">Our Services</span>
+              <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-heading font-bold text-black uppercase tracking-tight">
+                Trips We Offer
+              </h2>
             </div>
+          </ScrollReveal>
 
-            <div className="lg:w-1/2">
-              <ScrollReveal direction="left">
-                <h2 className="text-2xl xs:text-3xl mobile:text-4xl md:text-5xl font-sans font-extrabold mb-4 mobile:mb-6 md:mb-8 text-black leading-tight uppercase">
-                  {aboutContent.founderTitle}
-                </h2>
-                <div className="prose prose-lg text-black font-medium max-w-none">
-                  <p className="text-lg leading-relaxed mb-6 text-justify">
-                    {aboutContent.founderText}
-                  </p>
-                </div>
-                <div className="flex items-center gap-6 mt-10">
-                  <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-black">
-                    <Award className="w-6 h-6" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mobile:gap-8">
+            {[
+              { title: "Corporate Trips", icon: Briefcase, img: singaporeImg, desc: "Professional itineraries designed for team building, offsites, and corporate retreats with top-tier amenities." },
+              { title: "Private Trips", icon: ShieldCheck, img: dubaiImg, desc: "Exclusive, personalized journeys offering ultimate privacy, luxury, and tailor-made experiences." },
+              { title: "Strangers Trips", icon: Users, img: vietnamImg, desc: "Join a group of like-minded solo travelers for an adventure of a lifetime and make lasting friendships." },
+              { title: "Couples Trips", icon: Heart, img: baliImg, desc: "Romantic getaways crafted perfectly for couples to celebrate honeymoons, anniversaries, or just each other." },
+              { title: "College Trips", icon: GraduationCap, img: thailandImg, desc: "Budget-friendly, action-packed group tours perfect for students looking for fun and exploration." },
+              { title: "Family Trips", icon: Home, img: malaysiaImg, desc: "Wholesome holiday packages designed to bring families together with activities suitable for all ages." }
+            ].map((trip, index) => (
+              <ScrollReveal key={index} delay={index * 0.1} width="100%">
+                <div className="group bg-white rounded-[2rem] overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full hover:-translate-y-2">
+                  <div className="relative h-48 mobile:h-56 overflow-hidden">
+                    <img src={trip.img} alt={trip.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
-                  <p className="text-black font-extrabold italic font-sans">"Redefining global travel with a personal touch."</p>
+                  <div className="p-6 mobile:p-8 flex flex-col flex-grow relative">
+                    <div className="absolute -top-8 right-6 bg-red-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl transform rotate-3 group-hover:rotate-12 transition-transform duration-500">
+                      <trip.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl mobile:text-2xl font-heading font-black uppercase text-black mb-3 pr-16">
+                      {trip.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed font-medium">
+                      {trip.desc}
+                    </p>
+                  </div>
                 </div>
               </ScrollReveal>
-            </div>
+            ))}
           </div>
         </div>
       </section>
