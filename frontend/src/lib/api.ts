@@ -1,4 +1,4 @@
-const API = '/api';
+const API = import.meta.env.VITE_API_URL || '/api';
 
 function headers(token?: string | null) {
   const h: Record<string, string> = { 'Content-Type': 'application/json' };
