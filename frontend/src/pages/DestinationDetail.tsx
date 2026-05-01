@@ -253,7 +253,7 @@ const DestinationDetail = () => {
 
                   <TabsContent value="itinerary" className="mt-6">
                     {activePkg.itinerary ? (
-                      <div className="space-y-6">
+                      <div className="space-y-6 ml-4 mobile:ml-6 md:ml-8 mt-2">
                         {activePkg.itinerary.map((day) => (
                           <div key={day.day} className="border-l-2 border-primary pl-6 mobile:pl-8 md:pl-12 pb-6 mobile:pb-8 md:pb-10 relative">
                             <div className="absolute -left-5 mobile:-left-6 md:-left-7 top-0 w-10 mobile:w-12 md:w-14 h-6 mobile:h-7 rounded-full bg-primary text-white flex items-center justify-center text-[8px] mobile:text-[9px] md:text-[10px] font-black uppercase tracking-tighter shadow-lg shadow-primary/20">
