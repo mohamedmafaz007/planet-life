@@ -140,17 +140,17 @@ const Home = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative container mx-auto px-3 mobile:px-4 flex-grow flex flex-col lg:flex-row items-center justify-between pt-20 mobile:pt-24 pb-8 mobile:pb-12 z-10">
+        <div className="relative container mx-auto px-3 mobile:px-4 flex-grow flex flex-col lg:flex-row items-center justify-between pt-20 mobile:pt-24 pb-8 mobile:pb-12 z-10 gap-8 lg:gap-0">
           {/* Left Content */}
-          <div className="text-white max-w-3xl mb-8 mobile:mb-12 lg:mb-0 z-10">
+          <div className="text-white max-w-3xl z-10 text-center lg:text-left">
             <ScrollReveal>
-            <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-3 mobile:mb-4 sm:mb-6 leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
+            <h1 className="text-2xl xs:text-3xl mobile:text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-0 lg:mb-6 pt-[10px] leading-[1.1] drop-shadow-2xl text-white uppercase tracking-tight">
                 {homeContent.heroTitle}
               </h1>
-              <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl mb-6 mobile:mb-8 sm:mb-10 text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
+              <p className="text-sm mobile:text-base sm:text-lg md:text-xl lg:text-2xl mb-0 lg:mb-10 pt-[10px] text-white/90 font-medium max-w-xl drop-shadow-md leading-relaxed">
                 {homeContent.heroSubtitle}
               </p>
-              <Button size="lg" className="bg-red-600 hover:bg-black text-white rounded-full px-5 mobile:px-6 sm:px-8 py-4 mobile:py-5 sm:py-6 text-xs mobile:text-sm sm:text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-6 mobile:mb-8 lg:mb-0">
+              <Button size="lg" className="hidden lg:inline-flex bg-red-600 hover:bg-black text-white rounded-full px-5 mobile:px-6 sm:px-8 py-4 mobile:py-5 sm:py-6 text-xs mobile:text-sm sm:text-base shadow-xl transition-all hover:scale-105 font-extrabold uppercase mb-6 mobile:mb-8 lg:mb-0">
                 Explore Packages <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </ScrollReveal>
@@ -322,6 +322,11 @@ const Home = () => {
               </div>
             )}
           </div>
+          
+          {/* Mobile Explore Packages Button */}
+          <Button size="lg" className="lg:hidden w-full bg-red-600 hover:bg-black text-white rounded-full px-5 py-4 text-xs mobile:text-sm shadow-xl transition-all hover:scale-105 font-extrabold uppercase mt-2">
+            Explore Packages <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
 
         <div className="relative bg-white border-t border-gray-100 shadow-2xl py-4 mobile:py-6 md:py-8 z-20">
